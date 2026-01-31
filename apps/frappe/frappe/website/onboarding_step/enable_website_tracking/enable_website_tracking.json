@@ -1,0 +1,23 @@
+{
+ "action": "Update Settings",
+ "creation": "2020-04-28 22:09:12.089238",
+ "description": "",
+ "docstatus": 0,
+ "doctype": "Onboarding Step",
+ "field": "enable_view_tracking",
+ "idx": 0,
+ "intro_video_url": "",
+ "is_complete": 0,
+ "is_single": 1,
+ "is_skipped": 0,
+ "modified": "2026-01-11 17:40:06.675850",
+ "modified_by": "Administrator",
+ "name": "Enable Website Tracking",
+ "owner": "Administrator",
+ "reference_document": "Website Settings",
+ "show_form_tour": 0,
+ "show_full_form": 0,
+ "title": "Enable Website Tracking",
+ "validate_action": 0,
+ "value_to_validate": "1"
+}

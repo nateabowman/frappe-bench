@@ -1,0 +1,301 @@
+/* Nexelya Design System - Construction/Industrial Theme */
+
+/* ============================================
+   CSS Custom Properties (Design Tokens)
+   ============================================ */
+
+:root {
+  /* Primary Colors */
+  --nexelya-primary: #FF6B35; /* Safety Orange */
+  --nexelya-primary-dark: #E55A2B;
+  --nexelya-primary-light: #FF8C5A;
+  --nexelya-primary-hover: #E55A2B;
+  
+  --nexelya-secondary: #004E89; /* Professional Blue */
+  --nexelya-secondary-dark: #003D6B;
+  --nexelya-secondary-light: #0066B3;
+  --nexelya-secondary-hover: #003D6B;
+  
+  --nexelya-accent: #FFA500; /* Construction Yellow */
+  --nexelya-accent-dark: #E69400;
+  --nexelya-accent-light: #FFB733;
+  
+  /* Status Colors - Construction Specific */
+  --nexelya-success: #2E7D32; /* Safety Green */
+  --nexelya-success-dark: #1B5E20;
+  --nexelya-success-light: #4CAF50;
+  --nexelya-success-bg: #E8F5E9;
+  
+  --nexelya-warning: #F57C00; /* Caution Orange */
+  --nexelya-warning-dark: #E65100;
+  --nexelya-warning-light: #FF9800;
+  --nexelya-warning-bg: #FFF3E0;
+  
+  --nexelya-danger: #D32F2F; /* Safety Red */
+  --nexelya-danger-dark: #B71C1C;
+  --nexelya-danger-light: #F44336;
+  --nexelya-danger-bg: #FFEBEE;
+  
+  --nexelya-info: #1976D2; /* Info Blue */
+  --nexelya-info-dark: #1565C0;
+  --nexelya-info-light: #2196F3;
+  --nexelya-info-bg: #E3F2FD;
+  
+  /* Project Status Colors */
+  --status-on-schedule: #2E7D32;
+  --status-at-risk: #F57C00;
+  --status-delayed: #D32F2F;
+  --status-not-started: #757575;
+  --status-completed: #1B5E20;
+  
+  /* Neutral Colors */
+  --nexelya-dark: #1A1A1A;
+  --nexelya-dark-light: #424242;
+  --nexelya-gray: #757575;
+  --nexelya-gray-light: #BDBDBD;
+  --nexelya-gray-lighter: #E0E0E0;
+  --nexelya-field-gray: #F5F5F5;
+  --nexelya-white: #FFFFFF;
+  
+  /* Background Colors */
+  --bg-primary: #FFFFFF;
+  --bg-secondary: #FAFAFA;
+  --bg-tertiary: #F5F5F5;
+  --bg-hover: #F0F0F0;
+  --bg-active: #E8E8E8;
+  
+  /* Text Colors */
+  --text-primary: #1A1A1A;
+  --text-secondary: #424242;
+  --text-tertiary: #757575;
+  --text-disabled: #BDBDBD;
+  --text-inverse: #FFFFFF;
+  
+  /* Border Colors */
+  --border-primary: #E0E0E0;
+  --border-secondary: #BDBDBD;
+  --border-focus: var(--nexelya-primary);
+  --border-error: var(--nexelya-danger);
+  
+  /* Spacing System (8px base unit) */
+  --spacing-xs: 4px;
+  --spacing-sm: 8px;
+  --spacing-md: 16px;
+  --spacing-lg: 24px;
+  --spacing-xl: 32px;
+  --spacing-2xl: 48px;
+  --spacing-3xl: 64px;
+  
+  /* Typography */
+  --font-family-primary: 'Inter', 'Roboto', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  --font-family-heading: 'Inter', 'Roboto', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  
+  --font-size-xs: 11px;
+  --font-size-sm: 12px;
+  --font-size-base: 14px;
+  --font-size-md: 16px;
+  --font-size-lg: 18px;
+  --font-size-xl: 20px;
+  --font-size-2xl: 24px;
+  --font-size-3xl: 30px;
+  --font-size-4xl: 36px;
+  
+  --font-weight-normal: 400;
+  --font-weight-medium: 500;
+  --font-weight-semibold: 600;
+  --font-weight-bold: 700;
+  
+  --line-height-tight: 1.2;
+  --line-height-normal: 1.5;
+  --line-height-relaxed: 1.75;
+  
+  /* Border Radius */
+  --radius-sm: 4px;
+  --radius-md: 6px;
+  --radius-lg: 8px;
+  --radius-xl: 12px;
+  --radius-full: 9999px;
+  
+  /* Shadows */
+  --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+  --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+  --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+  --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+  
+  /* Transitions */
+  --transition-fast: 150ms ease-in-out;
+  --transition-base: 250ms ease-in-out;
+  --transition-slow: 350ms ease-in-out;
+  
+  /* Z-Index Scale */
+  --z-dropdown: 1000;
+  --z-sticky: 1020;
+  --z-fixed: 1030;
+  --z-modal-backdrop: 1040;
+  --z-modal: 1050;
+  --z-popover: 1060;
+  --z-tooltip: 1070;
+  
+  /* Layout */
+  --sidebar-width: 280px;
+  --sidebar-width-collapsed: 60px;
+  --header-height: 60px;
+  --content-max-width: 1400px;
+  
+  /* Touch Targets (Mobile) */
+  --touch-target-min: 44px;
+  --touch-target-comfortable: 48px;
+}
+
+/* ============================================
+   Typography System
+   ============================================ */
+
+body {
+  font-family: var(--font-family-primary);
+  font-size: var(--font-size-base);
+  line-height: var(--line-height-normal);
+  color: var(--text-primary);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Headings */
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-family-heading);
+  font-weight: var(--font-weight-bold);
+  line-height: var(--line-height-tight);
+  color: var(--text-primary);
+  margin-top: 0;
+  margin-bottom: var(--spacing-md);
+}
+
+h1 {
+  font-size: var(--font-size-4xl);
+  font-weight: var(--font-weight-bold);
+}
+
+h2 {
+  font-size: var(--font-size-3xl);
+  font-weight: var(--font-weight-bold);
+}
+
+h3 {
+  font-size: var(--font-size-2xl);
+  font-weight: var(--font-weight-semibold);
+}
+
+h4 {
+  font-size: var(--font-size-xl);
+  font-weight: var(--font-weight-semibold);
+}
+
+h5 {
+  font-size: var(--font-size-lg);
+  font-weight: var(--font-weight-semibold);
+}
+
+h6 {
+  font-size: var(--font-size-md);
+  font-weight: var(--font-weight-medium);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+/* Field Labels - Construction Style */
+label,
+.field-label {
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-semibold);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  color: var(--text-secondary);
+  margin-bottom: var(--spacing-xs);
+  display: block;
+}
+
+/* Body Text */
+p {
+  margin-top: 0;
+  margin-bottom: var(--spacing-md);
+}
+
+.text-xs { font-size: var(--font-size-xs); }
+.text-sm { font-size: var(--font-size-sm); }
+.text-base { font-size: var(--font-size-base); }
+.text-md { font-size: var(--font-size-md); }
+.text-lg { font-size: var(--font-size-lg); }
+.text-xl { font-size: var(--font-size-xl); }
+
+.text-bold { font-weight: var(--font-weight-bold); }
+.text-semibold { font-weight: var(--font-weight-semibold); }
+.text-medium { font-weight: var(--font-weight-medium); }
+.text-normal { font-weight: var(--font-weight-normal); }
+
+/* ============================================
+   Spacing Utilities
+   ============================================ */
+
+.m-0 { margin: 0; }
+.m-xs { margin: var(--spacing-xs); }
+.m-sm { margin: var(--spacing-sm); }
+.m-md { margin: var(--spacing-md); }
+.m-lg { margin: var(--spacing-lg); }
+.m-xl { margin: var(--spacing-xl); }
+
+.p-0 { padding: 0; }
+.p-xs { padding: var(--spacing-xs); }
+.p-sm { padding: var(--spacing-sm); }
+.p-md { padding: var(--spacing-md); }
+.p-lg { padding: var(--spacing-lg); }
+.p-xl { padding: var(--spacing-xl); }
+
+/* ============================================
+   Layout Utilities
+   ============================================ */
+
+.container {
+  max-width: var(--content-max-width);
+  margin: 0 auto;
+  padding: 0 var(--spacing-md);
+}
+
+.grid {
+  display: grid;
+  gap: var(--spacing-md);
+}
+
+.grid-cols-1 { grid-template-columns: repeat(1, minmax(0, 1fr)); }
+.grid-cols-2 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+.grid-cols-3 { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+.grid-cols-4 { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+
+/* ============================================
+   Status Color Utilities
+   ============================================ */
+
+.status-on-schedule {
+  color: var(--status-on-schedule);
+  background-color: var(--nexelya-success-bg);
+}
+
+.status-at-risk {
+  color: var(--status-at-risk);
+  background-color: var(--nexelya-warning-bg);
+}
+
+.status-delayed {
+  color: var(--status-delayed);
+  background-color: var(--nexelya-danger-bg);
+}
+
+.status-not-started {
+  color: var(--status-not-started);
+  background-color: var(--bg-tertiary);
+}
+
+.status-completed {
+  color: var(--status-completed);
+  background-color: var(--nexelya-success-bg);
+}
+

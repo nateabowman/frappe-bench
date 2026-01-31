@@ -1,0 +1,21 @@
+{
+ "action": "Create Entry",
+ "creation": "2024-01-11 13:25:28.533290",
+ "description": "",
+ "docstatus": 0,
+ "doctype": "Onboarding Step",
+ "idx": 0,
+ "intro_video_url": "",
+ "is_complete": 0,
+ "is_single": 0,
+ "is_skipped": 0,
+ "modified": "2026-01-11 17:40:06.238659",
+ "modified_by": "Administrator",
+ "name": "Create & Assign Salary Structure",
+ "owner": "Administrator",
+ "reference_document": "Salary Structure",
+ "show_form_tour": 0,
+ "show_full_form": 1,
+ "title": "Create & Assign Salary Structure",
+ "validate_action": 1
+}

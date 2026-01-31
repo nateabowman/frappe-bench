@@ -1,0 +1,23 @@
+{
+ "action": "Watch Video",
+ "action_label": "Learn more about Report Builders",
+ "creation": "2021-11-24 17:04:18.762838",
+ "description": "",
+ "docstatus": 0,
+ "doctype": "Onboarding Step",
+ "idx": 0,
+ "intro_video_url": "",
+ "is_complete": 0,
+ "is_single": 0,
+ "is_skipped": 0,
+ "modified": "2026-01-11 17:40:06.363325",
+ "modified_by": "Administrator",
+ "name": "Report Builder",
+ "owner": "Administrator",
+ "reference_document": "Report",
+ "show_form_tour": 0,
+ "show_full_form": 0,
+ "title": "Generate Custom Reports",
+ "validate_action": 1,
+ "video_url": "https://youtu.be/TxJGUNarcQs"
+}

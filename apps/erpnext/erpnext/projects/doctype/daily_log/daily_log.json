@@ -1,0 +1,214 @@
+{
+ "actions": [],
+ "allow_import": 1,
+ "allow_rename": 1,
+ "autoname": "DL-.YYYY.-.#####",
+ "creation": "2024-01-01 00:00:00",
+ "doctype": "DocType",
+ "document_type": "Document",
+ "engine": "InnoDB",
+ "field_order": [
+  "log_details",
+  "log_date",
+  "project",
+  "column_break_1",
+  "submitted_by",
+  "submitted_date",
+  "weather_section",
+  "weather_conditions",
+  "temperature",
+  "column_break_2",
+  "wind_speed",
+  "precipitation",
+  "work_section",
+  "work_performed",
+  "column_break_3",
+  "hours_worked",
+  "crew_on_site",
+  "equipment_section",
+  "equipment_used",
+  "column_break_4",
+  "materials_delivered",
+  "issues_section",
+  "issues_notes",
+  "attachments_section",
+  "attachments"
+ ],
+ "fields": [
+  {
+   "fieldname": "log_details",
+   "fieldtype": "Section Break",
+   "label": "Daily Log Details"
+  },
+  {
+   "default": "Today",
+   "fieldname": "log_date",
+   "fieldtype": "Date",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "Date",
+   "reqd": 1
+  },
+  {
+   "fieldname": "project",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "Job Site",
+   "options": "Project",
+   "reqd": 1
+  },
+  {
+   "fieldname": "column_break_1",
+   "fieldtype": "Column Break"
+  },
+  {
+   "default": "User",
+   "fieldname": "submitted_by",
+   "fieldtype": "Link",
+   "label": "Submitted By",
+   "options": "User",
+   "reqd": 1
+  },
+  {
+   "default": "Now",
+   "fieldname": "submitted_date",
+   "fieldtype": "Datetime",
+   "label": "Submitted Date",
+   "read_only": 1
+  },
+  {
+   "fieldname": "weather_section",
+   "fieldtype": "Section Break",
+   "label": "Weather Conditions"
+  },
+  {
+   "fieldname": "weather_conditions",
+   "fieldtype": "Select",
+   "label": "Weather Conditions",
+   "options": "Clear\nPartly Cloudy\nCloudy\nRain\nSnow\nFog\nWindy\nOther"
+  },
+  {
+   "fieldname": "temperature",
+   "fieldtype": "Data",
+   "label": "Temperature (°F)"
+  },
+  {
+   "fieldname": "column_break_2",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "wind_speed",
+   "fieldtype": "Data",
+   "label": "Wind Speed (mph)"
+  },
+  {
+   "fieldname": "precipitation",
+   "fieldtype": "Data",
+   "label": "Precipitation (inches)"
+  },
+  {
+   "fieldname": "work_section",
+   "fieldtype": "Section Break",
+   "label": "Work Performed"
+  },
+  {
+   "fieldname": "work_performed",
+   "fieldtype": "Text Editor",
+   "label": "Work Performed",
+   "reqd": 1
+  },
+  {
+   "fieldname": "column_break_3",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "hours_worked",
+   "fieldtype": "Float",
+   "label": "Total Hours Worked"
+  },
+  {
+   "fieldname": "crew_on_site",
+   "fieldtype": "Int",
+   "label": "Crew Members on Site"
+  },
+  {
+   "fieldname": "equipment_section",
+   "fieldtype": "Section Break",
+   "label": "Equipment & Materials"
+  },
+  {
+   "fieldname": "equipment_used",
+   "fieldtype": "Text",
+   "label": "Equipment Used"
+  },
+  {
+   "fieldname": "column_break_4",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "materials_delivered",
+   "fieldtype": "Text",
+   "label": "Materials Delivered"
+  },
+  {
+   "fieldname": "issues_section",
+   "fieldtype": "Section Break",
+   "label": "Issues & Notes"
+  },
+  {
+   "fieldname": "issues_notes",
+   "fieldtype": "Text Editor",
+   "label": "Issues & Notes"
+  },
+  {
+   "fieldname": "attachments_section",
+   "fieldtype": "Section Break",
+   "label": "Attachments"
+  },
+  {
+   "fieldname": "attachments",
+   "fieldtype": "Attach",
+   "label": "Attachments"
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "links": [],
+ "modified": "2024-01-01 00:00:00",
+ "modified_by": "Administrator",
+ "module": "Projects",
+ "name": "Daily Log",
+ "naming_rule": "By \"Naming Series\" field",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  },
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "Projects User",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "sort_field": "log_date",
+ "sort_order": "DESC",
+ "states": [],
+ "track_changes": 1
+}
+

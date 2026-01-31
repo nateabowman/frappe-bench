@@ -1,0 +1,347 @@
+{
+ "actions": [],
+ "allow_import": 1,
+ "autoname": "naming_series:",
+ "creation": "2024-01-01 00:00:00.000000",
+ "doctype": "DocType",
+ "document_type": "Document",
+ "engine": "InnoDB",
+ "is_submittable": 1,
+ "field_order": [
+  "naming_series",
+  "cor_number",
+  "job_site",
+  "subject",
+  "column_break_1",
+  "status",
+  "request_date",
+  "requested_by",
+  "priority",
+  "description_section",
+  "description",
+  "reason_for_change",
+  "impact_section",
+  "cost_impact",
+  "schedule_impact_days",
+  "column_break_impact",
+  "markup_percent",
+  "total_amount",
+  "items_section",
+  "items",
+  "references_section",
+  "related_rfi",
+  "related_daily_log",
+  "column_break_refs",
+  "drawing_reference",
+  "spec_reference",
+  "response_section",
+  "owner_response",
+  "response_date",
+  "column_break_response",
+  "approved_amount",
+  "approved_schedule_days",
+  "approval_section",
+  "approved_by",
+  "approval_date",
+  "column_break_approval",
+  "change_order",
+  "notes_section",
+  "notes",
+  "amended_from"
+ ],
+ "fields": [
+  {
+   "fieldname": "naming_series",
+   "fieldtype": "Select",
+   "label": "Series",
+   "options": "COR-.YYYY.-.#####",
+   "reqd": 1
+  },
+  {
+   "fieldname": "cor_number",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "COR Number",
+   "read_only": 1
+  },
+  {
+   "fieldname": "job_site",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "Job Site",
+   "options": "Job Site",
+   "reqd": 1
+  },
+  {
+   "fieldname": "subject",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Subject",
+   "reqd": 1
+  },
+  {
+   "fieldname": "column_break_1",
+   "fieldtype": "Column Break"
+  },
+  {
+   "default": "Draft",
+   "fieldname": "status",
+   "fieldtype": "Select",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "Status",
+   "options": "Draft\nPending\nUnder Review\nApproved\nRejected\nRevised\nVoid"
+  },
+  {
+   "default": "Today",
+   "fieldname": "request_date",
+   "fieldtype": "Date",
+   "label": "Request Date",
+   "reqd": 1
+  },
+  {
+   "default": "__user",
+   "fieldname": "requested_by",
+   "fieldtype": "Link",
+   "label": "Requested By",
+   "options": "User"
+  },
+  {
+   "default": "Medium",
+   "fieldname": "priority",
+   "fieldtype": "Select",
+   "label": "Priority",
+   "options": "Low\nMedium\nHigh\nUrgent"
+  },
+  {
+   "fieldname": "description_section",
+   "fieldtype": "Section Break",
+   "label": "Description"
+  },
+  {
+   "fieldname": "description",
+   "fieldtype": "Text Editor",
+   "label": "Description of Change",
+   "reqd": 1
+  },
+  {
+   "fieldname": "reason_for_change",
+   "fieldtype": "Select",
+   "label": "Reason for Change",
+   "options": "\nOwner Request\nDesign Change\nUnforeseen Conditions\nCode Compliance\nValue Engineering\nError/Omission\nSchedule Acceleration\nOther"
+  },
+  {
+   "fieldname": "impact_section",
+   "fieldtype": "Section Break",
+   "label": "Cost & Schedule Impact"
+  },
+  {
+   "default": "0",
+   "fieldname": "cost_impact",
+   "fieldtype": "Currency",
+   "in_list_view": 1,
+   "label": "Cost Impact"
+  },
+  {
+   "default": "0",
+   "fieldname": "schedule_impact_days",
+   "fieldtype": "Int",
+   "label": "Schedule Impact (Days)"
+  },
+  {
+   "fieldname": "column_break_impact",
+   "fieldtype": "Column Break"
+  },
+  {
+   "default": "10",
+   "fieldname": "markup_percent",
+   "fieldtype": "Percent",
+   "label": "Markup %"
+  },
+  {
+   "fieldname": "total_amount",
+   "fieldtype": "Currency",
+   "label": "Total Amount (with markup)",
+   "read_only": 1
+  },
+  {
+   "fieldname": "items_section",
+   "fieldtype": "Section Break",
+   "label": "Cost Breakdown"
+  },
+  {
+   "fieldname": "items",
+   "fieldtype": "Table",
+   "label": "Items",
+   "options": "Change Order Request Item"
+  },
+  {
+   "collapsible": 1,
+   "fieldname": "references_section",
+   "fieldtype": "Section Break",
+   "label": "References"
+  },
+  {
+   "fieldname": "related_rfi",
+   "fieldtype": "Link",
+   "label": "Related RFI",
+   "options": "RFI"
+  },
+  {
+   "fieldname": "related_daily_log",
+   "fieldtype": "Link",
+   "label": "Related Daily Log",
+   "options": "Daily Field Report"
+  },
+  {
+   "fieldname": "column_break_refs",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "drawing_reference",
+   "fieldtype": "Data",
+   "label": "Drawing Reference"
+  },
+  {
+   "fieldname": "spec_reference",
+   "fieldtype": "Data",
+   "label": "Specification Reference"
+  },
+  {
+   "fieldname": "response_section",
+   "fieldtype": "Section Break",
+   "label": "Owner Response"
+  },
+  {
+   "fieldname": "owner_response",
+   "fieldtype": "Select",
+   "label": "Owner Response",
+   "options": "\nApprove\nApprove with Modifications\nReject\nRequest More Information"
+  },
+  {
+   "fieldname": "response_date",
+   "fieldtype": "Date",
+   "label": "Response Date"
+  },
+  {
+   "fieldname": "column_break_response",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "approved_amount",
+   "fieldtype": "Currency",
+   "label": "Approved Amount"
+  },
+  {
+   "fieldname": "approved_schedule_days",
+   "fieldtype": "Int",
+   "label": "Approved Schedule Days"
+  },
+  {
+   "fieldname": "approval_section",
+   "fieldtype": "Section Break",
+   "label": "Approval"
+  },
+  {
+   "fieldname": "approved_by",
+   "fieldtype": "Link",
+   "label": "Approved By",
+   "options": "User",
+   "read_only": 1
+  },
+  {
+   "fieldname": "approval_date",
+   "fieldtype": "Datetime",
+   "label": "Approval Date",
+   "read_only": 1
+  },
+  {
+   "fieldname": "column_break_approval",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "change_order",
+   "fieldtype": "Link",
+   "label": "Change Order",
+   "options": "Change Order",
+   "read_only": 1
+  },
+  {
+   "collapsible": 1,
+   "fieldname": "notes_section",
+   "fieldtype": "Section Break",
+   "label": "Notes"
+  },
+  {
+   "fieldname": "notes",
+   "fieldtype": "Text Editor",
+   "label": "Notes"
+  },
+  {
+   "fieldname": "amended_from",
+   "fieldtype": "Link",
+   "label": "Amended From",
+   "no_copy": 1,
+   "options": "Change Order Request",
+   "print_hide": 1,
+   "read_only": 1
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "links": [],
+ "modified": "2024-01-01 00:00:00.000000",
+ "modified_by": "Administrator",
+ "module": "Construction",
+ "name": "Change Order Request",
+ "naming_rule": "By \"Naming Series\" field",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "submit": 1,
+   "write": 1
+  },
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "Construction Manager",
+   "share": 1,
+   "submit": 1,
+   "write": 1
+  },
+  {
+   "create": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "Project Superintendent",
+   "share": 1,
+   "write": 1
+  },
+  {
+   "read": 1,
+   "role": "Projects User"
+  }
+ ],
+ "search_fields": "subject, job_site, status",
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": [],
+ "track_changes": 1
+}

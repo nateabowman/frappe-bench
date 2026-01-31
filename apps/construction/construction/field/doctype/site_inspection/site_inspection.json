@@ -1,0 +1,327 @@
+{
+ "actions": [],
+ "allow_import": 1,
+ "autoname": "naming_series:",
+ "creation": "2024-01-01 00:00:00.000000",
+ "doctype": "DocType",
+ "document_type": "Document",
+ "engine": "InnoDB",
+ "is_submittable": 1,
+ "field_order": [
+  "naming_series",
+  "inspection_name",
+  "job_site",
+  "inspection_type",
+  "column_break_1",
+  "inspection_date",
+  "inspector",
+  "status",
+  "result",
+  "location_section",
+  "building",
+  "floor",
+  "area",
+  "column_break_location",
+  "drawing_reference",
+  "spec_section",
+  "items_section",
+  "inspection_items",
+  "summary_section",
+  "total_items",
+  "passed_items",
+  "failed_items",
+  "column_break_summary",
+  "pass_rate",
+  "overall_result",
+  "findings_section",
+  "findings",
+  "corrective_actions",
+  "photos_section",
+  "photos",
+  "signature_section",
+  "inspector_signature",
+  "signature_date",
+  "column_break_sig",
+  "witness_name",
+  "witness_signature",
+  "amended_from"
+ ],
+ "fields": [
+  {
+   "fieldname": "naming_series",
+   "fieldtype": "Select",
+   "label": "Series",
+   "options": "INSP-.YYYY.-.#####",
+   "reqd": 1
+  },
+  {
+   "fieldname": "inspection_name",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Inspection Name",
+   "reqd": 1
+  },
+  {
+   "fieldname": "job_site",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "Job Site",
+   "options": "Job Site",
+   "reqd": 1
+  },
+  {
+   "fieldname": "inspection_type",
+   "fieldtype": "Select",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "Inspection Type",
+   "options": "\nFoundation\nFraming\nRough-In (Electrical)\nRough-In (Plumbing)\nRough-In (HVAC)\nInsulation\nDrywall\nFinal\nROOF\nFire Safety\nADA Compliance\nQuality Control\nSafety\nOther"
+  },
+  {
+   "fieldname": "column_break_1",
+   "fieldtype": "Column Break"
+  },
+  {
+   "default": "Today",
+   "fieldname": "inspection_date",
+   "fieldtype": "Date",
+   "in_list_view": 1,
+   "label": "Inspection Date",
+   "reqd": 1
+  },
+  {
+   "default": "__user",
+   "fieldname": "inspector",
+   "fieldtype": "Link",
+   "label": "Inspector",
+   "options": "User",
+   "reqd": 1
+  },
+  {
+   "default": "Scheduled",
+   "fieldname": "status",
+   "fieldtype": "Select",
+   "label": "Status",
+   "options": "Scheduled\nIn Progress\nCompleted\nRe-inspection Required"
+  },
+  {
+   "default": "Pending",
+   "fieldname": "result",
+   "fieldtype": "Select",
+   "in_list_view": 1,
+   "label": "Result",
+   "options": "Pending\nPassed\nPassed with Comments\nFailed\nPartial"
+  },
+  {
+   "fieldname": "location_section",
+   "fieldtype": "Section Break",
+   "label": "Location"
+  },
+  {
+   "fieldname": "building",
+   "fieldtype": "Data",
+   "label": "Building"
+  },
+  {
+   "fieldname": "floor",
+   "fieldtype": "Data",
+   "label": "Floor/Level"
+  },
+  {
+   "fieldname": "area",
+   "fieldtype": "Data",
+   "label": "Area/Zone"
+  },
+  {
+   "fieldname": "column_break_location",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "drawing_reference",
+   "fieldtype": "Data",
+   "label": "Drawing Reference"
+  },
+  {
+   "fieldname": "spec_section",
+   "fieldtype": "Data",
+   "label": "Specification Section"
+  },
+  {
+   "fieldname": "items_section",
+   "fieldtype": "Section Break",
+   "label": "Inspection Items"
+  },
+  {
+   "fieldname": "inspection_items",
+   "fieldtype": "Table",
+   "label": "Inspection Items",
+   "options": "Inspection Item"
+  },
+  {
+   "fieldname": "summary_section",
+   "fieldtype": "Section Break",
+   "label": "Summary"
+  },
+  {
+   "default": "0",
+   "fieldname": "total_items",
+   "fieldtype": "Int",
+   "label": "Total Items",
+   "read_only": 1
+  },
+  {
+   "default": "0",
+   "fieldname": "passed_items",
+   "fieldtype": "Int",
+   "label": "Passed",
+   "read_only": 1
+  },
+  {
+   "default": "0",
+   "fieldname": "failed_items",
+   "fieldtype": "Int",
+   "label": "Failed",
+   "read_only": 1
+  },
+  {
+   "fieldname": "column_break_summary",
+   "fieldtype": "Column Break"
+  },
+  {
+   "default": "0",
+   "fieldname": "pass_rate",
+   "fieldtype": "Percent",
+   "label": "Pass Rate",
+   "read_only": 1
+  },
+  {
+   "fieldname": "overall_result",
+   "fieldtype": "Select",
+   "label": "Overall Result",
+   "options": "\nPass\nConditional Pass\nFail",
+   "read_only": 1
+  },
+  {
+   "fieldname": "findings_section",
+   "fieldtype": "Section Break",
+   "label": "Findings"
+  },
+  {
+   "fieldname": "findings",
+   "fieldtype": "Text Editor",
+   "label": "Inspection Findings"
+  },
+  {
+   "fieldname": "corrective_actions",
+   "fieldtype": "Text Editor",
+   "label": "Required Corrective Actions"
+  },
+  {
+   "fieldname": "photos_section",
+   "fieldtype": "Section Break",
+   "label": "Photos"
+  },
+  {
+   "fieldname": "photos",
+   "fieldtype": "Attach Image",
+   "label": "Photos"
+  },
+  {
+   "fieldname": "signature_section",
+   "fieldtype": "Section Break",
+   "label": "Signatures"
+  },
+  {
+   "fieldname": "inspector_signature",
+   "fieldtype": "Signature",
+   "label": "Inspector Signature"
+  },
+  {
+   "fieldname": "signature_date",
+   "fieldtype": "Datetime",
+   "label": "Signature Date",
+   "read_only": 1
+  },
+  {
+   "fieldname": "column_break_sig",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "witness_name",
+   "fieldtype": "Data",
+   "label": "Witness Name"
+  },
+  {
+   "fieldname": "witness_signature",
+   "fieldtype": "Signature",
+   "label": "Witness Signature"
+  },
+  {
+   "fieldname": "amended_from",
+   "fieldtype": "Link",
+   "label": "Amended From",
+   "no_copy": 1,
+   "options": "Site Inspection",
+   "print_hide": 1,
+   "read_only": 1
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "links": [],
+ "modified": "2024-01-01 00:00:00.000000",
+ "modified_by": "Administrator",
+ "module": "Field",
+ "name": "Site Inspection",
+ "naming_rule": "By \"Naming Series\" field",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "submit": 1,
+   "write": 1
+  },
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "Construction Manager",
+   "share": 1,
+   "submit": 1,
+   "write": 1
+  },
+  {
+   "create": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "Project Superintendent",
+   "share": 1,
+   "submit": 1,
+   "write": 1
+  },
+  {
+   "read": 1,
+   "role": "Projects User"
+  }
+ ],
+ "search_fields": "inspection_name, job_site, inspection_type, result",
+ "sort_field": "inspection_date",
+ "sort_order": "DESC",
+ "states": [],
+ "track_changes": 1
+}

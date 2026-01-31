@@ -1,0 +1,106 @@
+{
+ "actions": [],
+ "allow_import": 1,
+ "autoname": "SCH-.YYYY.-.#####",
+ "creation": "2024-01-01 00:00:00",
+ "doctype": "DocType",
+ "document_type": "Document",
+ "engine": "InnoDB",
+ "field_order": [
+  "schedule_details",
+  "schedule_name",
+  "project",
+  "schedule_type",
+  "column_break_1",
+  "start_date",
+  "end_date",
+  "critical_path_method",
+  "tasks_section",
+  "schedule_tasks"
+ ],
+ "fields": [
+  {
+   "fieldname": "schedule_details",
+   "fieldtype": "Section Break",
+   "label": "Schedule Details"
+  },
+  {
+   "fieldname": "schedule_name",
+   "fieldtype": "Data",
+   "label": "Schedule Name",
+   "reqd": 1
+  },
+  {
+   "fieldname": "project",
+   "fieldtype": "Link",
+   "label": "Job Site",
+   "options": "Project",
+   "reqd": 1
+  },
+  {
+   "fieldname": "schedule_type",
+   "fieldtype": "Select",
+   "label": "Schedule Type",
+   "options": "CPM\nGantt\nResource Leveled"
+  },
+  {
+   "fieldname": "column_break_1",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "start_date",
+   "fieldtype": "Date",
+   "label": "Start Date",
+   "reqd": 1
+  },
+  {
+   "fieldname": "end_date",
+   "fieldtype": "Date",
+   "label": "End Date",
+   "reqd": 1
+  },
+  {
+   "default": "0",
+   "fieldname": "critical_path_method",
+   "fieldtype": "Check",
+   "label": "Use Critical Path Method (CPM)"
+  },
+  {
+   "fieldname": "tasks_section",
+   "fieldtype": "Section Break",
+   "label": "Schedule Tasks"
+  },
+  {
+   "fieldname": "schedule_tasks",
+   "fieldtype": "Table",
+   "label": "Schedule Tasks",
+   "options": "Schedule Task"
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "links": [],
+ "modified": "2024-01-01 00:00:00",
+ "modified_by": "Administrator",
+ "module": "Projects",
+ "name": "Project Schedule",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": [],
+ "track_changes": 1
+}
+

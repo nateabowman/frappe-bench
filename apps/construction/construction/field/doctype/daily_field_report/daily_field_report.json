@@ -1,0 +1,465 @@
+{
+ "actions": [],
+ "allow_import": 1,
+ "autoname": "naming_series:",
+ "creation": "2024-01-01 00:00:00.000000",
+ "doctype": "DocType",
+ "document_type": "Document",
+ "engine": "InnoDB",
+ "is_submittable": 1,
+ "field_order": [
+  "naming_series",
+  "job_site",
+  "report_date",
+  "submitted_by",
+  "column_break_1",
+  "status",
+  "approved_by",
+  "approval_date",
+  "weather_section",
+  "weather_condition",
+  "temperature",
+  "column_break_weather",
+  "wind_speed",
+  "precipitation",
+  "humidity",
+  "weather_notes",
+  "work_hours_section",
+  "site_open_time",
+  "site_close_time",
+  "column_break_hours",
+  "total_man_hours",
+  "weather_delay_hours",
+  "work_summary_section",
+  "work_performed",
+  "areas_worked",
+  "work_planned_tomorrow",
+  "crew_section",
+  "crew_members",
+  "equipment_section",
+  "equipment_used",
+  "materials_section",
+  "materials_received",
+  "visitors_section",
+  "visitors",
+  "visitor_count",
+  "column_break_visitors",
+  "deliveries_count",
+  "subcontractors_on_site",
+  "safety_section",
+  "safety_incidents",
+  "safety_meeting_held",
+  "safety_topic",
+  "column_break_safety",
+  "first_aid_cases",
+  "near_misses",
+  "issues_section",
+  "issues_delays",
+  "change_order_items",
+  "photos_section",
+  "photos",
+  "location_section",
+  "latitude",
+  "longitude",
+  "location_accuracy",
+  "signature_section",
+  "superintendent_signature",
+  "signature_date",
+  "amended_from"
+ ],
+ "fields": [
+  {
+   "fieldname": "naming_series",
+   "fieldtype": "Select",
+   "label": "Series",
+   "options": "DFR-.YYYY.-.#####",
+   "reqd": 1
+  },
+  {
+   "fieldname": "job_site",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "Job Site",
+   "options": "Job Site",
+   "reqd": 1
+  },
+  {
+   "default": "Today",
+   "fieldname": "report_date",
+   "fieldtype": "Date",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "Report Date",
+   "reqd": 1
+  },
+  {
+   "default": "__user",
+   "fieldname": "submitted_by",
+   "fieldtype": "Link",
+   "label": "Submitted By",
+   "options": "User",
+   "reqd": 1
+  },
+  {
+   "fieldname": "column_break_1",
+   "fieldtype": "Column Break"
+  },
+  {
+   "default": "Draft",
+   "fieldname": "status",
+   "fieldtype": "Select",
+   "in_list_view": 1,
+   "label": "Status",
+   "options": "Draft\nSubmitted\nApproved\nRejected"
+  },
+  {
+   "fieldname": "approved_by",
+   "fieldtype": "Link",
+   "label": "Approved By",
+   "options": "User",
+   "read_only": 1
+  },
+  {
+   "fieldname": "approval_date",
+   "fieldtype": "Datetime",
+   "label": "Approval Date",
+   "read_only": 1
+  },
+  {
+   "fieldname": "weather_section",
+   "fieldtype": "Section Break",
+   "label": "Weather Conditions"
+  },
+  {
+   "fieldname": "weather_condition",
+   "fieldtype": "Select",
+   "in_list_view": 1,
+   "label": "Weather",
+   "options": "\nClear\nPartly Cloudy\nCloudy\nRain\nSnow\nFog\nWindy\nOther"
+  },
+  {
+   "fieldname": "temperature",
+   "fieldtype": "Float",
+   "label": "Temperature (°F)"
+  },
+  {
+   "fieldname": "column_break_weather",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "wind_speed",
+   "fieldtype": "Float",
+   "label": "Wind Speed (mph)"
+  },
+  {
+   "fieldname": "precipitation",
+   "fieldtype": "Float",
+   "label": "Precipitation (inches)"
+  },
+  {
+   "fieldname": "humidity",
+   "fieldtype": "Percent",
+   "label": "Humidity %"
+  },
+  {
+   "fieldname": "weather_notes",
+   "fieldtype": "Small Text",
+   "label": "Weather Notes"
+  },
+  {
+   "fieldname": "work_hours_section",
+   "fieldtype": "Section Break",
+   "label": "Work Hours"
+  },
+  {
+   "fieldname": "site_open_time",
+   "fieldtype": "Time",
+   "label": "Site Open Time"
+  },
+  {
+   "fieldname": "site_close_time",
+   "fieldtype": "Time",
+   "label": "Site Close Time"
+  },
+  {
+   "fieldname": "column_break_hours",
+   "fieldtype": "Column Break"
+  },
+  {
+   "default": "0",
+   "fieldname": "total_man_hours",
+   "fieldtype": "Float",
+   "label": "Total Man Hours",
+   "read_only": 1
+  },
+  {
+   "default": "0",
+   "fieldname": "weather_delay_hours",
+   "fieldtype": "Float",
+   "label": "Weather Delay Hours"
+  },
+  {
+   "fieldname": "work_summary_section",
+   "fieldtype": "Section Break",
+   "label": "Work Summary"
+  },
+  {
+   "fieldname": "work_performed",
+   "fieldtype": "Text Editor",
+   "label": "Work Performed Today",
+   "reqd": 1
+  },
+  {
+   "fieldname": "areas_worked",
+   "fieldtype": "Small Text",
+   "label": "Areas/Locations Worked"
+  },
+  {
+   "fieldname": "work_planned_tomorrow",
+   "fieldtype": "Text Editor",
+   "label": "Work Planned for Tomorrow"
+  },
+  {
+   "fieldname": "crew_section",
+   "fieldtype": "Section Break",
+   "label": "Crew on Site"
+  },
+  {
+   "fieldname": "crew_members",
+   "fieldtype": "Table",
+   "label": "Crew Members",
+   "options": "Daily Field Report Crew"
+  },
+  {
+   "fieldname": "equipment_section",
+   "fieldtype": "Section Break",
+   "label": "Equipment"
+  },
+  {
+   "fieldname": "equipment_used",
+   "fieldtype": "Table",
+   "label": "Equipment Used",
+   "options": "Daily Field Report Equipment"
+  },
+  {
+   "fieldname": "materials_section",
+   "fieldtype": "Section Break",
+   "label": "Materials"
+  },
+  {
+   "fieldname": "materials_received",
+   "fieldtype": "Table",
+   "label": "Materials Received",
+   "options": "Daily Field Report Material"
+  },
+  {
+   "fieldname": "visitors_section",
+   "fieldtype": "Section Break",
+   "label": "Visitors & Deliveries"
+  },
+  {
+   "fieldname": "visitors",
+   "fieldtype": "Small Text",
+   "label": "Visitors"
+  },
+  {
+   "default": "0",
+   "fieldname": "visitor_count",
+   "fieldtype": "Int",
+   "label": "Visitor Count"
+  },
+  {
+   "fieldname": "column_break_visitors",
+   "fieldtype": "Column Break"
+  },
+  {
+   "default": "0",
+   "fieldname": "deliveries_count",
+   "fieldtype": "Int",
+   "label": "Deliveries Count"
+  },
+  {
+   "fieldname": "subcontractors_on_site",
+   "fieldtype": "Small Text",
+   "label": "Subcontractors on Site"
+  },
+  {
+   "fieldname": "safety_section",
+   "fieldtype": "Section Break",
+   "label": "Safety"
+  },
+  {
+   "default": "0",
+   "fieldname": "safety_incidents",
+   "fieldtype": "Int",
+   "label": "Safety Incidents"
+  },
+  {
+   "default": "0",
+   "fieldname": "safety_meeting_held",
+   "fieldtype": "Check",
+   "label": "Safety Meeting Held"
+  },
+  {
+   "depends_on": "safety_meeting_held",
+   "fieldname": "safety_topic",
+   "fieldtype": "Data",
+   "label": "Safety Topic"
+  },
+  {
+   "fieldname": "column_break_safety",
+   "fieldtype": "Column Break"
+  },
+  {
+   "default": "0",
+   "fieldname": "first_aid_cases",
+   "fieldtype": "Int",
+   "label": "First Aid Cases"
+  },
+  {
+   "default": "0",
+   "fieldname": "near_misses",
+   "fieldtype": "Int",
+   "label": "Near Misses"
+  },
+  {
+   "fieldname": "issues_section",
+   "fieldtype": "Section Break",
+   "label": "Issues & Delays"
+  },
+  {
+   "fieldname": "issues_delays",
+   "fieldtype": "Text Editor",
+   "label": "Issues, Delays & Problems"
+  },
+  {
+   "fieldname": "change_order_items",
+   "fieldtype": "Small Text",
+   "label": "Potential Change Order Items"
+  },
+  {
+   "fieldname": "photos_section",
+   "fieldtype": "Section Break",
+   "label": "Photos"
+  },
+  {
+   "fieldname": "photos",
+   "fieldtype": "Attach Image",
+   "label": "Photos"
+  },
+  {
+   "collapsible": 1,
+   "fieldname": "location_section",
+   "fieldtype": "Section Break",
+   "label": "GPS Location"
+  },
+  {
+   "fieldname": "latitude",
+   "fieldtype": "Float",
+   "label": "Latitude",
+   "precision": "6",
+   "read_only": 1
+  },
+  {
+   "fieldname": "longitude",
+   "fieldtype": "Float",
+   "label": "Longitude",
+   "precision": "6",
+   "read_only": 1
+  },
+  {
+   "fieldname": "location_accuracy",
+   "fieldtype": "Float",
+   "label": "Location Accuracy (m)",
+   "read_only": 1
+  },
+  {
+   "collapsible": 1,
+   "fieldname": "signature_section",
+   "fieldtype": "Section Break",
+   "label": "Signature"
+  },
+  {
+   "fieldname": "superintendent_signature",
+   "fieldtype": "Signature",
+   "label": "Superintendent Signature"
+  },
+  {
+   "fieldname": "signature_date",
+   "fieldtype": "Datetime",
+   "label": "Signature Date",
+   "read_only": 1
+  },
+  {
+   "fieldname": "amended_from",
+   "fieldtype": "Link",
+   "label": "Amended From",
+   "no_copy": 1,
+   "options": "Daily Field Report",
+   "print_hide": 1,
+   "read_only": 1
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "links": [],
+ "modified": "2024-01-01 00:00:00.000000",
+ "modified_by": "Administrator",
+ "module": "Field",
+ "name": "Daily Field Report",
+ "naming_rule": "By \"Naming Series\" field",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "submit": 1,
+   "write": 1
+  },
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "Construction Manager",
+   "share": 1,
+   "submit": 1,
+   "write": 1
+  },
+  {
+   "create": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "Project Superintendent",
+   "share": 1,
+   "submit": 1,
+   "write": 1
+  },
+  {
+   "create": 1,
+   "email": 1,
+   "print": 1,
+   "read": 1,
+   "role": "Field Worker",
+   "write": 1
+  }
+ ],
+ "search_fields": "job_site, report_date, submitted_by",
+ "sort_field": "report_date",
+ "sort_order": "DESC",
+ "states": [],
+ "track_changes": 1
+}

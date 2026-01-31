@@ -1,0 +1,55 @@
+{
+ "actions": [],
+ "allow_import": 1,
+ "autoname": "field:employee",
+ "creation": "2024-01-01 00:00:00",
+ "doctype": "DocType",
+ "document_type": "Setup",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "employee",
+  "injury_type",
+  "days_away_from_work",
+  "restricted_work_days"
+ ],
+ "fields": [
+  {
+   "fieldname": "employee",
+   "fieldtype": "Link",
+   "label": "Employee",
+   "options": "Employee",
+   "reqd": 1
+  },
+  {
+   "fieldname": "injury_type",
+   "fieldtype": "Select",
+   "label": "Injury Type",
+   "options": "Cut\nBruise\nFracture\nStrain\nBurn\nOther"
+  },
+  {
+   "fieldname": "days_away_from_work",
+   "fieldtype": "Int",
+   "label": "Days Away from Work"
+  },
+  {
+   "fieldname": "restricted_work_days",
+   "fieldtype": "Int",
+   "label": "Restricted Work Days"
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "istable": 1,
+ "links": [],
+ "modified": "2024-01-01 00:00:00",
+ "modified_by": "Administrator",
+ "module": "Projects",
+ "name": "Safety Incident Personnel",
+ "owner": "Administrator",
+ "permissions": [],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": [],
+ "track_changes": 1
+}
+

@@ -1,0 +1,16 @@
+{% extends "templates/web.html" %}
+
+{% block title %}Nexelya Construction{% endblock %}
+
+{% block page_content %}
+<script>
+	// Redirect to desk workspace
+	window.location.href = "/app/construction";
+</script>
+<div class="container py-5">
+	<div class="text-center">
+		<h1>Redirecting to Construction...</h1>
+		<p>If you are not redirected, <a href="/app/construction">click here</a>.</p>
+	</div>
+</div>
+{% endblock %}

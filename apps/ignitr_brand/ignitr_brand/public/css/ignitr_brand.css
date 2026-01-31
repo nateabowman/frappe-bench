@@ -1,0 +1,509 @@
+/* Nexelya - Construction Management Branding */
+
+/* Note: Design System, Components, Construction Modules, and Mobile CSS are loaded separately via hooks.py */
+
+/* IMMEDIATE VISIBLE CHANGES - High specificity to override Frappe defaults */
+
+/* TEST: This should make the entire page background slightly orange if CSS is loading */
+html {
+  background-color: #FFF8F5 !important; /* Very light orange tint */
+}
+
+body {
+  font-family: 'Inter', 'Roboto', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif !important;
+  background-color: #FFFFFF !important;
+}
+
+/* Make buttons immediately visible with orange color */
+.btn-primary,
+button.btn-primary,
+a.btn-primary,
+.btn.btn-primary {
+  background-color: #FF6B35 !important;
+  border-color: #FF6B35 !important;
+  color: #FFFFFF !important;
+  font-weight: 600 !important;
+  padding: 12px 24px !important;
+  border-radius: 8px !important;
+}
+
+.btn-primary:hover,
+button.btn-primary:hover,
+a.btn-primary:hover,
+.btn.btn-primary:hover {
+  background-color: #E55A2B !important;
+  border-color: #E55A2B !important;
+}
+
+/* Make navbar visible */
+.navbar,
+.navbar-default,
+.navbar.navbar-default {
+  border-bottom: 3px solid #FF6B35 !important;
+  background-color: #FFFFFF !important;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1) !important;
+}
+
+/* Make module cards visible */
+.module-card,
+.card.module-card {
+  border-left: 4px solid #FF6B35 !important;
+  border-radius: 8px !important;
+  padding: 16px !important;
+  margin-bottom: 16px !important;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1) !important;
+  transition: all 0.3s ease !important;
+}
+
+.module-card:hover,
+.card.module-card:hover {
+  border-left-color: #004E89 !important;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.15) !important;
+  transform: translateY(-2px) !important;
+}
+
+/* Make form inputs larger */
+input.form-control,
+textarea.form-control,
+select.form-control,
+.form-control {
+  min-height: 48px !important;
+  padding: 12px 16px !important;
+  font-size: 16px !important;
+  border-radius: 8px !important;
+  border: 1px solid #E0E0E0 !important;
+}
+
+.form-control:focus {
+  border-color: #FF6B35 !important;
+  box-shadow: 0 0 0 3px rgba(255, 107, 53, 0.1) !important;
+  outline: none !important;
+}
+
+/* Hide "Powered by" and "Built on" footer links */
+footer a[href*="frappe"],
+footer a[href*="erpnext"],
+footer a[href*="frappeframework.com"],
+footer a[href*="frappe.io"] {
+  display: none !important;
+}
+
+/* Hide footer text containing branding */
+footer div[class*="footer"],
+footer span[class*="footer"],
+footer p[class*="footer"] {
+  /* Will be handled by JavaScript for text content */
+}
+
+/* Hide meta generator tag */
+meta[name="generator"] {
+  /* Content modification handled by JS */
+}
+
+/* Construction-themed login page - Higher specificity */
+.for-login,
+body.for-login {
+  background: linear-gradient(135deg, var(--bg-tertiary) 0%, var(--bg-secondary) 100%) !important;
+}
+
+.for-login .page-card-head h4,
+.for-login .page-card-head h4.title {
+  color: var(--nexelya-primary) !important;
+  font-weight: var(--font-weight-semibold) !important;
+  text-transform: uppercase !important;
+  letter-spacing: 0.5px !important;
+  font-size: var(--font-size-xl) !important;
+}
+
+.for-login .page-card,
+.for-login .card {
+  border-top: 4px solid var(--nexelya-primary) !important;
+  box-shadow: var(--shadow-lg) !important;
+  border-radius: var(--radius-lg) !important;
+}
+
+/* Construction-themed navbar - Higher specificity */
+.navbar,
+.navbar.navbar-default,
+.navbar-default,
+[class*="navbar"] {
+  border-bottom: 2px solid var(--nexelya-primary) !important;
+  background-color: var(--bg-primary) !important;
+  box-shadow: var(--shadow-sm) !important;
+  min-height: var(--header-height) !important;
+  padding: 0 var(--spacing-md) !important;
+}
+
+.navbar-brand .app-logo {
+  max-height: 40px;
+  width: auto;
+  filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.1));
+}
+
+/* Buttons use design system - see components.css */
+
+/* Construction-themed module cards - Higher specificity */
+.module-card,
+.card.module-card,
+[class*="module-card"] {
+  border-left: 4px solid var(--nexelya-primary) !important;
+  transition: all var(--transition-base) !important;
+  border-radius: var(--radius-md) !important;
+  padding: var(--spacing-md) !important;
+  margin-bottom: var(--spacing-md) !important;
+  background: var(--bg-primary) !important;
+  box-shadow: var(--shadow-sm) !important;
+}
+
+.module-card:hover,
+.card.module-card:hover,
+[class*="module-card"]:hover {
+  border-left-color: var(--nexelya-secondary) !important;
+  box-shadow: var(--shadow-md) !important;
+  transform: translateY(-2px) !important;
+}
+
+/* Job Sites (Projects) special styling */
+.module-card[data-label*="Job Site"],
+.module-card[data-label*="Job Sites"] {
+  border-left-color: var(--nexelya-success);
+}
+
+/* Equipment & Fleet (Assets) special styling */
+.module-card[data-label*="Equipment"],
+.module-card[data-label*="Fleet"] {
+  border-left-color: var(--nexelya-warning);
+}
+
+/* Module grouping colors */
+.module-card[data-category="field-operations"] {
+  border-left-color: var(--nexelya-success);
+}
+
+.module-card[data-category="project-management"] {
+  border-left-color: var(--nexelya-primary);
+}
+
+.module-card[data-category="financial"] {
+  border-left-color: var(--nexelya-secondary);
+}
+
+.module-card[data-category="resources"] {
+  border-left-color: var(--nexelya-warning);
+}
+
+.module-card[data-category="quality-safety"] {
+  border-left-color: var(--nexelya-danger);
+}
+
+/* Hide marketing links */
+a[href*="frappeframework.com"]:not([href*="docs"]),
+a[href*="frappe.io"]:not([href*="docs"]),
+a[href*="erpnext.com"]:not([href*="docs"]) {
+  display: none !important;
+}
+
+/* Additional branding overrides */
+.text-muted a[href*="frappe"],
+.text-muted a[href*="erpnext"] {
+  display: none !important;
+}
+
+/* Indicators use design system badges - see components.css */
+
+/* Form controls use design system - see components.css */
+
+/* Ensure custom branding is visible */
+.app-logo {
+  /* Your construction company logo will display here */
+}
+
+/* Construction-themed workspace */
+.workspace-sidebar {
+  background-color: var(--bg-secondary);
+  border-right: 1px solid var(--border-primary);
+  width: var(--sidebar-width);
+}
+
+/* Sidebar navigation enhancements */
+.sidebar-item {
+  padding: var(--spacing-sm) var(--spacing-md);
+  border-radius: var(--radius-md);
+  transition: all var(--transition-base);
+  min-height: var(--touch-target-comfortable);
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-sm);
+}
+
+.sidebar-item:hover {
+  background-color: var(--bg-hover);
+}
+
+.sidebar-item.active {
+  background-color: var(--nexelya-primary);
+  color: var(--nexelya-white);
+}
+
+.sidebar-item .icon {
+  width: 20px;
+  height: 20px;
+  flex-shrink: 0;
+}
+
+.sidebar-item .label {
+  font-weight: var(--font-weight-medium);
+  font-size: var(--font-size-base);
+}
+
+/* Alerts use design system - see components.css */
+
+/* Construction-themed data tables */
+.table {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0;
+}
+
+.table thead th {
+  background-color: var(--nexelya-secondary);
+  color: var(--nexelya-white);
+  font-weight: var(--font-weight-semibold);
+  text-transform: uppercase;
+  font-size: var(--font-size-sm);
+  letter-spacing: 0.5px;
+  padding: var(--spacing-md);
+  text-align: left;
+  border-bottom: 2px solid var(--nexelya-secondary-dark);
+}
+
+.table tbody td {
+  padding: var(--spacing-md);
+  border-bottom: 1px solid var(--border-primary);
+  vertical-align: middle;
+}
+
+.table tbody tr:hover {
+  background-color: var(--bg-hover);
+}
+
+.table tbody tr:last-child td {
+  border-bottom: none;
+}
+
+/* Status column styling */
+.table .status-cell {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-xs);
+}
+
+/* Remove outlines from header items */
+.navbar .btn-reset,
+.navbar button,
+.navbar .nav-link,
+.navbar .nav-item button,
+.navbar .nav-item .btn-reset,
+.navbar .dropdown-toggle,
+.navbar .notifications-icon {
+  outline: none !important;
+}
+
+.navbar .btn-reset:focus,
+.navbar button:focus,
+.navbar .nav-link:focus,
+.navbar .nav-item button:focus,
+.navbar .nav-item .btn-reset:focus,
+.navbar .dropdown-toggle:focus,
+.navbar .notifications-icon:focus,
+.navbar .btn-reset:active,
+.navbar button:active,
+.navbar .nav-link:active,
+.navbar .nav-item button:active {
+  outline: none !important;
+  box-shadow: none !important;
+}
+
+/* Improve search bar placeholder text styling */
+.navbar .search-bar input::placeholder,
+.navbar .search-bar .awesomplete input::placeholder,
+.navbar #navbar-search::placeholder,
+.navbar .awesomplete input::placeholder,
+.navbar input[type="text"]::placeholder {
+  color: #9CA3AF !important;
+  font-size: 14px !important;
+  font-weight: 400 !important;
+  opacity: 1 !important;
+  letter-spacing: 0.01em !important;
+  font-family: 'Inter', 'Roboto', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif !important;
+}
+
+.navbar .search-bar input,
+.navbar .search-bar .awesomplete input,
+.navbar #navbar-search,
+.navbar .awesomplete input {
+  color: #1F2937 !important;
+  font-size: 14px !important;
+  font-weight: 400 !important;
+  font-family: 'Inter', 'Roboto', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif !important;
+}
+
+/* Dark Theme - True Black Backgrounds with White Text */
+[data-theme="dark"],
+[data-theme-mode="dark"],
+[data-theme="dark"] html,
+[data-theme-mode="dark"] html {
+  background-color: #000000 !important;
+  color: #FFFFFF !important;
+}
+
+[data-theme="dark"] body,
+[data-theme-mode="dark"] body,
+[data-theme="dark"] .layout-main,
+[data-theme-mode="dark"] .layout-main,
+[data-theme="dark"] .content,
+[data-theme-mode="dark"] .content,
+[data-theme="dark"] .page-container,
+[data-theme-mode="dark"] .page-container,
+[data-theme="dark"] .page-content,
+[data-theme-mode="dark"] .page-content {
+  background-color: #000000 !important;
+  color: #FFFFFF !important;
+}
+
+[data-theme="dark"] .navbar,
+[data-theme-mode="dark"] .navbar,
+[data-theme="dark"] .navbar-bg,
+[data-theme-mode="dark"] .navbar-bg {
+  background-color: #000000 !important;
+  color: #FFFFFF !important;
+}
+
+[data-theme="dark"] .frappe-card,
+[data-theme-mode="dark"] .frappe-card,
+[data-theme="dark"] .card,
+[data-theme-mode="dark"] .card {
+  background-color: #000000 !important;
+  color: #FFFFFF !important;
+  border-color: #333333 !important;
+}
+
+[data-theme="dark"] .modal,
+[data-theme-mode="dark"] .modal,
+[data-theme="dark"] .modal-content,
+[data-theme-mode="dark"] .modal-content {
+  background-color: #000000 !important;
+  color: #FFFFFF !important;
+}
+
+[data-theme="dark"] .form-control,
+[data-theme-mode="dark"] .form-control,
+[data-theme="dark"] input,
+[data-theme-mode="dark"] input,
+[data-theme="dark"] textarea,
+[data-theme-mode="dark"] textarea,
+[data-theme="dark"] select,
+[data-theme-mode="dark"] select {
+  background-color: #1a1a1a !important;
+  color: #FFFFFF !important;
+  border-color: #333333 !important;
+}
+
+[data-theme="dark"] .form-control::placeholder,
+[data-theme-mode="dark"] .form-control::placeholder {
+  color: #999999 !important;
+}
+
+[data-theme="dark"] .table,
+[data-theme-mode="dark"] .table,
+[data-theme="dark"] .table thead,
+[data-theme-mode="dark"] .table thead,
+[data-theme="dark"] .table tbody,
+[data-theme-mode="dark"] .table tbody {
+  background-color: #000000 !important;
+  color: #FFFFFF !important;
+}
+
+[data-theme="dark"] .table th,
+[data-theme-mode="dark"] .table th,
+[data-theme="dark"] .table td,
+[data-theme-mode="dark"] .table td {
+  background-color: #000000 !important;
+  color: #FFFFFF !important;
+  border-color: #333333 !important;
+}
+
+[data-theme="dark"] .btn-default,
+[data-theme-mode="dark"] .btn-default {
+  background-color: #1a1a1a !important;
+  color: #FFFFFF !important;
+  border-color: #333333 !important;
+}
+
+[data-theme="dark"] .btn-default:hover,
+[data-theme-mode="dark"] .btn-default:hover {
+  background-color: #2a2a2a !important;
+  color: #FFFFFF !important;
+}
+
+[data-theme="dark"] .sidebar,
+[data-theme-mode="dark"] .sidebar,
+[data-theme="dark"] .body-sidebar,
+[data-theme-mode="dark"] .body-sidebar {
+  background-color: #000000 !important;
+  color: #FFFFFF !important;
+}
+
+[data-theme="dark"] .sidebar-item,
+[data-theme-mode="dark"] .sidebar-item,
+[data-theme="dark"] .standard-sidebar-item,
+[data-theme-mode="dark"] .standard-sidebar-item {
+  color: #FFFFFF !important;
+}
+
+[data-theme="dark"] .sidebar-item:hover,
+[data-theme-mode="dark"] .sidebar-item:hover {
+  background-color: #1a1a1a !important;
+}
+
+[data-theme="dark"] .sidebar-item.active,
+[data-theme-mode="dark"] .sidebar-item.active {
+  background-color: #1a1a1a !important;
+  color: #FFFFFF !important;
+}
+
+[data-theme="dark"] svg,
+[data-theme-mode="dark"] svg,
+[data-theme="dark"] .icon,
+[data-theme-mode="dark"] .icon {
+  stroke: #FFFFFF !important;
+  fill: #FFFFFF !important;
+}
+
+[data-theme="dark"] .text-muted,
+[data-theme-mode="dark"] .text-muted {
+  color: #CCCCCC !important;
+}
+
+[data-theme="dark"] .text-color,
+[data-theme-mode="dark"] .text-color,
+[data-theme="dark"] p,
+[data-theme-mode="dark"] p,
+[data-theme="dark"] span,
+[data-theme-mode="dark"] span,
+[data-theme="dark"] div,
+[data-theme-mode="dark"] div {
+  color: #FFFFFF !important;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .navbar-brand .app-logo {
+    max-height: 32px;
+  }
+  
+  .module-card {
+    border-left-width: 3px;
+  }
+}
+

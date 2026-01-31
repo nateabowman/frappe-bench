@@ -1,0 +1,776 @@
+{
+ "actions": [],
+ "allow_import": 1,
+ "allow_rename": 1,
+ "autoname": "naming_series:",
+ "creation": "2024-01-01 00:00:00.000000",
+ "doctype": "DocType",
+ "document_type": "Document",
+ "engine": "InnoDB",
+ "field_order": [
+  "basic_info_section",
+  "naming_series",
+  "job_name",
+  "job_number",
+  "status",
+  "column_break_basic",
+  "project",
+  "company",
+  "project_type",
+  "priority",
+  "customer_section",
+  "customer",
+  "customer_name",
+  "customer_contact",
+  "column_break_customer",
+  "customer_address",
+  "customer_phone",
+  "customer_email",
+  "site_location_section",
+  "site_address",
+  "city",
+  "state",
+  "zip_code",
+  "column_break_location",
+  "country",
+  "latitude",
+  "longitude",
+  "site_map_html",
+  "contract_section",
+  "contract_type",
+  "contract_value",
+  "approved_change_orders",
+  "current_contract_value",
+  "column_break_contract",
+  "contract_date",
+  "contract_number",
+  "billing_method",
+  "retention_percent",
+  "schedule_section",
+  "planned_start_date",
+  "planned_end_date",
+  "actual_start_date",
+  "column_break_schedule",
+  "actual_end_date",
+  "percent_complete",
+  "days_remaining",
+  "team_section",
+  "project_manager",
+  "superintendent",
+  "column_break_team",
+  "estimator",
+  "team_members",
+  "financial_section",
+  "original_budget",
+  "approved_changes",
+  "current_budget",
+  "column_break_financial",
+  "actual_cost",
+  "committed_cost",
+  "projected_cost",
+  "variance_section",
+  "budget_variance",
+  "budget_variance_percent",
+  "column_break_variance",
+  "schedule_variance_days",
+  "earned_value",
+  "cpi",
+  "spi",
+  "insurance_section",
+  "insurance_required",
+  "insurance_certificate",
+  "insurance_expiry",
+  "column_break_insurance",
+  "bond_required",
+  "bond_number",
+  "bond_amount",
+  "permits_section",
+  "building_permit_number",
+  "permit_date",
+  "permit_expiry",
+  "column_break_permits",
+  "permit_status",
+  "permit_notes",
+  "weather_section",
+  "current_weather",
+  "current_temperature",
+  "column_break_weather",
+  "weather_delay_days",
+  "last_weather_update",
+  "notes_section",
+  "notes",
+  "amended_from"
+ ],
+ "fields": [
+  {
+   "fieldname": "basic_info_section",
+   "fieldtype": "Section Break",
+   "label": "Job Site Information"
+  },
+  {
+   "fieldname": "naming_series",
+   "fieldtype": "Select",
+   "label": "Series",
+   "options": "JOB-.YYYY.-.#####\nJS-.#####",
+   "reqd": 1
+  },
+  {
+   "fieldname": "job_name",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "Job Name",
+   "reqd": 1
+  },
+  {
+   "fieldname": "job_number",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Job Number",
+   "unique": 1
+  },
+  {
+   "default": "Bidding",
+   "fieldname": "status",
+   "fieldtype": "Select",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "Status",
+   "options": "Bidding\nAwarded\nPre-Construction\nActive\nOn Hold\nPunch List\nCloseout\nCompleted\nCancelled",
+   "reqd": 1
+  },
+  {
+   "fieldname": "column_break_basic",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "project",
+   "fieldtype": "Link",
+   "label": "Linked ERPNext Project",
+   "options": "Project"
+  },
+  {
+   "fieldname": "company",
+   "fieldtype": "Link",
+   "label": "Company",
+   "options": "Company",
+   "reqd": 1
+  },
+  {
+   "fieldname": "project_type",
+   "fieldtype": "Select",
+   "label": "Project Type",
+   "options": "\nCommercial\nResidential\nIndustrial\nInfrastructure\nRenovation\nTenant Improvement\nMixed Use"
+  },
+  {
+   "default": "Medium",
+   "fieldname": "priority",
+   "fieldtype": "Select",
+   "label": "Priority",
+   "options": "Low\nMedium\nHigh\nCritical"
+  },
+  {
+   "fieldname": "customer_section",
+   "fieldtype": "Section Break",
+   "label": "Customer / Owner"
+  },
+  {
+   "fieldname": "customer",
+   "fieldtype": "Link",
+   "in_standard_filter": 1,
+   "label": "Customer",
+   "options": "Customer"
+  },
+  {
+   "fetch_from": "customer.customer_name",
+   "fieldname": "customer_name",
+   "fieldtype": "Data",
+   "label": "Customer Name",
+   "read_only": 1
+  },
+  {
+   "fieldname": "customer_contact",
+   "fieldtype": "Link",
+   "label": "Primary Contact",
+   "options": "Contact"
+  },
+  {
+   "fieldname": "column_break_customer",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "customer_address",
+   "fieldtype": "Link",
+   "label": "Customer Address",
+   "options": "Address"
+  },
+  {
+   "fieldname": "customer_phone",
+   "fieldtype": "Data",
+   "label": "Customer Phone",
+   "options": "Phone"
+  },
+  {
+   "fieldname": "customer_email",
+   "fieldtype": "Data",
+   "label": "Customer Email",
+   "options": "Email"
+  },
+  {
+   "fieldname": "site_location_section",
+   "fieldtype": "Section Break",
+   "label": "Site Location"
+  },
+  {
+   "fieldname": "site_address",
+   "fieldtype": "Data",
+   "label": "Site Address"
+  },
+  {
+   "fieldname": "city",
+   "fieldtype": "Data",
+   "label": "City"
+  },
+  {
+   "fieldname": "state",
+   "fieldtype": "Data",
+   "label": "State/Province"
+  },
+  {
+   "fieldname": "zip_code",
+   "fieldtype": "Data",
+   "label": "ZIP/Postal Code"
+  },
+  {
+   "fieldname": "column_break_location",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "country",
+   "fieldtype": "Link",
+   "label": "Country",
+   "options": "Country"
+  },
+  {
+   "fieldname": "latitude",
+   "fieldtype": "Float",
+   "label": "Latitude",
+   "precision": "6"
+  },
+  {
+   "fieldname": "longitude",
+   "fieldtype": "Float",
+   "label": "Longitude",
+   "precision": "6"
+  },
+  {
+   "fieldname": "site_map_html",
+   "fieldtype": "HTML",
+   "label": "Site Map"
+  },
+  {
+   "fieldname": "contract_section",
+   "fieldtype": "Section Break",
+   "label": "Contract Details"
+  },
+  {
+   "default": "Lump Sum",
+   "fieldname": "contract_type",
+   "fieldtype": "Select",
+   "label": "Contract Type",
+   "options": "Lump Sum\nTime & Materials\nCost Plus\nUnit Price\nGMP (Guaranteed Maximum Price)\nDesign-Build"
+  },
+  {
+   "fieldname": "contract_value",
+   "fieldtype": "Currency",
+   "in_list_view": 1,
+   "label": "Original Contract Value"
+  },
+  {
+   "default": "0",
+   "fieldname": "approved_change_orders",
+   "fieldtype": "Currency",
+   "label": "Approved Change Orders",
+   "read_only": 1
+  },
+  {
+   "fieldname": "current_contract_value",
+   "fieldtype": "Currency",
+   "label": "Current Contract Value",
+   "read_only": 1
+  },
+  {
+   "fieldname": "column_break_contract",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "contract_date",
+   "fieldtype": "Date",
+   "label": "Contract Date"
+  },
+  {
+   "fieldname": "contract_number",
+   "fieldtype": "Data",
+   "label": "Contract Number"
+  },
+  {
+   "default": "Progress",
+   "fieldname": "billing_method",
+   "fieldtype": "Select",
+   "label": "Billing Method",
+   "options": "Progress\nMilestone\nTime & Materials\nCost Plus Fee"
+  },
+  {
+   "default": "10",
+   "fieldname": "retention_percent",
+   "fieldtype": "Percent",
+   "label": "Retention %"
+  },
+  {
+   "fieldname": "schedule_section",
+   "fieldtype": "Section Break",
+   "label": "Schedule"
+  },
+  {
+   "fieldname": "planned_start_date",
+   "fieldtype": "Date",
+   "label": "Planned Start Date"
+  },
+  {
+   "fieldname": "planned_end_date",
+   "fieldtype": "Date",
+   "in_list_view": 1,
+   "label": "Planned End Date"
+  },
+  {
+   "fieldname": "actual_start_date",
+   "fieldtype": "Date",
+   "label": "Actual Start Date"
+  },
+  {
+   "fieldname": "column_break_schedule",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "actual_end_date",
+   "fieldtype": "Date",
+   "label": "Actual End Date"
+  },
+  {
+   "default": "0",
+   "fieldname": "percent_complete",
+   "fieldtype": "Percent",
+   "label": "% Complete"
+  },
+  {
+   "fieldname": "days_remaining",
+   "fieldtype": "Int",
+   "label": "Days Remaining",
+   "read_only": 1
+  },
+  {
+   "fieldname": "team_section",
+   "fieldtype": "Section Break",
+   "label": "Project Team"
+  },
+  {
+   "fieldname": "project_manager",
+   "fieldtype": "Link",
+   "label": "Project Manager",
+   "options": "User"
+  },
+  {
+   "fieldname": "superintendent",
+   "fieldtype": "Link",
+   "label": "Superintendent",
+   "options": "User"
+  },
+  {
+   "fieldname": "column_break_team",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "estimator",
+   "fieldtype": "Link",
+   "label": "Estimator",
+   "options": "User"
+  },
+  {
+   "fieldname": "team_members",
+   "fieldtype": "Table",
+   "label": "Team Members",
+   "options": "Job Site Team Member"
+  },
+  {
+   "fieldname": "financial_section",
+   "fieldtype": "Section Break",
+   "label": "Financial Summary"
+  },
+  {
+   "default": "0",
+   "fieldname": "original_budget",
+   "fieldtype": "Currency",
+   "label": "Original Budget"
+  },
+  {
+   "default": "0",
+   "fieldname": "approved_changes",
+   "fieldtype": "Currency",
+   "label": "Approved Budget Changes",
+   "read_only": 1
+  },
+  {
+   "fieldname": "current_budget",
+   "fieldtype": "Currency",
+   "label": "Current Budget",
+   "read_only": 1
+  },
+  {
+   "fieldname": "column_break_financial",
+   "fieldtype": "Column Break"
+  },
+  {
+   "default": "0",
+   "fieldname": "actual_cost",
+   "fieldtype": "Currency",
+   "label": "Actual Cost",
+   "read_only": 1
+  },
+  {
+   "default": "0",
+   "fieldname": "committed_cost",
+   "fieldtype": "Currency",
+   "label": "Committed Cost",
+   "read_only": 1
+  },
+  {
+   "fieldname": "projected_cost",
+   "fieldtype": "Currency",
+   "label": "Projected Final Cost",
+   "read_only": 1
+  },
+  {
+   "fieldname": "variance_section",
+   "fieldtype": "Section Break",
+   "label": "Variance Analysis"
+  },
+  {
+   "fieldname": "budget_variance",
+   "fieldtype": "Currency",
+   "label": "Budget Variance",
+   "read_only": 1
+  },
+  {
+   "fieldname": "budget_variance_percent",
+   "fieldtype": "Percent",
+   "label": "Budget Variance %",
+   "read_only": 1
+  },
+  {
+   "fieldname": "column_break_variance",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "schedule_variance_days",
+   "fieldtype": "Int",
+   "label": "Schedule Variance (Days)",
+   "read_only": 1
+  },
+  {
+   "fieldname": "earned_value",
+   "fieldtype": "Currency",
+   "label": "Earned Value (BCWP)",
+   "read_only": 1
+  },
+  {
+   "fieldname": "cpi",
+   "fieldtype": "Float",
+   "label": "Cost Performance Index (CPI)",
+   "precision": "3",
+   "read_only": 1
+  },
+  {
+   "fieldname": "spi",
+   "fieldtype": "Float",
+   "label": "Schedule Performance Index (SPI)",
+   "precision": "3",
+   "read_only": 1
+  },
+  {
+   "fieldname": "insurance_section",
+   "fieldtype": "Section Break",
+   "label": "Insurance & Bonds",
+   "collapsible": 1
+  },
+  {
+   "default": "0",
+   "fieldname": "insurance_required",
+   "fieldtype": "Check",
+   "label": "Insurance Required"
+  },
+  {
+   "depends_on": "insurance_required",
+   "fieldname": "insurance_certificate",
+   "fieldtype": "Attach",
+   "label": "Insurance Certificate"
+  },
+  {
+   "depends_on": "insurance_required",
+   "fieldname": "insurance_expiry",
+   "fieldtype": "Date",
+   "label": "Insurance Expiry Date"
+  },
+  {
+   "fieldname": "column_break_insurance",
+   "fieldtype": "Column Break"
+  },
+  {
+   "default": "0",
+   "fieldname": "bond_required",
+   "fieldtype": "Check",
+   "label": "Bond Required"
+  },
+  {
+   "depends_on": "bond_required",
+   "fieldname": "bond_number",
+   "fieldtype": "Data",
+   "label": "Bond Number"
+  },
+  {
+   "depends_on": "bond_required",
+   "fieldname": "bond_amount",
+   "fieldtype": "Currency",
+   "label": "Bond Amount"
+  },
+  {
+   "fieldname": "permits_section",
+   "fieldtype": "Section Break",
+   "label": "Permits",
+   "collapsible": 1
+  },
+  {
+   "fieldname": "building_permit_number",
+   "fieldtype": "Data",
+   "label": "Building Permit Number"
+  },
+  {
+   "fieldname": "permit_date",
+   "fieldtype": "Date",
+   "label": "Permit Issue Date"
+  },
+  {
+   "fieldname": "permit_expiry",
+   "fieldtype": "Date",
+   "label": "Permit Expiry Date"
+  },
+  {
+   "fieldname": "column_break_permits",
+   "fieldtype": "Column Break"
+  },
+  {
+   "default": "Not Applied",
+   "fieldname": "permit_status",
+   "fieldtype": "Select",
+   "label": "Permit Status",
+   "options": "Not Applied\nPending\nApproved\nRejected\nExpired"
+  },
+  {
+   "fieldname": "permit_notes",
+   "fieldtype": "Small Text",
+   "label": "Permit Notes"
+  },
+  {
+   "fieldname": "weather_section",
+   "fieldtype": "Section Break",
+   "label": "Weather",
+   "collapsible": 1
+  },
+  {
+   "fieldname": "current_weather",
+   "fieldtype": "Data",
+   "label": "Current Weather",
+   "read_only": 1
+  },
+  {
+   "fieldname": "current_temperature",
+   "fieldtype": "Float",
+   "label": "Current Temperature (°F)",
+   "read_only": 1
+  },
+  {
+   "fieldname": "column_break_weather",
+   "fieldtype": "Column Break"
+  },
+  {
+   "default": "0",
+   "fieldname": "weather_delay_days",
+   "fieldtype": "Int",
+   "label": "Weather Delay Days"
+  },
+  {
+   "fieldname": "last_weather_update",
+   "fieldtype": "Datetime",
+   "label": "Last Weather Update",
+   "read_only": 1
+  },
+  {
+   "fieldname": "notes_section",
+   "fieldtype": "Section Break",
+   "label": "Notes",
+   "collapsible": 1
+  },
+  {
+   "fieldname": "notes",
+   "fieldtype": "Text Editor",
+   "label": "Notes"
+  },
+  {
+   "fieldname": "amended_from",
+   "fieldtype": "Link",
+   "label": "Amended From",
+   "no_copy": 1,
+   "options": "Job Site",
+   "print_hide": 1,
+   "read_only": 1
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "links": [
+  {
+   "group": "Financial",
+   "link_doctype": "Budget Line",
+   "link_fieldname": "job_site"
+  },
+  {
+   "group": "Financial",
+   "link_doctype": "Job Cost Entry",
+   "link_fieldname": "job_site"
+  },
+  {
+   "group": "Field Operations",
+   "link_doctype": "Daily Field Report",
+   "link_fieldname": "job_site"
+  },
+  {
+   "group": "Field Operations",
+   "link_doctype": "Punch List",
+   "link_fieldname": "job_site"
+  },
+  {
+   "group": "Documents",
+   "link_doctype": "RFI",
+   "link_fieldname": "project"
+  },
+  {
+   "group": "Documents",
+   "link_doctype": "Submittal",
+   "link_fieldname": "project"
+  },
+  {
+   "group": "Changes",
+   "link_doctype": "Change Order Request",
+   "link_fieldname": "job_site"
+  }
+ ],
+ "modified": "2024-01-01 00:00:00.000000",
+ "modified_by": "Administrator",
+ "module": "Construction",
+ "name": "Job Site",
+ "naming_rule": "By \"Naming Series\" field",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  },
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "Construction Manager",
+   "share": 1,
+   "write": 1
+  },
+  {
+   "create": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "Project Superintendent",
+   "share": 1,
+   "write": 1
+  },
+  {
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "Projects User",
+   "share": 1
+  },
+  {
+   "read": 1,
+   "role": "Field Worker"
+  }
+ ],
+ "quick_entry": 1,
+ "search_fields": "job_name, job_number, customer_name, status",
+ "show_name_in_global_search": 1,
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": [
+  {
+   "color": "Gray",
+   "title": "Bidding"
+  },
+  {
+   "color": "Blue",
+   "title": "Awarded"
+  },
+  {
+   "color": "Orange",
+   "title": "Pre-Construction"
+  },
+  {
+   "color": "Green",
+   "title": "Active"
+  },
+  {
+   "color": "Yellow",
+   "title": "On Hold"
+  },
+  {
+   "color": "Purple",
+   "title": "Punch List"
+  },
+  {
+   "color": "Cyan",
+   "title": "Closeout"
+  },
+  {
+   "color": "Green",
+   "title": "Completed"
+  },
+  {
+   "color": "Red",
+   "title": "Cancelled"
+  }
+ ],
+ "title_field": "job_name",
+ "track_changes": 1
+}

@@ -1,0 +1,230 @@
+/* Construction App Styles */
+
+:root {
+	--construction-primary: #1e40af;
+	--construction-secondary: #3b82f6;
+	--construction-success: #10b981;
+	--construction-warning: #f59e0b;
+	--construction-danger: #ef4444;
+	--construction-info: #06b6d4;
+}
+
+/* Job Site Status Colors */
+.job-site-status-active {
+	background-color: var(--construction-success);
+	color: white;
+	padding: 2px 8px;
+	border-radius: 4px;
+	font-size: 12px;
+}
+
+.job-site-status-pending {
+	background-color: var(--construction-warning);
+	color: white;
+	padding: 2px 8px;
+	border-radius: 4px;
+	font-size: 12px;
+}
+
+.job-site-status-completed {
+	background-color: var(--construction-info);
+	color: white;
+	padding: 2px 8px;
+	border-radius: 4px;
+	font-size: 12px;
+}
+
+/* Budget Variance Indicators */
+.variance-positive {
+	color: var(--construction-success);
+	font-weight: 600;
+}
+
+.variance-negative {
+	color: var(--construction-danger);
+	font-weight: 600;
+}
+
+.variance-neutral {
+	color: var(--text-muted);
+}
+
+/* Cost Code Tree */
+.cost-code-tree .tree-node {
+	padding: 8px 12px;
+	border-bottom: 1px solid var(--border-color);
+}
+
+.cost-code-tree .tree-node:hover {
+	background-color: var(--bg-light-gray);
+}
+
+.cost-code-tree .tree-node.is-group {
+	font-weight: 600;
+	background-color: var(--bg-color);
+}
+
+/* Gantt Chart Overrides */
+.construction-gantt .gantt-bar {
+	border-radius: 4px;
+}
+
+.construction-gantt .gantt-bar.critical-path {
+	background-color: var(--construction-danger) !important;
+}
+
+.construction-gantt .gantt-bar.milestone {
+	background-color: var(--construction-primary);
+}
+
+/* Daily Log Entry */
+.daily-log-weather {
+	display: flex;
+	align-items: center;
+	gap: 8px;
+	padding: 8px;
+	background-color: var(--bg-light-gray);
+	border-radius: 8px;
+}
+
+.daily-log-weather .weather-icon {
+	font-size: 24px;
+}
+
+.daily-log-weather .temperature {
+	font-size: 18px;
+	font-weight: 600;
+}
+
+/* Punch List Item */
+.punch-list-item {
+	border: 1px solid var(--border-color);
+	border-radius: 8px;
+	padding: 12px;
+	margin-bottom: 8px;
+}
+
+.punch-list-item.priority-high {
+	border-left: 4px solid var(--construction-danger);
+}
+
+.punch-list-item.priority-medium {
+	border-left: 4px solid var(--construction-warning);
+}
+
+.punch-list-item.priority-low {
+	border-left: 4px solid var(--construction-info);
+}
+
+/* RFI Status Badge */
+.rfi-status {
+	display: inline-flex;
+	align-items: center;
+	padding: 4px 12px;
+	border-radius: 20px;
+	font-size: 12px;
+	font-weight: 500;
+}
+
+.rfi-status.open {
+	background-color: #fef3c7;
+	color: #92400e;
+}
+
+.rfi-status.answered {
+	background-color: #d1fae5;
+	color: #065f46;
+}
+
+.rfi-status.closed {
+	background-color: #e0e7ff;
+	color: #3730a3;
+}
+
+/* Mobile Field App Styles */
+@media (max-width: 768px) {
+	.field-app-header {
+		position: sticky;
+		top: 0;
+		z-index: 100;
+		background-color: var(--construction-primary);
+		color: white;
+		padding: 12px 16px;
+	}
+
+	.field-app-card {
+		background: white;
+		border-radius: 12px;
+		box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+		margin: 8px;
+		padding: 16px;
+	}
+
+	.field-app-action-button {
+		width: 100%;
+		padding: 16px;
+		border-radius: 8px;
+		font-size: 16px;
+		font-weight: 600;
+	}
+}
+
+/* Dashboard Cards */
+.construction-dashboard-card {
+	background: white;
+	border-radius: 12px;
+	box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+	padding: 20px;
+	margin-bottom: 16px;
+}
+
+.construction-dashboard-card .card-title {
+	font-size: 14px;
+	color: var(--text-muted);
+	margin-bottom: 8px;
+}
+
+.construction-dashboard-card .card-value {
+	font-size: 28px;
+	font-weight: 700;
+	color: var(--text-color);
+}
+
+.construction-dashboard-card .card-trend {
+	font-size: 12px;
+	margin-top: 4px;
+}
+
+.construction-dashboard-card .card-trend.positive {
+	color: var(--construction-success);
+}
+
+.construction-dashboard-card .card-trend.negative {
+	color: var(--construction-danger);
+}
+
+/* Progress Bars */
+.construction-progress {
+	height: 8px;
+	background-color: var(--bg-light-gray);
+	border-radius: 4px;
+	overflow: hidden;
+}
+
+.construction-progress .progress-bar {
+	height: 100%;
+	border-radius: 4px;
+	transition: width 0.3s ease;
+}
+
+.construction-progress .progress-bar.on-track {
+	background-color: var(--construction-success);
+}
+
+.construction-progress .progress-bar.at-risk {
+	background-color: var(--construction-warning);
+}
+
+.construction-progress .progress-bar.behind {
+	background-color: var(--construction-danger);
+}

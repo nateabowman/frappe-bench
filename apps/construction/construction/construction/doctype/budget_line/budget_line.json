@@ -1,0 +1,294 @@
+{
+ "actions": [],
+ "allow_import": 1,
+ "autoname": "naming_series:",
+ "creation": "2024-01-01 00:00:00.000000",
+ "doctype": "DocType",
+ "document_type": "Document",
+ "engine": "InnoDB",
+ "field_order": [
+  "naming_series",
+  "job_site",
+  "cost_code",
+  "description",
+  "column_break_1",
+  "cost_type",
+  "phase",
+  "status",
+  "budget_section",
+  "original_budget",
+  "approved_changes",
+  "current_budget",
+  "column_break_budget",
+  "quantity",
+  "unit_of_measure",
+  "unit_cost",
+  "costs_section",
+  "actual_cost",
+  "committed_cost",
+  "total_cost",
+  "column_break_costs",
+  "estimate_to_complete",
+  "estimate_at_completion",
+  "variance_section",
+  "variance",
+  "variance_percent",
+  "column_break_variance",
+  "percent_complete",
+  "earned_value",
+  "notes_section",
+  "notes"
+ ],
+ "fields": [
+  {
+   "fieldname": "naming_series",
+   "fieldtype": "Select",
+   "label": "Series",
+   "options": "BL-.YYYY.-.#####",
+   "reqd": 1
+  },
+  {
+   "fieldname": "job_site",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "Job Site",
+   "options": "Job Site",
+   "reqd": 1
+  },
+  {
+   "fieldname": "cost_code",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "Cost Code",
+   "options": "Cost Code",
+   "reqd": 1
+  },
+  {
+   "fieldname": "description",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Description",
+   "reqd": 1
+  },
+  {
+   "fieldname": "column_break_1",
+   "fieldtype": "Column Break"
+  },
+  {
+   "default": "Direct",
+   "fieldname": "cost_type",
+   "fieldtype": "Select",
+   "label": "Cost Type",
+   "options": "Direct\nIndirect\nOverhead\nGeneral Conditions"
+  },
+  {
+   "fieldname": "phase",
+   "fieldtype": "Link",
+   "label": "Construction Phase",
+   "options": "Construction Phase"
+  },
+  {
+   "default": "Active",
+   "fieldname": "status",
+   "fieldtype": "Select",
+   "label": "Status",
+   "options": "Active\nOn Hold\nClosed"
+  },
+  {
+   "fieldname": "budget_section",
+   "fieldtype": "Section Break",
+   "label": "Budget"
+  },
+  {
+   "default": "0",
+   "fieldname": "original_budget",
+   "fieldtype": "Currency",
+   "in_list_view": 1,
+   "label": "Original Budget",
+   "reqd": 1
+  },
+  {
+   "default": "0",
+   "fieldname": "approved_changes",
+   "fieldtype": "Currency",
+   "label": "Approved Changes"
+  },
+  {
+   "fieldname": "current_budget",
+   "fieldtype": "Currency",
+   "label": "Current Budget",
+   "read_only": 1
+  },
+  {
+   "fieldname": "column_break_budget",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "quantity",
+   "fieldtype": "Float",
+   "label": "Quantity"
+  },
+  {
+   "fieldname": "unit_of_measure",
+   "fieldtype": "Link",
+   "label": "Unit of Measure",
+   "options": "UOM"
+  },
+  {
+   "fieldname": "unit_cost",
+   "fieldtype": "Currency",
+   "label": "Unit Cost"
+  },
+  {
+   "fieldname": "costs_section",
+   "fieldtype": "Section Break",
+   "label": "Costs"
+  },
+  {
+   "default": "0",
+   "fieldname": "actual_cost",
+   "fieldtype": "Currency",
+   "label": "Actual Cost",
+   "read_only": 1
+  },
+  {
+   "default": "0",
+   "fieldname": "committed_cost",
+   "fieldtype": "Currency",
+   "label": "Committed Cost",
+   "read_only": 1
+  },
+  {
+   "fieldname": "total_cost",
+   "fieldtype": "Currency",
+   "label": "Total Cost (Actual + Committed)",
+   "read_only": 1
+  },
+  {
+   "fieldname": "column_break_costs",
+   "fieldtype": "Column Break"
+  },
+  {
+   "default": "0",
+   "fieldname": "estimate_to_complete",
+   "fieldtype": "Currency",
+   "label": "Estimate to Complete (ETC)"
+  },
+  {
+   "fieldname": "estimate_at_completion",
+   "fieldtype": "Currency",
+   "label": "Estimate at Completion (EAC)",
+   "read_only": 1
+  },
+  {
+   "fieldname": "variance_section",
+   "fieldtype": "Section Break",
+   "label": "Variance Analysis"
+  },
+  {
+   "fieldname": "variance",
+   "fieldtype": "Currency",
+   "label": "Budget Variance",
+   "read_only": 1
+  },
+  {
+   "fieldname": "variance_percent",
+   "fieldtype": "Percent",
+   "label": "Variance %",
+   "read_only": 1
+  },
+  {
+   "fieldname": "column_break_variance",
+   "fieldtype": "Column Break"
+  },
+  {
+   "default": "0",
+   "fieldname": "percent_complete",
+   "fieldtype": "Percent",
+   "label": "% Complete"
+  },
+  {
+   "fieldname": "earned_value",
+   "fieldtype": "Currency",
+   "label": "Earned Value (BCWP)",
+   "read_only": 1
+  },
+  {
+   "fieldname": "notes_section",
+   "fieldtype": "Section Break",
+   "label": "Notes",
+   "collapsible": 1
+  },
+  {
+   "fieldname": "notes",
+   "fieldtype": "Text",
+   "label": "Notes"
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "links": [
+  {
+   "link_doctype": "Job Cost Entry",
+   "link_fieldname": "budget_line"
+  }
+ ],
+ "modified": "2024-01-01 00:00:00.000000",
+ "modified_by": "Administrator",
+ "module": "Construction",
+ "name": "Budget Line",
+ "naming_rule": "By \"Naming Series\" field",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  },
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "Construction Manager",
+   "share": 1,
+   "write": 1
+  },
+  {
+   "create": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "Project Superintendent",
+   "share": 1,
+   "write": 1
+  },
+  {
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "Projects User",
+   "share": 1
+  }
+ ],
+ "search_fields": "job_site, cost_code, description",
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": [],
+ "track_changes": 1
+}

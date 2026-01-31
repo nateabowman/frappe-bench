@@ -1,0 +1,74 @@
+{
+ "actions": [],
+ "allow_import": 1,
+ "creation": "2025-01-27 12:00:00.000000",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "automation_rule",
+  "reference_doctype",
+  "reference_docname",
+  "status",
+  "execution_results"
+ ],
+ "fields": [
+  {
+   "fieldname": "automation_rule",
+   "fieldtype": "Link",
+   "label": "Automation Rule",
+   "options": "CRM Automation Rule",
+   "reqd": 1
+  },
+  {
+   "fieldname": "reference_doctype",
+   "fieldtype": "Link",
+   "label": "Reference Document Type",
+   "options": "DocType"
+  },
+  {
+   "fieldname": "reference_docname",
+   "fieldtype": "Dynamic Link",
+   "label": "Reference Document",
+   "options": "reference_doctype"
+  },
+  {
+   "fieldname": "status",
+   "fieldtype": "Select",
+   "label": "Status",
+   "options": "Success\nPartial\nError",
+   "reqd": 1
+  },
+  {
+   "fieldname": "execution_results",
+   "fieldtype": "JSON",
+   "label": "Execution Results"
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "links": [],
+ "modified": "2025-01-27 12:00:00.000000",
+ "modified_by": "Administrator",
+ "module": "FCRM",
+ "name": "CRM Automation Log",
+ "naming_rule": "Autoincrement",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "Sales Manager",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "sort_field": "creation",
+ "sort_order": "DESC",
+ "states": [],
+ "title_field": "automation_rule"
+}
+

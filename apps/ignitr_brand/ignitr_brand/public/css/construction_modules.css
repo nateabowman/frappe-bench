@@ -1,0 +1,498 @@
+/* Construction-Specific Module Styles */
+
+/* ============================================
+   Job Sites (Projects) Module
+   ============================================ */
+
+.job-site-header {
+  background: linear-gradient(135deg, var(--nexelya-primary) 0%, var(--nexelya-primary-dark) 100%);
+  color: var(--nexelya-white);
+  padding: var(--spacing-xl);
+  border-radius: var(--radius-lg);
+  margin-bottom: var(--spacing-lg);
+}
+
+.job-site-status-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--spacing-xs);
+  padding: var(--spacing-xs) var(--spacing-md);
+  border-radius: var(--radius-full);
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-semibold);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.job-site-metrics {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: var(--spacing-md);
+  margin: var(--spacing-lg) 0;
+}
+
+.job-site-metric-card {
+  background: var(--bg-primary);
+  border: 1px solid var(--border-primary);
+  border-radius: var(--radius-lg);
+  padding: var(--spacing-md);
+  box-shadow: var(--shadow-sm);
+}
+
+.job-site-metric-label {
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-medium);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  color: var(--text-tertiary);
+  margin-bottom: var(--spacing-xs);
+}
+
+.job-site-metric-value {
+  font-size: var(--font-size-2xl);
+  font-weight: var(--font-weight-bold);
+  color: var(--text-primary);
+}
+
+/* ============================================
+   RFI Module
+   ============================================ */
+
+.rfi-form-section {
+  background: var(--bg-secondary);
+  border: 1px solid var(--border-primary);
+  border-radius: var(--radius-lg);
+  padding: var(--spacing-lg);
+  margin-bottom: var(--spacing-lg);
+}
+
+.rfi-priority-high {
+  border-left: 4px solid var(--nexelya-danger);
+}
+
+.rfi-priority-medium {
+  border-left: 4px solid var(--nexelya-warning);
+}
+
+.rfi-priority-low {
+  border-left: 4px solid var(--nexelya-info);
+}
+
+.rfi-status-badge {
+  display: inline-flex;
+  align-items: center;
+  padding: var(--spacing-xs) var(--spacing-sm);
+  border-radius: var(--radius-full);
+  font-size: var(--font-size-xs);
+  font-weight: var(--font-weight-semibold);
+  text-transform: uppercase;
+}
+
+.rfi-status-open {
+  background-color: var(--nexelya-warning-bg);
+  color: var(--nexelya-warning-dark);
+}
+
+.rfi-status-answered {
+  background-color: var(--nexelya-info-bg);
+  color: var(--nexelya-info-dark);
+}
+
+.rfi-status-closed {
+  background-color: var(--nexelya-success-bg);
+  color: var(--nexelya-success-dark);
+}
+
+/* ============================================
+   Submittal Module
+   ============================================ */
+
+.submittal-timeline {
+  position: relative;
+  padding-left: var(--spacing-xl);
+  margin: var(--spacing-lg) 0;
+}
+
+.submittal-timeline::before {
+  content: '';
+  position: absolute;
+  left: 8px;
+  top: 0;
+  bottom: 0;
+  width: 2px;
+  background: var(--border-primary);
+}
+
+.submittal-timeline-item {
+  position: relative;
+  padding-bottom: var(--spacing-lg);
+}
+
+.submittal-timeline-item::before {
+  content: '';
+  position: absolute;
+  left: -20px;
+  top: 4px;
+  width: 12px;
+  height: 12px;
+  border-radius: var(--radius-full);
+  background: var(--nexelya-primary);
+  border: 2px solid var(--bg-primary);
+}
+
+.submittal-timeline-item.completed::before {
+  background: var(--nexelya-success);
+}
+
+.submittal-timeline-item.pending::before {
+  background: var(--nexelya-warning);
+}
+
+/* ============================================
+   Daily Log Module
+   ============================================ */
+
+.daily-log-form {
+  background: var(--bg-primary);
+  border: 1px solid var(--border-primary);
+  border-radius: var(--radius-lg);
+  padding: var(--spacing-lg);
+}
+
+.daily-log-weather-section {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: var(--spacing-md);
+  margin: var(--spacing-md) 0;
+}
+
+.weather-card {
+  background: var(--bg-secondary);
+  border: 1px solid var(--border-primary);
+  border-radius: var(--radius-md);
+  padding: var(--spacing-md);
+  text-align: center;
+}
+
+.weather-icon {
+  font-size: var(--font-size-3xl);
+  margin-bottom: var(--spacing-xs);
+}
+
+.weather-temp {
+  font-size: var(--font-size-xl);
+  font-weight: var(--font-weight-bold);
+  color: var(--text-primary);
+}
+
+.daily-log-photos {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+  gap: var(--spacing-md);
+  margin: var(--spacing-md) 0;
+}
+
+.photo-thumbnail {
+  position: relative;
+  aspect-ratio: 1;
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  border: 1px solid var(--border-primary);
+  cursor: pointer;
+  transition: transform var(--transition-base);
+}
+
+.photo-thumbnail:hover {
+  transform: scale(1.05);
+  box-shadow: var(--shadow-md);
+}
+
+.photo-thumbnail img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* ============================================
+   Equipment Tracking Module
+   ============================================ */
+
+.equipment-card {
+  background: var(--bg-primary);
+  border: 1px solid var(--border-primary);
+  border-radius: var(--radius-lg);
+  padding: var(--spacing-lg);
+  margin-bottom: var(--spacing-md);
+  transition: all var(--transition-base);
+}
+
+.equipment-card:hover {
+  box-shadow: var(--shadow-md);
+  transform: translateY(-2px);
+}
+
+.equipment-status {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--spacing-xs);
+  padding: var(--spacing-xs) var(--spacing-sm);
+  border-radius: var(--radius-full);
+  font-size: var(--font-size-xs);
+  font-weight: var(--font-weight-semibold);
+  text-transform: uppercase;
+}
+
+.equipment-status-available {
+  background-color: var(--nexelya-success-bg);
+  color: var(--nexelya-success-dark);
+}
+
+.equipment-status-in-use {
+  background-color: var(--nexelya-info-bg);
+  color: var(--nexelya-info-dark);
+}
+
+.equipment-status-maintenance {
+  background-color: var(--nexelya-warning-bg);
+  color: var(--nexelya-warning-dark);
+}
+
+.equipment-status-out-of-service {
+  background-color: var(--nexelya-danger-bg);
+  color: var(--nexelya-danger-dark);
+}
+
+/* ============================================
+   Safety Incidents Module
+   ============================================ */
+
+.safety-incident-severity-critical {
+  border-left: 4px solid var(--nexelya-danger);
+}
+
+.safety-incident-severity-high {
+  border-left: 4px solid var(--nexelya-warning);
+}
+
+.safety-incident-severity-medium {
+  border-left: 4px solid var(--nexelya-accent);
+}
+
+.safety-incident-severity-low {
+  border-left: 4px solid var(--nexelya-info);
+}
+
+.safety-metrics-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: var(--spacing-md);
+  margin: var(--spacing-lg) 0;
+}
+
+.safety-metric-card {
+  background: var(--bg-primary);
+  border: 1px solid var(--border-primary);
+  border-radius: var(--radius-lg);
+  padding: var(--spacing-lg);
+  text-align: center;
+}
+
+.safety-metric-value {
+  font-size: var(--font-size-4xl);
+  font-weight: var(--font-weight-bold);
+  margin: var(--spacing-sm) 0;
+}
+
+.safety-metric-value.positive {
+  color: var(--nexelya-success);
+}
+
+.safety-metric-value.negative {
+  color: var(--nexelya-danger);
+}
+
+/* ============================================
+   Punch List Module
+   ============================================ */
+
+.punch-list-item {
+  background: var(--bg-primary);
+  border: 1px solid var(--border-primary);
+  border-radius: var(--radius-md);
+  padding: var(--spacing-md);
+  margin-bottom: var(--spacing-sm);
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-md);
+  transition: all var(--transition-base);
+}
+
+.punch-list-item:hover {
+  box-shadow: var(--shadow-sm);
+  border-color: var(--nexelya-primary);
+}
+
+.punch-list-item.completed {
+  opacity: 0.7;
+  background: var(--bg-tertiary);
+}
+
+.punch-list-item.completed .punch-list-checkbox {
+  background-color: var(--nexelya-success);
+  border-color: var(--nexelya-success);
+}
+
+.punch-list-checkbox {
+  width: 24px;
+  height: 24px;
+  border: 2px solid var(--border-secondary);
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  flex-shrink: 0;
+  transition: all var(--transition-base);
+}
+
+.punch-list-checkbox.checked {
+  background-color: var(--nexelya-success);
+  border-color: var(--nexelya-success);
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20' fill='white'%3E%3Cpath fill-rule='evenodd' d='M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z'/%3E%3C/svg%3E");
+  background-size: 16px;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+/* ============================================
+   Inspection Forms Module
+   ============================================ */
+
+.inspection-section {
+  background: var(--bg-secondary);
+  border: 1px solid var(--border-primary);
+  border-radius: var(--radius-lg);
+  padding: var(--spacing-lg);
+  margin-bottom: var(--spacing-lg);
+}
+
+.inspection-item {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-md);
+  padding: var(--spacing-md);
+  border-bottom: 1px solid var(--border-primary);
+}
+
+.inspection-item:last-child {
+  border-bottom: none;
+}
+
+.inspection-item-label {
+  flex: 1;
+  font-weight: var(--font-weight-medium);
+  color: var(--text-primary);
+}
+
+.inspection-item-status {
+  display: flex;
+  gap: var(--spacing-sm);
+}
+
+.inspection-status-option {
+  padding: var(--spacing-xs) var(--spacing-sm);
+  border: 2px solid var(--border-primary);
+  border-radius: var(--radius-md);
+  background: var(--bg-primary);
+  cursor: pointer;
+  transition: all var(--transition-base);
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-medium);
+}
+
+.inspection-status-option:hover {
+  border-color: var(--nexelya-primary);
+  background: var(--nexelya-primary);
+  color: var(--nexelya-white);
+}
+
+.inspection-status-option.selected {
+  border-color: var(--nexelya-primary);
+  background: var(--nexelya-primary);
+  color: var(--nexelya-white);
+}
+
+.inspection-status-option.pass {
+  border-color: var(--nexelya-success);
+}
+
+.inspection-status-option.pass.selected {
+  background: var(--nexelya-success);
+  border-color: var(--nexelya-success);
+}
+
+.inspection-status-option.fail {
+  border-color: var(--nexelya-danger);
+}
+
+.inspection-status-option.fail.selected {
+  background: var(--nexelya-danger);
+  border-color: var(--nexelya-danger);
+}
+
+/* ============================================
+   Field-Specific Enhancements
+   ============================================ */
+
+.field-photo-upload {
+  border: 2px dashed var(--border-secondary);
+  border-radius: var(--radius-md);
+  padding: var(--spacing-xl);
+  text-align: center;
+  cursor: pointer;
+  transition: all var(--transition-base);
+  background: var(--bg-secondary);
+}
+
+.field-photo-upload:hover {
+  border-color: var(--nexelya-primary);
+  background: var(--bg-hover);
+}
+
+.field-photo-upload.dragover {
+  border-color: var(--nexelya-primary);
+  background: var(--nexelya-primary);
+  color: var(--nexelya-white);
+}
+
+.field-location-picker {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-sm);
+  padding: var(--spacing-sm);
+  border: 1px solid var(--border-primary);
+  border-radius: var(--radius-md);
+  background: var(--bg-primary);
+  cursor: pointer;
+  transition: all var(--transition-base);
+}
+
+.field-location-picker:hover {
+  border-color: var(--nexelya-primary);
+  background: var(--bg-hover);
+}
+
+.field-signature-pad {
+  border: 1px solid var(--border-primary);
+  border-radius: var(--radius-md);
+  background: var(--bg-primary);
+  cursor: crosshair;
+}
+
+.field-barcode-scanner {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-sm);
+  padding: var(--spacing-md);
+  border: 1px solid var(--border-primary);
+  border-radius: var(--radius-md);
+  background: var(--bg-secondary);
+}
+

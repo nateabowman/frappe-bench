@@ -1,0 +1,22 @@
+{
+ "action": "Create Entry",
+ "action_label": "Create your first Work Order",
+ "creation": "2020-05-12 16:15:56.084682",
+ "description": "",
+ "docstatus": 0,
+ "doctype": "Onboarding Step",
+ "idx": 0,
+ "intro_video_url": "",
+ "is_complete": 0,
+ "is_single": 0,
+ "is_skipped": 0,
+ "modified": "2026-01-11 17:40:06.455380",
+ "modified_by": "Administrator",
+ "name": "Work Order",
+ "owner": "Administrator",
+ "reference_document": "Work Order",
+ "show_form_tour": 1,
+ "show_full_form": 1,
+ "title": "Work Order",
+ "validate_action": 1
+}

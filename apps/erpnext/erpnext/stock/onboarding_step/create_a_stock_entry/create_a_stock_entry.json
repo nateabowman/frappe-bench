@@ -1,0 +1,22 @@
+{
+ "action": "Create Entry",
+ "action_label": "Create a Material Transfer Entry",
+ "creation": "2020-05-15 03:20:16.277043",
+ "description": "",
+ "docstatus": 0,
+ "doctype": "Onboarding Step",
+ "idx": 0,
+ "intro_video_url": "",
+ "is_complete": 0,
+ "is_single": 0,
+ "is_skipped": 0,
+ "modified": "2026-01-11 17:40:06.279235",
+ "modified_by": "Administrator",
+ "name": "Create a Stock Entry",
+ "owner": "Administrator",
+ "reference_document": "Stock Entry",
+ "show_form_tour": 1,
+ "show_full_form": 1,
+ "title": "Manage Stock Movements",
+ "validate_action": 1
+}

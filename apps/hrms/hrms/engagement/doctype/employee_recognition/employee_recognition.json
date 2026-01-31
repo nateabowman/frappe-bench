@@ -1,0 +1,152 @@
+{
+	"actions": [],
+	"allow_rename": 0,
+	"autoname": "naming_series:",
+	"creation": "2024-01-01 00:00:00.000000",
+	"doctype": "DocType",
+	"editable_grid": 1,
+	"engine": "InnoDB",
+	"field_order": [
+		"naming_series",
+		"employee",
+		"employee_name",
+		"department",
+		"recognition_date",
+		"section_break_1",
+		"recognition_type",
+		"recognized_by",
+		"recognized_by_name",
+		"column_break_1",
+		"category",
+		"points",
+		"description",
+		"amended_from"
+	],
+	"fields": [
+		{
+			"fieldname": "naming_series",
+			"fieldtype": "Select",
+			"label": "Series",
+			"options": "ER-.YYYY.-"
+		},
+		{
+			"fieldname": "employee",
+			"fieldtype": "Link",
+			"label": "Employee",
+			"options": "Employee",
+			"reqd": 1
+		},
+		{
+			"fetch_from": "employee.employee_name",
+			"fieldname": "employee_name",
+			"fieldtype": "Data",
+			"label": "Employee Name",
+			"read_only": 1
+		},
+		{
+			"fetch_from": "employee.department",
+			"fieldname": "department",
+			"fieldtype": "Link",
+			"label": "Department",
+			"options": "Department",
+			"read_only": 1
+		},
+		{
+			"fieldname": "recognition_date",
+			"fieldtype": "Date",
+			"label": "Recognition Date",
+			"reqd": 1
+		},
+		{
+			"fieldname": "section_break_1",
+			"fieldtype": "Section Break",
+			"label": "Recognition Details"
+		},
+		{
+			"fieldname": "recognition_type",
+			"fieldtype": "Select",
+			"label": "Recognition Type",
+			"options": "Achievement\nExcellence\nInnovation\nTeamwork\nLeadership",
+			"reqd": 1
+		},
+		{
+			"fieldname": "recognized_by",
+			"fieldtype": "Link",
+			"label": "Recognized By",
+			"options": "Employee",
+			"reqd": 1
+		},
+		{
+			"fetch_from": "recognized_by.employee_name",
+			"fieldname": "recognized_by_name",
+			"fieldtype": "Data",
+			"label": "Recognized By Name",
+			"read_only": 1
+		},
+		{
+			"fieldname": "column_break_1",
+			"fieldtype": "Column Break"
+		},
+		{
+			"fieldname": "category",
+			"fieldtype": "Select",
+			"label": "Category",
+			"options": "Peer Recognition\nManager Recognition\nCompany Recognition"
+		},
+		{
+			"fieldname": "points",
+			"fieldtype": "Int",
+			"label": "Reward Points"
+		},
+		{
+			"fieldname": "description",
+			"fieldtype": "Small Text",
+			"label": "Description"
+		},
+		{
+			"fieldname": "amended_from",
+			"fieldtype": "Link",
+			"label": "Amended From",
+			"options": "Employee Recognition",
+			"read_only": 1
+		}
+	],
+	"index_web_pages_for_search": 1,
+	"links": [],
+	"modified": "2024-01-01 00:00:00.000000",
+	"modified_by": "Administrator",
+	"module": "HR",
+	"name": "Employee Recognition",
+	"naming_rule": "By \"Naming Series\" field",
+	"owner": "Administrator",
+	"permissions": [
+		{
+			"create": 1,
+			"delete": 1,
+			"email": 1,
+			"export": 1,
+			"print": 1,
+			"read": 1,
+			"report": 1,
+			"role": "Employee",
+			"share": 1,
+			"write": 1
+		},
+		{
+			"create": 1,
+			"delete": 1,
+			"email": 1,
+			"export": 1,
+			"print": 1,
+			"read": 1,
+			"report": 1,
+			"role": "HR Manager",
+			"share": 1,
+			"write": 1
+		}
+	],
+	"sort_field": "modified",
+	"sort_order": "DESC",
+	"states": [],
+	"track_changes": 1
+}

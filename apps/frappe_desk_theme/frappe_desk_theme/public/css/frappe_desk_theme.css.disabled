@@ -1,0 +1,567 @@
+/**
+ * Frappe Desk Theme - Custom CSS Styling
+ * 
+ * This stylesheet provides comprehensive theming support for Frappe Desk through CSS custom properties.
+ * It covers login page customization, navigation styling, form elements, tables, widgets, and responsive design.
+ * 
+ * The theme system works by:
+ * 1. JavaScript sets CSS custom properties (--variable-name) based on theme configuration
+ * 2. CSS rules use these variables with var() function for dynamic styling
+ * 3. Fallback values ensure functionality when theme data is unavailable
+ */
+
+/* ========================================
+   ROOT VARIABLES & GLOBAL SETTINGS
+   ======================================== */
+
+:root {
+    /* Global layout constraints - ensures content fits properly in all screen sizes */
+    --page-max-width: 100% !important;
+}
+
+/* ========================================
+   LOGIN PAGE STYLING
+   ======================================== */
+
+/* Main login page container - supports custom backgrounds and full viewport height */
+#page-login {
+    background: var(--login-bg-color, transparent);
+    background-image: var(--login-bg-image, none) !important;
+    background-size: cover;
+    height: 100vh;
+    background-repeat: no-repeat;
+    background-position: center center;
+    height: 100vh;
+    margin: 0;
+}
+
+#page-login::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+    pointer-events: none;
+    background-image: var(--login-bg-carousel-image, var(--login-bg-image, none));
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center center;
+    opacity: var(--carousel-fade-opacity, 1);
+    transition: opacity 0.7s;
+}
+
+
+/* Login form buttons - primary action buttons with hover states */
+.btn-primary.btn-login,
+.btn-primary.btn-forgot {
+    background-color: var(--login-btn-bg, #171717);
+    color: var(--login-btn-color, #fff);
+}
+
+/* Login button hover effects - provides visual feedback on interaction */
+.btn-primary.btn-login:hover,
+.btn-primary.btn-forgot:hover {
+    background-color: var(--login-btn-hover-bg, #171717);
+    color: var(--login-btn-hover-color, #fff);
+}
+
+/* Form input fields - customizable appearance for text inputs */
+.form-control {
+    background-color: var(--input-bg, #f3f3f3);
+    color: var(--input-color, #383838);
+    border: 2px solid var(--input-border, #f3f3f3);
+}
+
+/* Form field labels - customizable text color for better contrast */
+label.control-label {
+    color: var(--input-label-color, #383838);
+}
+
+/* Login form container - supports absolute positioning (Left/Right/Center) */
+.for-login,.for-signup,.for-forgot, .for-login-with-email-link {
+    position: var(--login-box-position, static);
+    right: var(--login-box-right, auto);
+    left: var(--login-box-left, auto);
+    top: var(--login-box-top, 18%);
+    background-color: var(--login-box-bg-override, transparent) !important;
+    border-radius: var(--login-box-border-radius, 0) !important;
+}
+
+/* Login animation - only for login forms */
+.for-login {
+    opacity: 0;
+    transition: opacity 0.2s ease-in-out, transform 0.2s ease-in-out;
+    transform: translateY(20px);
+    /* Fallback animation - show login box after 1 second if JavaScript fails */
+    animation: showLoginFallback 0.2s ease-in-out 1s forwards;
+}
+
+/* Show login box after theme is applied */
+.for-login.theme-ready {
+    opacity: 1;
+    transform: translateY(0);
+    animation: none; /* Disable fallback animation when theme is ready */
+}
+
+/* Fallback keyframe animation to prevent login box from staying hidden */
+@keyframes showLoginFallback {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Login form card - inner container with padding and width controls */
+.login-content.page-card, .signup-content.page-card {
+    background-color: var(--login-box-bg,#fff) !important;
+    border: 2px solid var(--login-box-bg,#fff) !important;
+    width: var(--login-box-width,400px);
+    padding: var(--login-box-padding);
+}
+
+/* Login content border - customizable border for form container */
+/* .login-content, .forgot-content, .signup-content {
+    border: var(--login-content-border,none);
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1); 
+} */
+
+/* Signup message - when app details are inside the box, make it part of the container */
+.sign-up-message {
+    background: transparent !important;
+    border: none !important;
+    box-shadow: none !important;
+    margin-top: 20px;
+    padding: 0 !important;
+    color: inherit;
+}
+
+/* Default login page title - can be hidden when custom title is used */
+.for-login .page-card-head h4 {
+    display: var(--login-title-display);
+}
+
+/* Custom login page title - uses CSS ::after pseudo-element for dynamic content */
+.for-login .page-card-head:after {
+    display: var(--login-title-after-display);
+    justify-content: var(--login-title-after-justify);
+    margin-top: var(--login-title-after-margin);
+    content: var(--login-title-after-content);
+    color: var(--login-title-after-color);
+}
+
+/* Page headings - consistent styling for all page titles */
+.page-card-head h4 {
+    color: var(--page-heading-color) !important;
+} 
+
+/* ========================================
+   NAVIGATION BAR STYLING
+   ======================================== */
+
+/* Main navigation bar - top-level container with custom background */
+.navbar {
+    background-color: var(--navbar-bg, #fff);
+}
+
+/* Navbar text elements - brand name and container text color */
+.navbar.container,
+.navbar-brand {
+    color: var(--navbar-color, #555);
+}
+
+/* Navbar icons and toggle button - ensures consistent coloring for SVG elements */
+.navbar-toggler,
+.navbar-toggler span svg,
+.navbar svg.es-icon.icon-sm use,
+.notifications-seen > .es-icon {
+    fill: var(--navbar-color);
+    stroke-width: 0;
+}
+
+/* Mobile menu toggle button - border color for hamburger menu */
+button.navbar-toggler {
+    border-color: var(--navbar-color) !important;
+}
+
+/* Breadcrumb navigation links - maintains consistent color scheme */
+#navbar-breadcrumbs li a {
+    color: var(--navbar-color);
+}
+
+/* Breadcrumb separators - adds arrow separators between breadcrumb items */
+#navbar-breadcrumbs li a::before {
+    content: '›';
+}
+
+/* Disabled breadcrumb items - styling for non-clickable breadcrumb elements */
+#navbar-breadcrumbs li.disabled a {
+    color: var(--navbar-color) !important;
+}
+
+/* Navigation link buttons - text and icon color consistency */
+.btn-reset.nav-link span {
+    color: var(--navbar-color) !important;
+}
+
+/* Navigation link icons - ensures SVG icons match navbar color scheme */
+.btn-reset.nav-link span svg,
+.btn-reset.nav-link span svg use {
+    stroke: var(--navbar-color) !important;
+    fill: var(--navbar-color) !important;
+}
+
+/* ========================================
+   BUTTON STYLING
+   ======================================== */
+
+/* Primary buttons - main action buttons throughout the application */
+.btn-primary,
+.btn-primary:active {
+    background-color: var(--btn-primary-bg,#171717) !important;
+}
+
+/* Primary button text - ensures text visibility on custom backgrounds */
+.btn-primary span,
+.btn-primary:active span {
+    color: var(--btn-primary-color) !important;
+}
+
+/* Primary button hover state - provides visual feedback on mouse over */
+.btn-primary:hover {
+    background-color: var(--btn-primary-hover-bg);
+}
+
+/* Primary button hover text - maintains readability during hover state */
+.btn-primary:hover span {
+    color: var(--btn-primary-hover-color);
+}
+
+/* Secondary/default buttons - alternative action buttons with distinct styling */
+.btn.btn-default.ellipsis,
+.btn-default,
+.btn-default:active {
+    background-color: var(--btn-secondary-bg,#f3f3f3);
+    color: var(--btn-secondary-color);
+}
+
+/* Secondary button hover effects - consistent interaction feedback */
+.btn.btn-default.ellipsis:hover,
+.btn-default:hover {
+    background-color: var(--btn-secondary-hover-bg,#f3f3f3);
+    color: var(--btn-secondary-hover-color);
+}
+
+/* ========================================
+   MAIN CONTENT AREA STYLING
+   ======================================== */
+
+/* Body background - sets overall page background color */
+body {
+    background-color: var(--body-bg,#fff);
+}
+
+/* Page containers - main content wrapper background */
+.content.page-container,
+.page-head {
+    background-color: var(--body-bg,#fff);
+}
+
+/* Content sections - form layouts and main content areas with rounded corners */
+.layout-main-section,
+.form-layout,
+.layout-main,
+.form-page,
+.nav.form-tabs,
+.row.form-section.card-section.visible-section {
+    background-color: var(--content-bg) !important;
+    border-radius: 10px;
+    color: var(--content-text-color) !important;
+}
+
+/* ========================================
+   SIDEBAR STYLING
+   ======================================== */
+
+/* Main sidebar container - left navigation panel with custom background */
+.body-sidebar {
+    background-color: var(--sidebar-bg,#f8f8f8) !important;
+    color: var(--sidebar-text-color,#525252) !important;
+}
+
+/* Sidebar items - all text elements in sidebar navigation */
+.standard-sidebar-item,
+.item-anchor,
+.sidebar-item-label,
+.sidebar-item-icon,
+.sidebar-item-icon svg,
+.sidebar-item-control button {
+    color: var(--sidebar-text-color,#525252) !important;
+}
+
+/* Sidebar icons - SVG elements with proper fill and stroke colors */
+.sidebar-item-icon svg {
+    fill: var(--sidebar-bg,#f8f8f8) !important;
+    stroke: var(--sidebar-text-color,#525252) !important;
+}
+
+/* ========================================
+   TABLE STYLING
+   ======================================== */
+
+/* Table headers - column headers with custom background and text colors */
+.level.list-row-head.text-muted {
+    background-color: var(--table-head-bg);
+}
+
+/* Table header content - text elements in table headers */
+.level-left.list-header-subject,
+span.level-item,
+div.level-right {
+    color: var(--table-head-color);
+}
+
+/* Table rows - data rows with customizable background and text colors */
+.level.list-row,
+.level-item.bold.ellipsis a,
+.filterable.ellipsis {
+    background-color: var(--table-body-bg);
+    color: var(--table-body-color);
+}
+
+/* ========================================
+   CONDITIONAL ELEMENT VISIBILITY
+   ======================================== */
+
+/* Social interaction elements - like buttons and comment counts (conditionally hidden) */
+.like-icon,
+.comment-count,
+.level-item.list-row-activity .mx-2  {
+    display: var(--hide-like-comment, block) !important;
+}
+
+/* Help buttons - assistance elements that can be hidden based on theme settings */
+.d-lg-block,
+.d-sm-block {
+    display: var(--hide-help, block) !important;
+}
+
+/* App switcher - navigation dropdown that can be hidden based on theme settings */
+.sidebar-item-control{
+    display: var(--hide-app-switcher, block) !important;
+}
+
+/* App switcher anchor - disable clicking when app switcher is hidden */
+.app-switcher-dropdown {
+    pointer-events: var(--app-switcher-pointer-events, auto) !important;
+}
+
+
+/* ========================================
+   WIDGET/CARD STYLING
+   ======================================== */
+
+/* Number widgets - dashboard widgets and statistical cards */
+.widget.number-widget-box,
+.widget.dashboard-widget-box {
+    background-color: var(--widget-bg);
+    border: 2px solid var(--widget-border);
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1); 
+}
+
+/* Widget content - all text elements within widgets */
+.widget-head,
+.widget-label,
+.widget-title,
+.widget-body,
+.widget-content div.number {
+    color: var(--widget-color);
+}
+
+/* ========================================
+   RESPONSIVE DESIGN
+   ======================================== */
+
+/* Mobile breakpoint - adjustments for smaller screens */
+@media (max-width: 768px) {
+    /* Login form positioning - removes absolute positioning on mobile */
+    .for-login {
+        position: static;
+    }
+    
+    /* Login form width - allows full width on mobile devices */
+    .login-content.page-card {
+        width: auto;
+    }
+}
+
+/* ========================================
+   FOOTER STYLING
+   ======================================== */
+
+/* Ensure main-section takes full height for proper footer positioning */
+.main-section {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Main content area should flex to push footer down */
+.main-section > .container,
+.main-section > .page-container {
+    flex: 1;
+}
+
+/* Main footer container - positioned to align with main content area */
+.desk-footer {
+    background-color: var(--footer-bg, #f8f9fa);
+    color: var(--footer-color, #495057);
+    padding: 15px 20px;
+    border-top: 1px solid var(--footer-border, #dee2e6);
+    font-size: 14px;
+    display: var(--footer-display, flex);
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-top: auto;
+    /* Position footer to align with main content area, not spanning full width */
+    margin-left: 50px; /* Default collapsed sidebar width */
+    transition: margin-left 200ms ease;
+    /* Ensure footer has consistent height */
+    min-height: 50px;
+    flex-shrink: 0; /* Prevent footer from shrinking */
+}
+
+/* Adjust footer margin when sidebar is expanded */
+.body-sidebar-container.expanded ~ * .desk-footer,
+.body-sidebar-container.expanded + .main-section .desk-footer {
+    margin-left: var(--left-sidebar-width, 220px);
+}
+
+/* Alternative approach: Position footer within main-section if it exists */
+.main-section .desk-footer {
+    margin-left: 0 !important;
+}
+
+/* Sticky footer positioning - aligns with content area */
+.desk-footer.sticky {
+    position: fixed;
+    bottom: 0;
+    left: 50px; /* Default collapsed sidebar width */
+    right: 0;
+    z-index: 1000;
+    box-shadow: 0 -2px 4px rgba(0,0,0,0.1);
+    margin-left: 0;
+    transition: left 200ms ease-in-out;
+    /* Ensure consistent height for sticky footer */
+    height: 50px;
+    box-sizing: border-box;
+}
+
+/* JavaScript will handle dynamic positioning, but keep CSS fallback */
+.body-sidebar-container.expanded ~ * .desk-footer.sticky,
+body[data-sidebar="1"] .desk-footer.sticky {
+    left: 220px; /* Use fixed value instead of CSS variable for better performance */
+}
+
+/* When footer is sticky, add padding to main section to prevent content overlap */
+.main-section.has-sticky-footer,
+body.has-sticky-footer .main-section {
+    padding-bottom: 60px; /* 50px footer height + 10px buffer */
+}
+
+/* Fallback: If main-section doesn't exist, add padding to body */
+body.has-sticky-footer:not(:has(.main-section)) {
+    padding-bottom: 60px;
+}
+
+/* Ensure content doesn't overlap with sticky footer */
+.main-section.has-sticky-footer {
+    min-height: calc(100vh - 60px); /* Full height minus footer and buffer */
+}
+
+/* Footer left section - copyright text */
+.desk-footer-left {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+/* Footer right section - powered by text */
+.desk-footer-right {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    color: var(--footer-powered-color, #6c757d);
+    font-size: 13px;
+}
+
+/* Footer links styling */
+.desk-footer a {
+    color: var(--footer-link-color, #007bff);
+    text-decoration: none;
+}
+
+.desk-footer a:hover {
+    color: var(--footer-link-hover-color, #0056b3);
+    text-decoration: underline;
+}
+
+/* Responsive footer for mobile and tablets */
+@media (max-width: 992px) {
+    /* On mobile/tablet, footer should span full width as sidebar becomes overlay */
+    .desk-footer {
+        margin-left: 0 !important;
+    }
+    
+    .desk-footer.sticky {
+        left: 0 !important;
+    }
+}
+
+@media (max-width: 768px) {
+    .desk-footer {
+        flex-direction: column;
+        text-align: center;
+        padding: 12px 15px;
+        gap: 8px;
+    }
+    
+    .desk-footer-left,
+    .desk-footer-right {
+        justify-content: center;
+    }
+    
+    .main-section.has-sticky-footer,
+    body.has-sticky-footer .main-section,
+    body.has-sticky-footer:not(:has(.main-section)) {
+        padding-bottom: 70px; /* Reduced padding for mobile */
+    }
+}
+
+.carousel-nav {
+    background: var(--carousel-nav-bg, rgba(0,0,0,0.3));
+    color: var(--carousel-nav-color, #fff);
+    border: none;
+    font-size: var(--carousel-nav-size, 2rem);
+    cursor: pointer;
+    border-radius: var(--carousel-nav-radius, 50%);
+    width: var(--carousel-nav-size, 2rem);
+    height: var(--carousel-nav-size, 2rem);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: var(--carousel-nav-z, 2);
+    pointer-events: auto;
+}
+
+.carousel-nav-left {
+    left: 20px;
+}
+
+.carousel-nav-right {
+    right: 20px;
+}
+

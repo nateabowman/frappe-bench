@@ -1,0 +1,38 @@
+{
+ "allow_roles": [
+  {
+   "role": "Website Manager"
+  }
+ ],
+ "creation": "2020-04-26 13:03:30.405135",
+ "docstatus": 0,
+ "doctype": "Module Onboarding",
+ "documentation_url": "",
+ "idx": 0,
+ "is_complete": 0,
+ "modified": "2026-01-11 17:49:10.915573",
+ "modified_by": "Administrator",
+ "module": "Website",
+ "name": "Website",
+ "owner": "Administrator",
+ "steps": [
+  {
+   "step": "Introduction to Website"
+  },
+  {
+   "step": "Create Blogger"
+  },
+  {
+   "step": "Add Blog Category"
+  },
+  {
+   "step": "Enable Website Tracking"
+  },
+  {
+   "step": "Web Page Tour"
+  }
+ ],
+ "subtitle": "Blogs, Website View Tracking, and more.",
+ "success_message": "Your website is all set up!",
+ "title": "Let's Set Up Your Website."
+}

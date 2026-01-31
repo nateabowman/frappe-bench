@@ -1,0 +1,261 @@
+{
+ "actions": [],
+ "allow_import": 1,
+ "autoname": "naming_series:",
+ "creation": "2024-01-01 00:00:00.000000",
+ "doctype": "DocType",
+ "document_type": "Document",
+ "engine": "InnoDB",
+ "is_submittable": 1,
+ "field_order": [
+  "naming_series",
+  "co_number",
+  "job_site",
+  "subject",
+  "column_break_1",
+  "status",
+  "cor_reference",
+  "effective_date",
+  "description_section",
+  "description",
+  "reason_for_change",
+  "impact_section",
+  "cost_amount",
+  "schedule_days",
+  "column_break_impact",
+  "previous_contract_value",
+  "new_contract_value",
+  "items_section",
+  "items",
+  "signatures_section",
+  "contractor_signature",
+  "contractor_date",
+  "column_break_sig",
+  "owner_signature",
+  "owner_date",
+  "notes_section",
+  "notes",
+  "amended_from"
+ ],
+ "fields": [
+  {
+   "fieldname": "naming_series",
+   "fieldtype": "Select",
+   "label": "Series",
+   "options": "CO-.YYYY.-.#####",
+   "reqd": 1
+  },
+  {
+   "fieldname": "co_number",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "CO Number",
+   "read_only": 1
+  },
+  {
+   "fieldname": "job_site",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "Job Site",
+   "options": "Job Site",
+   "reqd": 1
+  },
+  {
+   "fieldname": "subject",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Subject",
+   "reqd": 1
+  },
+  {
+   "fieldname": "column_break_1",
+   "fieldtype": "Column Break"
+  },
+  {
+   "default": "Draft",
+   "fieldname": "status",
+   "fieldtype": "Select",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "Status",
+   "options": "Draft\nPending Execution\nExecuted\nVoid"
+  },
+  {
+   "fieldname": "cor_reference",
+   "fieldtype": "Link",
+   "label": "COR Reference",
+   "options": "Change Order Request",
+   "read_only": 1
+  },
+  {
+   "fieldname": "effective_date",
+   "fieldtype": "Date",
+   "label": "Effective Date"
+  },
+  {
+   "fieldname": "description_section",
+   "fieldtype": "Section Break",
+   "label": "Description"
+  },
+  {
+   "fieldname": "description",
+   "fieldtype": "Text Editor",
+   "label": "Description"
+  },
+  {
+   "fieldname": "reason_for_change",
+   "fieldtype": "Select",
+   "label": "Reason",
+   "options": "\nOwner Request\nDesign Change\nUnforeseen Conditions\nCode Compliance\nValue Engineering\nError/Omission\nSchedule Acceleration\nOther"
+  },
+  {
+   "fieldname": "impact_section",
+   "fieldtype": "Section Break",
+   "label": "Contract Impact"
+  },
+  {
+   "default": "0",
+   "fieldname": "cost_amount",
+   "fieldtype": "Currency",
+   "in_list_view": 1,
+   "label": "Cost Amount"
+  },
+  {
+   "default": "0",
+   "fieldname": "schedule_days",
+   "fieldtype": "Int",
+   "label": "Schedule Days"
+  },
+  {
+   "fieldname": "column_break_impact",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "previous_contract_value",
+   "fieldtype": "Currency",
+   "label": "Previous Contract Value",
+   "read_only": 1
+  },
+  {
+   "fieldname": "new_contract_value",
+   "fieldtype": "Currency",
+   "label": "New Contract Value",
+   "read_only": 1
+  },
+  {
+   "fieldname": "items_section",
+   "fieldtype": "Section Break",
+   "label": "Cost Breakdown"
+  },
+  {
+   "fieldname": "items",
+   "fieldtype": "Table",
+   "label": "Items",
+   "options": "Change Order Item"
+  },
+  {
+   "fieldname": "signatures_section",
+   "fieldtype": "Section Break",
+   "label": "Signatures"
+  },
+  {
+   "fieldname": "contractor_signature",
+   "fieldtype": "Signature",
+   "label": "Contractor Signature"
+  },
+  {
+   "fieldname": "contractor_date",
+   "fieldtype": "Date",
+   "label": "Contractor Date"
+  },
+  {
+   "fieldname": "column_break_sig",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "owner_signature",
+   "fieldtype": "Signature",
+   "label": "Owner Signature"
+  },
+  {
+   "fieldname": "owner_date",
+   "fieldtype": "Date",
+   "label": "Owner Date"
+  },
+  {
+   "collapsible": 1,
+   "fieldname": "notes_section",
+   "fieldtype": "Section Break",
+   "label": "Notes"
+  },
+  {
+   "fieldname": "notes",
+   "fieldtype": "Text Editor",
+   "label": "Notes"
+  },
+  {
+   "fieldname": "amended_from",
+   "fieldtype": "Link",
+   "label": "Amended From",
+   "no_copy": 1,
+   "options": "Change Order",
+   "print_hide": 1,
+   "read_only": 1
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "links": [],
+ "modified": "2024-01-01 00:00:00.000000",
+ "modified_by": "Administrator",
+ "module": "Construction",
+ "name": "Change Order",
+ "naming_rule": "By \"Naming Series\" field",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "submit": 1,
+   "write": 1
+  },
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "Construction Manager",
+   "share": 1,
+   "submit": 1,
+   "write": 1
+  },
+  {
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "Project Superintendent",
+   "share": 1
+  },
+  {
+   "read": 1,
+   "role": "Projects User"
+  }
+ ],
+ "search_fields": "subject, job_site, status",
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": [],
+ "track_changes": 1
+}

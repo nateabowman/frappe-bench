@@ -1,0 +1,22 @@
+{
+ "action": "Create Entry",
+ "action_label": "Learn more about Production Planning",
+ "creation": "2021-08-04 17:33:06.551077",
+ "description": "",
+ "docstatus": 0,
+ "doctype": "Onboarding Step",
+ "idx": 0,
+ "intro_video_url": "",
+ "is_complete": 0,
+ "is_single": 0,
+ "is_skipped": 0,
+ "modified": "2026-01-11 17:40:06.450347",
+ "modified_by": "Administrator",
+ "name": "Production Planning",
+ "owner": "Administrator",
+ "reference_document": "Production Plan",
+ "show_form_tour": 0,
+ "show_full_form": 1,
+ "title": "Production Planning",
+ "validate_action": 1
+}

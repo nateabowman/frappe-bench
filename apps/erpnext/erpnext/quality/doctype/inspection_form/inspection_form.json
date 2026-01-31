@@ -1,0 +1,130 @@
+{
+ "actions": [],
+ "allow_import": 1,
+ "autoname": "IF-.YYYY.-.#####",
+ "creation": "2024-01-01 00:00:00",
+ "doctype": "DocType",
+ "document_type": "Document",
+ "engine": "InnoDB",
+ "field_order": [
+  "inspection_details",
+  "inspection_name",
+  "project",
+  "inspection_type",
+  "column_break_1",
+  "inspection_date",
+  "inspected_by",
+  "status",
+  "inspection_section",
+  "inspection_items",
+  "photos",
+  "column_break_2",
+  "defects_found",
+  "corrective_actions"
+ ],
+ "fields": [
+  {
+   "fieldname": "inspection_details",
+   "fieldtype": "Section Break",
+   "label": "Inspection Details"
+  },
+  {
+   "fieldname": "inspection_name",
+   "fieldtype": "Data",
+   "label": "Inspection Name",
+   "reqd": 1
+  },
+  {
+   "fieldname": "project",
+   "fieldtype": "Link",
+   "label": "Job Site",
+   "options": "Project",
+   "reqd": 1
+  },
+  {
+   "fieldname": "inspection_type",
+   "fieldtype": "Select",
+   "label": "Inspection Type",
+   "options": "Quality Control\nSafety\nCompliance\nMaterial\nEquipment\nFinal Inspection"
+  },
+  {
+   "fieldname": "column_break_1",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "inspection_date",
+   "fieldtype": "Date",
+   "label": "Inspection Date",
+   "reqd": 1
+  },
+  {
+   "fieldname": "inspected_by",
+   "fieldtype": "Link",
+   "label": "Inspected By",
+   "options": "User",
+   "reqd": 1
+  },
+  {
+   "fieldname": "status",
+   "fieldtype": "Select",
+   "label": "Status",
+   "options": "Pending\nIn Progress\nPassed\nFailed\nRequires Correction"
+  },
+  {
+   "fieldname": "inspection_section",
+   "fieldtype": "Section Break",
+   "label": "Inspection Items"
+  },
+  {
+   "fieldname": "inspection_items",
+   "fieldtype": "Table",
+   "label": "Inspection Items",
+   "options": "Inspection Item"
+  },
+  {
+   "fieldname": "photos",
+   "fieldtype": "Attach",
+   "label": "Photos"
+  },
+  {
+   "fieldname": "column_break_2",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "defects_found",
+   "fieldtype": "Text Editor",
+   "label": "Defects Found"
+  },
+  {
+   "fieldname": "corrective_actions",
+   "fieldtype": "Text Editor",
+   "label": "Corrective Actions"
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "links": [],
+ "modified": "2024-01-01 00:00:00",
+ "modified_by": "Administrator",
+ "module": "Projects",
+ "name": "Inspection Form",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": [],
+ "track_changes": 1
+}
+

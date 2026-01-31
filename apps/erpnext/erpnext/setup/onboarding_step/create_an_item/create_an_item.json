@@ -1,0 +1,23 @@
+{
+ "action": "Create Entry",
+ "action_label": "Create a new Item",
+ "creation": "2021-05-17 13:47:18.515052",
+ "description": "",
+ "docstatus": 0,
+ "doctype": "Onboarding Step",
+ "form_tour": "Item General",
+ "idx": 1,
+ "intro_video_url": "",
+ "is_complete": 0,
+ "is_single": 0,
+ "is_skipped": 0,
+ "modified": "2026-01-11 17:40:06.686299",
+ "modified_by": "Administrator",
+ "name": "Create an Item",
+ "owner": "Administrator",
+ "reference_document": "Item",
+ "show_form_tour": 1,
+ "show_full_form": 0,
+ "title": "Create an Item",
+ "validate_action": 1
+}

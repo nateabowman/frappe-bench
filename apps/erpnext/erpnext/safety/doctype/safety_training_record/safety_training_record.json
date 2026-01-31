@@ -1,0 +1,53 @@
+{
+ "actions": [],
+ "allow_import": 1,
+ "autoname": "field:training_name",
+ "creation": "2024-01-01 00:00:00",
+ "doctype": "DocType",
+ "document_type": "Setup",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "training_name",
+  "training_date",
+  "employees_trained",
+  "certification_expiry"
+ ],
+ "fields": [
+  {
+   "fieldname": "training_name",
+   "fieldtype": "Data",
+   "label": "Training Name",
+   "reqd": 1
+  },
+  {
+   "fieldname": "training_date",
+   "fieldtype": "Date",
+   "label": "Training Date"
+  },
+  {
+   "fieldname": "employees_trained",
+   "fieldtype": "Int",
+   "label": "Number of Employees Trained"
+  },
+  {
+   "fieldname": "certification_expiry",
+   "fieldtype": "Date",
+   "label": "Certification Expiry Date"
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "istable": 1,
+ "links": [],
+ "modified": "2024-01-01 00:00:00",
+ "modified_by": "Administrator",
+ "module": "Projects",
+ "name": "Safety Training Record",
+ "owner": "Administrator",
+ "permissions": [],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": [],
+ "track_changes": 1
+}
+

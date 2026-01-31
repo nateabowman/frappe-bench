@@ -1,0 +1,339 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "autoname": "format:{bank_account}",
+ "creation": "2024-12-04 14:42:27.902987",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "account_tab",
+  "disabled",
+  "section_break_drmq",
+  "bank_account",
+  "column_break_pzyt",
+  "company",
+  "automations_section",
+  "auto_generate_entries",
+  "auto_generate_threshold",
+  "due_date_offset",
+  "column_break_cmbf",
+  "auto_submit_entries",
+  "auto_submit_threshold",
+  "section_break_rymn",
+  "email_template",
+  "column_break_qtne",
+  "email_to",
+  "days_sections",
+  "automate_on_monday",
+  "automate_on_friday",
+  "column_break_waeu",
+  "automate_on_tuesday",
+  "automate_on_saturday",
+  "column_break_szcn",
+  "automate_on_wednesday",
+  "automate_on_sunday",
+  "column_break_fjvk",
+  "automate_on_thursday",
+  "section_break_kpid",
+  "processing_time",
+  "column_break_vxwb",
+  "last_execution",
+  "configurations_section",
+  "ignore_blocked_suppliers",
+  "limit_payment_to_outstanding",
+  "group_payments_by_supplier",
+  "column_break_eldq",
+  "ignore_blocked_invoices",
+  "exclude_foreign_currency_invoices",
+  "claim_early_payment_discount"
+ ],
+ "fields": [
+  {
+   "default": "1",
+   "description": "Auto generate payment entries based on outstanding purchase invoices based on set configurations",
+   "fieldname": "auto_generate_entries",
+   "fieldtype": "Check",
+   "label": "Auto Generate Payment Entries"
+  },
+  {
+   "default": "0",
+   "depends_on": "eval: doc.auto_generate_entries",
+   "description": "Payments may be auto processed on submit if you have an active integration",
+   "fieldname": "auto_submit_entries",
+   "fieldtype": "Check",
+   "label": "Auto Submit Payment Entries"
+  },
+  {
+   "fieldname": "column_break_cmbf",
+   "fieldtype": "Column Break"
+  },
+  {
+   "depends_on": "eval: doc.auto_generate_entries",
+   "fieldname": "days_sections",
+   "fieldtype": "Section Break",
+   "hide_border": 1,
+   "label": "Days for Automation"
+  },
+  {
+   "default": "0",
+   "fieldname": "automate_on_monday",
+   "fieldtype": "Check",
+   "label": "Monday"
+  },
+  {
+   "default": "0",
+   "fieldname": "automate_on_friday",
+   "fieldtype": "Check",
+   "label": "Friday"
+  },
+  {
+   "fieldname": "column_break_waeu",
+   "fieldtype": "Column Break"
+  },
+  {
+   "default": "0",
+   "fieldname": "automate_on_tuesday",
+   "fieldtype": "Check",
+   "label": "Tuesday"
+  },
+  {
+   "default": "0",
+   "fieldname": "automate_on_saturday",
+   "fieldtype": "Check",
+   "label": "Saturday"
+  },
+  {
+   "fieldname": "column_break_szcn",
+   "fieldtype": "Column Break"
+  },
+  {
+   "default": "0",
+   "fieldname": "automate_on_wednesday",
+   "fieldtype": "Check",
+   "label": "Wednesday"
+  },
+  {
+   "default": "0",
+   "fieldname": "automate_on_sunday",
+   "fieldtype": "Check",
+   "label": "Sunday"
+  },
+  {
+   "fieldname": "column_break_fjvk",
+   "fieldtype": "Column Break"
+  },
+  {
+   "default": "0",
+   "fieldname": "automate_on_thursday",
+   "fieldtype": "Check",
+   "label": "Thursday"
+  },
+  {
+   "fieldname": "account_tab",
+   "fieldtype": "Tab Break",
+   "label": "Account",
+   "no_copy": 1
+  },
+  {
+   "fieldname": "bank_account",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "Bank Account",
+   "no_copy": 1,
+   "options": "Bank Account",
+   "reqd": 1,
+   "unique": 1
+  },
+  {
+   "fieldname": "column_break_pzyt",
+   "fieldtype": "Column Break"
+  },
+  {
+   "depends_on": "eval: doc.bank_account",
+   "fetch_from": "bank_account.company",
+   "fieldname": "company",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "Company",
+   "mandatory_depends_on": "eval: doc.bank_account",
+   "no_copy": 1,
+   "options": "Company",
+   "read_only": 1,
+   "unique": 1
+  },
+  {
+   "default": "0",
+   "fieldname": "disabled",
+   "fieldtype": "Check",
+   "label": "Disabled"
+  },
+  {
+   "fieldname": "section_break_drmq",
+   "fieldtype": "Section Break"
+  },
+  {
+   "depends_on": "eval: doc.auto_generate_entries",
+   "fieldname": "configurations_section",
+   "fieldtype": "Section Break",
+   "label": "Configurations"
+  },
+  {
+   "default": "1",
+   "fieldname": "ignore_blocked_suppliers",
+   "fieldtype": "Check",
+   "label": "Ignore Blocked Suppliers",
+   "read_only": 1
+  },
+  {
+   "fieldname": "column_break_eldq",
+   "fieldtype": "Column Break"
+  },
+  {
+   "default": "1",
+   "description": "Payment will be restricted to the lesser amount between total outstanding to the supplier and total due invoices",
+   "fieldname": "limit_payment_to_outstanding",
+   "fieldtype": "Check",
+   "label": "Limit Payment to Outstanding"
+  },
+  {
+   "default": "1",
+   "description": "This feature enables timely payments to secure cash discounts from vendors according to the payment terms in purchase invoices",
+   "fieldname": "claim_early_payment_discount",
+   "fieldtype": "Check",
+   "label": "Claim Early Payment Discount"
+  },
+  {
+   "default": "1",
+   "fieldname": "exclude_foreign_currency_invoices",
+   "fieldtype": "Check",
+   "label": "Exclude Foreign Currency Invoices",
+   "read_only": 1
+  },
+  {
+   "default": "1",
+   "fieldname": "ignore_blocked_invoices",
+   "fieldtype": "Check",
+   "label": "Ignore Blocked Invoices",
+   "read_only": 1
+  },
+  {
+   "fieldname": "automations_section",
+   "fieldtype": "Section Break",
+   "hide_border": 1,
+   "label": "Automations"
+  },
+  {
+   "default": "0",
+   "depends_on": "eval: doc.auto_generate_entries",
+   "description": "Payment entries upto this threshold will be generated automatically. Set zero to generate all entries.",
+   "fieldname": "auto_generate_threshold",
+   "fieldtype": "Currency",
+   "label": "Auto Generate Threshold"
+  },
+  {
+   "default": "0",
+   "depends_on": "eval: doc.auto_submit_entries",
+   "description": "Payment entries upto this threshold will be submitted automatically. Set zero to submit all entries.",
+   "fieldname": "auto_submit_threshold",
+   "fieldtype": "Currency",
+   "label": "Auto Submit Threshold"
+  },
+  {
+   "default": "0",
+   "depends_on": "eval: doc.auto_generate_entries",
+   "description": "Adjusts the due date by the specified number of days",
+   "fieldname": "due_date_offset",
+   "fieldtype": "Int",
+   "label": "Due Date Offset (Days)"
+  },
+  {
+   "default": "1",
+   "fieldname": "group_payments_by_supplier",
+   "fieldtype": "Check",
+   "label": "Group Payments by Supplier"
+  },
+  {
+   "depends_on": "eval: doc.auto_generate_entries",
+   "description": "Email notification will be triggered when payments are auto generated",
+   "fieldname": "email_template",
+   "fieldtype": "Link",
+   "label": "Email Template",
+   "options": "Email Template"
+  },
+  {
+   "fieldname": "section_break_rymn",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "column_break_qtne",
+   "fieldtype": "Column Break"
+  },
+  {
+   "description": "Email notification will be sent to all users with this role",
+   "fieldname": "email_to",
+   "fieldtype": "Link",
+   "label": "Email To",
+   "options": "Role"
+  },
+  {
+   "description": "Time during the day when processing should be done",
+   "fieldname": "processing_time",
+   "fieldtype": "Time",
+   "label": "Processing Time"
+  },
+  {
+   "fieldname": "section_break_kpid",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "column_break_vxwb",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "last_execution",
+   "fieldtype": "Datetime",
+   "label": "Last Execution",
+   "read_only": 1
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "links": [],
+ "modified": "2025-03-01 10:44:27.963980",
+ "modified_by": "Administrator",
+ "module": "Payments Processor",
+ "name": "Payments Processor Configuration",
+ "naming_rule": "Expression",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "Administrator",
+   "share": 1,
+   "write": 1
+  },
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "Auto Payments Manager",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "row_format": "Dynamic",
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": [],
+ "title_field": "bank_account"
+}

@@ -1,0 +1,23 @@
+{
+ "action": "Create Entry",
+ "action_label": "Let's create a new Asset item",
+ "creation": "2021-08-13 14:27:07.277167",
+ "description": "",
+ "docstatus": 0,
+ "doctype": "Onboarding Step",
+ "form_tour": "Item",
+ "idx": 0,
+ "intro_video_url": "",
+ "is_complete": 0,
+ "is_single": 0,
+ "is_skipped": 0,
+ "modified": "2026-01-11 17:40:06.344303",
+ "modified_by": "Administrator",
+ "name": "Asset Item",
+ "owner": "Administrator",
+ "reference_document": "Item",
+ "show_form_tour": 1,
+ "show_full_form": 1,
+ "title": "Create an Asset Item",
+ "validate_action": 1
+}

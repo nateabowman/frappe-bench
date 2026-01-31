@@ -1,0 +1,55 @@
+{
+ "actions": [],
+ "allow_import": 1,
+ "autoname": "field:fuel_date",
+ "creation": "2024-01-01 00:00:00",
+ "doctype": "DocType",
+ "document_type": "Setup",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "fuel_date",
+  "gallons",
+  "cost_per_gallon",
+  "total_cost"
+ ],
+ "fields": [
+  {
+   "fieldname": "fuel_date",
+   "fieldtype": "Date",
+   "label": "Fuel Date",
+   "reqd": 1
+  },
+  {
+   "fieldname": "gallons",
+   "fieldtype": "Float",
+   "label": "Gallons",
+   "reqd": 1
+  },
+  {
+   "fieldname": "cost_per_gallon",
+   "fieldtype": "Currency",
+   "label": "Cost per Gallon"
+  },
+  {
+   "fieldname": "total_cost",
+   "fieldtype": "Currency",
+   "label": "Total Cost",
+   "read_only": 1
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "istable": 1,
+ "links": [],
+ "modified": "2024-01-01 00:00:00",
+ "modified_by": "Administrator",
+ "module": "Projects",
+ "name": "Equipment Fuel Record",
+ "owner": "Administrator",
+ "permissions": [],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": [],
+ "track_changes": 1
+}
+

@@ -1,0 +1,99 @@
+{
+ "actions": [],
+ "allow_import": 1,
+ "autoname": "RET-.YYYY.-.#####",
+ "creation": "2024-01-01 00:00:00",
+ "doctype": "DocType",
+ "document_type": "Document",
+ "engine": "InnoDB",
+ "field_order": [
+  "retainage_details",
+  "retainage_name",
+  "project",
+  "invoice",
+  "column_break_1",
+  "retainage_percent",
+  "retainage_amount",
+  "release_date",
+  "status"
+ ],
+ "fields": [
+  {
+   "fieldname": "retainage_details",
+   "fieldtype": "Section Break",
+   "label": "Retainage Details"
+  },
+  {
+   "fieldname": "retainage_name",
+   "fieldtype": "Data",
+   "label": "Retainage Name",
+   "reqd": 1
+  },
+  {
+   "fieldname": "project",
+   "fieldtype": "Link",
+   "label": "Job Site",
+   "options": "Project",
+   "reqd": 1
+  },
+  {
+   "fieldname": "invoice",
+   "fieldtype": "Link",
+   "label": "Sales Invoice",
+   "options": "Sales Invoice"
+  },
+  {
+   "fieldname": "column_break_1",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "retainage_percent",
+   "fieldtype": "Percent",
+   "label": "Retainage Percent",
+   "reqd": 1
+  },
+  {
+   "fieldname": "retainage_amount",
+   "fieldtype": "Currency",
+   "label": "Retainage Amount",
+   "read_only": 1
+  },
+  {
+   "fieldname": "release_date",
+   "fieldtype": "Date",
+   "label": "Release Date"
+  },
+  {
+   "fieldname": "status",
+   "fieldtype": "Select",
+   "label": "Status",
+   "options": "Held\nReleased\nPartial Release"
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "links": [],
+ "modified": "2024-01-01 00:00:00",
+ "modified_by": "Administrator",
+ "module": "Projects",
+ "name": "Retainage",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": [],
+ "track_changes": 1
+}
+

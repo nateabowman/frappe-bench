@@ -1,0 +1,143 @@
+{
+ "actions": [],
+ "allow_import": 1,
+ "allow_rename": 1,
+ "autoname": "format:{platform}-{reference_type}-{reference_name}-{####}",
+ "creation": "2024-01-01 00:00:00.000000",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "platform",
+  "reference_type",
+  "reference_name",
+  "profile_url",
+  "username",
+  "section_break_1",
+  "followers_count",
+  "following_count",
+  "posts_count",
+  "engagement_rate",
+  "section_break_2",
+  "last_synced_at",
+  "profile_data",
+  "is_active"
+ ],
+ "fields": [
+  {
+   "fieldname": "platform",
+   "fieldtype": "Select",
+   "label": "Platform",
+   "options": "Facebook\nTwitter\nLinkedIn\nInstagram\nYouTube\nTikTok\nOther",
+   "reqd": 1
+  },
+  {
+   "fieldname": "reference_type",
+   "fieldtype": "Select",
+   "label": "Reference Type",
+   "options": "CRM Lead\nCRM Deal\nCRM Contact\nCRM Organization",
+   "reqd": 1
+  },
+  {
+   "fieldname": "reference_name",
+   "fieldtype": "Dynamic Link",
+   "label": "Reference Name",
+   "options": "reference_type",
+   "reqd": 1
+  },
+  {
+   "fieldname": "profile_url",
+   "fieldtype": "Data",
+   "label": "Profile URL"
+  },
+  {
+   "fieldname": "username",
+   "fieldtype": "Data",
+   "label": "Username"
+  },
+  {
+   "fieldname": "section_break_1",
+   "fieldtype": "Section Break",
+   "label": "Statistics"
+  },
+  {
+   "fieldname": "followers_count",
+   "fieldtype": "Int",
+   "label": "Followers Count"
+  },
+  {
+   "fieldname": "following_count",
+   "fieldtype": "Int",
+   "label": "Following Count"
+  },
+  {
+   "fieldname": "posts_count",
+   "fieldtype": "Int",
+   "label": "Posts Count"
+  },
+  {
+   "fieldname": "engagement_rate",
+   "fieldtype": "Percent",
+   "label": "Engagement Rate"
+  },
+  {
+   "fieldname": "section_break_2",
+   "fieldtype": "Section Break",
+   "label": "Metadata"
+  },
+  {
+   "fieldname": "last_synced_at",
+   "fieldtype": "Datetime",
+   "label": "Last Synced At"
+  },
+  {
+   "fieldname": "profile_data",
+   "fieldtype": "JSON",
+   "label": "Profile Data"
+  },
+  {
+   "fieldname": "is_active",
+   "fieldtype": "Check",
+   "label": "Is Active",
+   "default": 1
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "links": [],
+ "modified": "2024-01-01 00:00:00.000000",
+ "modified_by": "Administrator",
+ "module": "CRM",
+ "name": "CRM Social Profile",
+ "naming_rule": "By \"Naming Series\" field",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  },
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "CRM User",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": [],
+ "track_changes": 1
+}

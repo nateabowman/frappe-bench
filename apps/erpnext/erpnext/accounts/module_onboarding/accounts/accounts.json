@@ -1,0 +1,47 @@
+{
+ "allow_roles": [
+  {
+   "role": "Accounts Manager"
+  },
+  {
+   "role": "Accounts User"
+  }
+ ],
+ "creation": "2020-05-13 19:03:32.564049",
+ "docstatus": 0,
+ "doctype": "Module Onboarding",
+ "documentation_url": "",
+ "idx": 0,
+ "is_complete": 0,
+ "modified": "2026-01-11 17:49:11.218105",
+ "modified_by": "Administrator",
+ "module": "Accounts",
+ "name": "Accounts",
+ "owner": "Administrator",
+ "steps": [
+  {
+   "step": "Chart of Accounts"
+  },
+  {
+   "step": "Setup Taxes"
+  },
+  {
+   "step": "Accounts Settings"
+  },
+  {
+   "step": "Cost Centers for Report and Budgeting"
+  },
+  {
+   "step": "Create Your First Purchase Invoice"
+  },
+  {
+   "step": "Updating Opening Balances"
+  },
+  {
+   "step": "Financial Statements"
+  }
+ ],
+ "subtitle": "Accounts, Invoices, Taxation, and more.",
+ "success_message": "The Accounts Module is all set up!",
+ "title": "Let's Set Up Your Accounts and Taxes."
+}

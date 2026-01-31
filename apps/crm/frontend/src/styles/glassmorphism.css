@@ -1,0 +1,213 @@
+/* Glassmorphism Specific Styles */
+
+/* Performance Optimizations */
+.glass,
+.glass-subtle,
+.glass-strong,
+.glass-card,
+.glass-panel,
+.glass-modal {
+  transform: translateZ(0);
+  -webkit-transform: translateZ(0);
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+  perspective: 1000px;
+  -webkit-perspective: 1000px;
+}
+
+/* Glass Animations */
+@keyframes glassShimmer {
+  0% {
+    background-position: -1000px 0;
+  }
+  100% {
+    background-position: 1000px 0;
+  }
+}
+
+.glass-shimmer {
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.1),
+    transparent
+  );
+  background-size: 1000px 100%;
+  animation: glassShimmer 2s infinite;
+}
+
+/* Glass Gradient Overlays */
+.glass-gradient-primary {
+  background: linear-gradient(
+    135deg,
+    rgba(14, 165, 233, 0.1) 0%,
+    rgba(3, 105, 161, 0.1) 100%
+  );
+}
+
+.glass-gradient-success {
+  background: linear-gradient(
+    135deg,
+    rgba(34, 197, 94, 0.1) 0%,
+    rgba(21, 128, 61, 0.1) 100%
+  );
+}
+
+.glass-gradient-warning {
+  background: linear-gradient(
+    135deg,
+    rgba(245, 158, 11, 0.1) 0%,
+    rgba(217, 119, 6, 0.1) 100%
+  );
+}
+
+.glass-gradient-danger {
+  background: linear-gradient(
+    135deg,
+    rgba(239, 68, 68, 0.1) 0%,
+    rgba(220, 38, 38, 0.1) 100%
+  );
+}
+
+/* Glass Border Animations */
+.glass-border-animate {
+  position: relative;
+  overflow: hidden;
+}
+
+.glass-border-animate::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.3),
+    transparent
+  );
+  transition: left 0.5s;
+}
+
+.glass-border-animate:hover::before {
+  left: 100%;
+}
+
+/* Glass Text Effects */
+.glass-text {
+  background: linear-gradient(
+    135deg,
+    rgba(255, 255, 255, 0.9) 0%,
+    rgba(255, 255, 255, 0.7) 100%
+  );
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+[data-theme="dark"] .glass-text {
+  background: linear-gradient(
+    135deg,
+    rgba(255, 255, 255, 0.95) 0%,
+    rgba(255, 255, 255, 0.8) 100%
+  );
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Glass Scrollbar */
+.glass-scrollbar::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+.glass-scrollbar::-webkit-scrollbar-track {
+  background: var(--glass-bg-subtle);
+  border-radius: 10px;
+}
+
+.glass-scrollbar::-webkit-scrollbar-thumb {
+  background: var(--glass-bg);
+  border: 1px solid var(--glass-border);
+  border-radius: 10px;
+  backdrop-filter: var(--backdrop-blur);
+  -webkit-backdrop-filter: var(--backdrop-blur);
+}
+
+.glass-scrollbar::-webkit-scrollbar-thumb:hover {
+  background: var(--glass-bg-hover);
+}
+
+/* Glass Loading States */
+.glass-skeleton {
+  @apply glass-subtle;
+  position: relative;
+  overflow: hidden;
+}
+
+.glass-skeleton::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.2),
+    transparent
+  );
+  animation: glassShimmer 1.5s infinite;
+}
+
+[data-theme="dark"] .glass-skeleton::after {
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.1),
+    transparent
+  );
+}
+
+/* Glass Focus States */
+.glass-focus:focus {
+  outline: none;
+  box-shadow: var(--glass-shadow-lg), 0 0 0 3px rgba(14, 165, 233, 0.2);
+  border-color: rgba(14, 165, 233, 0.5);
+}
+
+/* Glass Disabled States */
+.glass:disabled,
+.glass-button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  pointer-events: none;
+}
+
+/* Glass Responsive Adjustments */
+@media (max-width: 768px) {
+  .glass,
+  .glass-card,
+  .glass-panel {
+    backdrop-filter: var(--backdrop-blur-sm);
+    -webkit-backdrop-filter: var(--backdrop-blur-sm);
+  }
+}
+
+/* Glass Print Styles */
+@media print {
+  .glass,
+  .glass-card,
+  .glass-panel,
+  .glass-modal {
+    background: white;
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
+    border: 1px solid #e5e7eb;
+    box-shadow: none;
+  }
+}

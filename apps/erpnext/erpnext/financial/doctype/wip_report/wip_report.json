@@ -1,0 +1,139 @@
+{
+ "actions": [],
+ "allow_import": 1,
+ "autoname": "WIP-.YYYY.-.#####",
+ "creation": "2024-01-01 00:00:00",
+ "doctype": "DocType",
+ "document_type": "Document",
+ "engine": "InnoDB",
+ "field_order": [
+  "report_details",
+  "report_name",
+  "project",
+  "reporting_period",
+  "column_break_1",
+  "total_contract_value",
+  "total_costs_incurred",
+  "total_billed",
+  "wip_calculation",
+  "costs_incurred",
+  "percent_complete",
+  "column_break_2",
+  "revenue_recognized",
+  "unbilled_revenue",
+  "over_billings"
+ ],
+ "fields": [
+  {
+   "fieldname": "report_details",
+   "fieldtype": "Section Break",
+   "label": "Report Details"
+  },
+  {
+   "fieldname": "report_name",
+   "fieldtype": "Data",
+   "label": "Report Name",
+   "reqd": 1
+  },
+  {
+   "fieldname": "project",
+   "fieldtype": "Link",
+   "label": "Job Site",
+   "options": "Project",
+   "reqd": 1
+  },
+  {
+   "fieldname": "reporting_period",
+   "fieldtype": "Select",
+   "label": "Reporting Period",
+   "options": "Monthly\nQuarterly\nAnnual"
+  },
+  {
+   "fieldname": "column_break_1",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "total_contract_value",
+   "fieldtype": "Currency",
+   "label": "Total Contract Value",
+   "reqd": 1
+  },
+  {
+   "fieldname": "total_costs_incurred",
+   "fieldtype": "Currency",
+   "label": "Total Costs Incurred",
+   "read_only": 1
+  },
+  {
+   "fieldname": "total_billed",
+   "fieldtype": "Currency",
+   "label": "Total Billed",
+   "read_only": 1
+  },
+  {
+   "fieldname": "wip_calculation",
+   "fieldtype": "Section Break",
+   "label": "WIP Calculation"
+  },
+  {
+   "fieldname": "costs_incurred",
+   "fieldtype": "Currency",
+   "label": "Costs Incurred to Date",
+   "read_only": 1
+  },
+  {
+   "fieldname": "percent_complete",
+   "fieldtype": "Percent",
+   "label": "Percent Complete",
+   "read_only": 1
+  },
+  {
+   "fieldname": "column_break_2",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "revenue_recognized",
+   "fieldtype": "Currency",
+   "label": "Revenue Recognized",
+   "read_only": 1
+  },
+  {
+   "fieldname": "unbilled_revenue",
+   "fieldtype": "Currency",
+   "label": "Unbilled Revenue (WIP Asset)",
+   "read_only": 1
+  },
+  {
+   "fieldname": "over_billings",
+   "fieldtype": "Currency",
+   "label": "Over Billings (WIP Liability)",
+   "read_only": 1
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "links": [],
+ "modified": "2024-01-01 00:00:00",
+ "modified_by": "Administrator",
+ "module": "Projects",
+ "name": "WIP Report",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": [],
+ "track_changes": 1
+}
+

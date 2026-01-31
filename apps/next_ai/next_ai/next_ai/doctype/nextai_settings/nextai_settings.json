@@ -1,0 +1,118 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "creation": "2025-06-10 19:53:41.290936",
+ "default_view": "List",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "platform",
+  "column_break_klhgl",
+  "model_name",
+  "auto_switch_model_on_rpm",
+  "key_settings_section",
+  "api_key",
+  "column_break_aba1z",
+  "is_subscription",
+  "is_free",
+  "help_tab",
+  "about"
+ ],
+ "fields": [
+  {
+   "default": "Gemini",
+   "fieldname": "platform",
+   "fieldtype": "Select",
+   "in_list_view": 1,
+   "label": "Platform",
+   "options": "Gemini",
+   "reqd": 1
+  },
+  {
+   "fieldname": "model_name",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "Model Name",
+   "options": "NextAI Model Info",
+   "reqd": 1
+  },
+  {
+   "fieldname": "key_settings_section",
+   "fieldtype": "Section Break",
+   "label": "Key Settings"
+  },
+  {
+   "description": "You can generate an API key for Gemini by visiting the following link: https://aistudio.google.com/apikey",
+   "fieldname": "api_key",
+   "fieldtype": "Password",
+   "in_list_view": 1,
+   "label": "API Key",
+   "reqd": 1
+  },
+  {
+   "fieldname": "column_break_aba1z",
+   "fieldtype": "Column Break"
+  },
+  {
+   "default": "0",
+   "description": "Check if the API key is a subscription key",
+   "fieldname": "is_subscription",
+   "fieldtype": "Check",
+   "label": "Is Subscription"
+  },
+  {
+   "default": "1",
+   "description": "Check if the API key is a free key.",
+   "fieldname": "is_free",
+   "fieldtype": "Check",
+   "label": "Is Free"
+  },
+  {
+   "fieldname": "column_break_klhgl",
+   "fieldtype": "Column Break"
+  },
+  {
+   "default": "1",
+   "description": "Recommended for Free Tier Users:\nIf you're using the free plan, this feature will automatically switch to another available model when the current one reaches its limit, so your requests can still be handled.\n\nNote: If all available models also reach their RPM limit, it's recommended to purchase a subscription for uninterrupted access.",
+   "fieldname": "auto_switch_model_on_rpm",
+   "fieldtype": "Check",
+   "label": "Automatically switch the model when the RPM threshold is exceeded."
+  },
+  {
+   "fieldname": "help_tab",
+   "fieldtype": "Tab Break",
+   "label": "Help"
+  },
+  {
+   "fieldname": "about",
+   "fieldtype": "HTML",
+   "label": "About",
+   "options": "\n\n  <div class=\"container py-5\">\n    <!-- Limitation and Use of NextAI -->\n    <div class=\"mb-4 p-4 border rounded bg-white shadow-sm\">\n      <h3 class=\"mb-3\">Limitation and Use of NextAI</h3>\n      <ul class=\"list-group list-group-flush\">\n        <li class=\"list-group-item\">This is very useful for generating content about a topic.</li>\n        <li class=\"list-group-item\">Useful for correcting grammar.</li>\n        <li class=\"list-group-item\">This is used to generate content and correct the content. The user should keep in mind that the LLM can make mistakes.</li>\n      </ul>\n    </div>\n\n    <!-- How to Reach Us -->\n    <div class=\"p-4 border rounded bg-white shadow-sm\">\n      <h3 class=\"mb-3\">How to Reach Us</h3>\n      <p>Use this link to submit your queries, we will reach out to you:</p>\n      <a class=\"btn btn-primary\" href=\"https://www.erpnextai.in/support\" target=\"_blank\">\n         Submit Your Query\n      </a>\n    </div>\n  </div>"
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "issingle": 1,
+ "links": [],
+ "modified": "2025-07-30 20:09:18.852819",
+ "modified_by": "Administrator",
+ "module": "Next AI",
+ "name": "NextAI Settings",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "print": 1,
+   "read": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": [],
+ "track_changes": 1
+}

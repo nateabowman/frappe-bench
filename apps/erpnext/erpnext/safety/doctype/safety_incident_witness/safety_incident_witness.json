@@ -1,0 +1,47 @@
+{
+ "actions": [],
+ "allow_import": 1,
+ "autoname": "field:witness_name",
+ "creation": "2024-01-01 00:00:00",
+ "doctype": "DocType",
+ "document_type": "Setup",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "witness_name",
+  "witness_contact",
+  "witness_statement"
+ ],
+ "fields": [
+  {
+   "fieldname": "witness_name",
+   "fieldtype": "Data",
+   "label": "Witness Name",
+   "reqd": 1
+  },
+  {
+   "fieldname": "witness_contact",
+   "fieldtype": "Data",
+   "label": "Contact Information"
+  },
+  {
+   "fieldname": "witness_statement",
+   "fieldtype": "Text",
+   "label": "Witness Statement"
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "istable": 1,
+ "links": [],
+ "modified": "2024-01-01 00:00:00",
+ "modified_by": "Administrator",
+ "module": "Projects",
+ "name": "Safety Incident Witness",
+ "owner": "Administrator",
+ "permissions": [],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": [],
+ "track_changes": 1
+}
+

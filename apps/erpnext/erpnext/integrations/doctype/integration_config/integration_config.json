@@ -1,0 +1,104 @@
+{
+ "actions": [],
+ "allow_import": 1,
+ "autoname": "INT-.YYYY.-.#####",
+ "creation": "2024-01-01 00:00:00",
+ "doctype": "DocType",
+ "document_type": "Setup",
+ "engine": "InnoDB",
+ "field_order": [
+  "integration_details",
+  "integration_name",
+  "integration_type",
+  "status",
+  "column_break_1",
+  "api_key",
+  "api_secret",
+  "webhook_url",
+  "mapping_section",
+  "field_mappings"
+ ],
+ "fields": [
+  {
+   "fieldname": "integration_details",
+   "fieldtype": "Section Break",
+   "label": "Integration Details"
+  },
+  {
+   "fieldname": "integration_name",
+   "fieldtype": "Data",
+   "label": "Integration Name",
+   "reqd": 1
+  },
+  {
+   "fieldname": "integration_type",
+   "fieldtype": "Select",
+   "label": "Integration Type",
+   "options": "QuickBooks\nProcore\nPlanGrid\nOn-Screen Takeoff\nPlanSwift\nSage\nADP\nPaychex\nCustom API\nWebhook",
+   "reqd": 1
+  },
+  {
+   "fieldname": "status",
+   "fieldtype": "Select",
+   "label": "Status",
+   "options": "Active\nInactive\nError"
+  },
+  {
+   "fieldname": "column_break_1",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "api_key",
+   "fieldtype": "Password",
+   "label": "API Key"
+  },
+  {
+   "fieldname": "api_secret",
+   "fieldtype": "Password",
+   "label": "API Secret"
+  },
+  {
+   "fieldname": "webhook_url",
+   "fieldtype": "Data",
+   "label": "Webhook URL",
+   "options": "URL"
+  },
+  {
+   "fieldname": "mapping_section",
+   "fieldtype": "Section Break",
+   "label": "Field Mappings"
+  },
+  {
+   "fieldname": "field_mappings",
+   "fieldtype": "Code",
+   "label": "Field Mappings (JSON)",
+   "options": "JSON"
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "links": [],
+ "modified": "2024-01-01 00:00:00",
+ "modified_by": "Administrator",
+ "module": "Projects",
+ "name": "Integration Config",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": [],
+ "track_changes": 1
+}
+

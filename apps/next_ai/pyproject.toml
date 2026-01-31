@@ -1,0 +1,20 @@
+[project]
+name = "next_ai"
+authors = [
+    { name = "Antony Praveenkumar Moses", email = "antonykumar15898@gmail.com"}
+]
+description = "Next AI is an AI-enabled application designed for seamless content generation and enhancement. With the power of advanced language models, it helps users create high-quality content and intelligently improve existing text, making writing faster, smarter, and more effective."
+requires-python = ">=3.10"
+readme = "README.md"
+dynamic = ["version"]
+dependencies = [
+    "langchain-google-genai~=2.1.4"
+]
+
+[build-system]
+requires = ["flit_core >=3.4,<4"]
+build-backend = "flit_core.buildapi"
+
+# These dependencies are only installed when developer mode is enabled
+[tool.bench.dev-dependencies]
+# package_name = "~=1.1.0"

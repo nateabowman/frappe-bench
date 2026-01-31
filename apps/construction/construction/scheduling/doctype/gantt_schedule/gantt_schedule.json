@@ -1,0 +1,262 @@
+{
+ "actions": [],
+ "allow_import": 1,
+ "allow_rename": 1,
+ "autoname": "naming_series:",
+ "creation": "2024-01-01 00:00:00.000000",
+ "doctype": "DocType",
+ "document_type": "Document",
+ "engine": "InnoDB",
+ "field_order": [
+  "naming_series",
+  "schedule_name",
+  "job_site",
+  "status",
+  "column_break_1",
+  "schedule_type",
+  "start_date",
+  "end_date",
+  "is_baseline",
+  "settings_section",
+  "working_hours_per_day",
+  "holiday_list",
+  "column_break_settings",
+  "use_cpm",
+  "auto_level_resources",
+  "summary_section",
+  "total_activities",
+  "completed_activities",
+  "percent_complete",
+  "column_break_summary",
+  "critical_path_length",
+  "total_float",
+  "schedule_variance_days",
+  "activities_section",
+  "activities",
+  "notes_section",
+  "notes"
+ ],
+ "fields": [
+  {
+   "fieldname": "naming_series",
+   "fieldtype": "Select",
+   "label": "Series",
+   "options": "SCH-.YYYY.-.#####",
+   "reqd": 1
+  },
+  {
+   "fieldname": "schedule_name",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Schedule Name",
+   "reqd": 1
+  },
+  {
+   "fieldname": "job_site",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "Job Site",
+   "options": "Job Site",
+   "reqd": 1
+  },
+  {
+   "default": "Draft",
+   "fieldname": "status",
+   "fieldtype": "Select",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "Status",
+   "options": "Draft\nActive\nBaseline\nArchived"
+  },
+  {
+   "fieldname": "column_break_1",
+   "fieldtype": "Column Break"
+  },
+  {
+   "default": "CPM",
+   "fieldname": "schedule_type",
+   "fieldtype": "Select",
+   "label": "Schedule Type",
+   "options": "CPM\nGantt\nMilestone"
+  },
+  {
+   "fieldname": "start_date",
+   "fieldtype": "Date",
+   "in_list_view": 1,
+   "label": "Start Date",
+   "reqd": 1
+  },
+  {
+   "fieldname": "end_date",
+   "fieldtype": "Date",
+   "label": "End Date"
+  },
+  {
+   "default": "0",
+   "fieldname": "is_baseline",
+   "fieldtype": "Check",
+   "label": "Is Baseline Schedule"
+  },
+  {
+   "fieldname": "settings_section",
+   "fieldtype": "Section Break",
+   "label": "Settings"
+  },
+  {
+   "default": "8",
+   "fieldname": "working_hours_per_day",
+   "fieldtype": "Float",
+   "label": "Working Hours per Day"
+  },
+  {
+   "fieldname": "holiday_list",
+   "fieldtype": "Link",
+   "label": "Holiday List",
+   "options": "Holiday List"
+  },
+  {
+   "fieldname": "column_break_settings",
+   "fieldtype": "Column Break"
+  },
+  {
+   "default": "1",
+   "fieldname": "use_cpm",
+   "fieldtype": "Check",
+   "label": "Use Critical Path Method"
+  },
+  {
+   "default": "0",
+   "fieldname": "auto_level_resources",
+   "fieldtype": "Check",
+   "label": "Auto-Level Resources"
+  },
+  {
+   "fieldname": "summary_section",
+   "fieldtype": "Section Break",
+   "label": "Schedule Summary"
+  },
+  {
+   "default": "0",
+   "fieldname": "total_activities",
+   "fieldtype": "Int",
+   "label": "Total Activities",
+   "read_only": 1
+  },
+  {
+   "default": "0",
+   "fieldname": "completed_activities",
+   "fieldtype": "Int",
+   "label": "Completed Activities",
+   "read_only": 1
+  },
+  {
+   "default": "0",
+   "fieldname": "percent_complete",
+   "fieldtype": "Percent",
+   "label": "% Complete",
+   "read_only": 1
+  },
+  {
+   "fieldname": "column_break_summary",
+   "fieldtype": "Column Break"
+  },
+  {
+   "default": "0",
+   "fieldname": "critical_path_length",
+   "fieldtype": "Int",
+   "label": "Critical Path Length (Days)",
+   "read_only": 1
+  },
+  {
+   "default": "0",
+   "fieldname": "total_float",
+   "fieldtype": "Float",
+   "label": "Total Float (Days)",
+   "read_only": 1
+  },
+  {
+   "default": "0",
+   "fieldname": "schedule_variance_days",
+   "fieldtype": "Int",
+   "label": "Schedule Variance (Days)",
+   "read_only": 1
+  },
+  {
+   "fieldname": "activities_section",
+   "fieldtype": "Section Break",
+   "label": "Activities"
+  },
+  {
+   "fieldname": "activities",
+   "fieldtype": "Table",
+   "label": "Schedule Activities",
+   "options": "Schedule Activity"
+  },
+  {
+   "collapsible": 1,
+   "fieldname": "notes_section",
+   "fieldtype": "Section Break",
+   "label": "Notes"
+  },
+  {
+   "fieldname": "notes",
+   "fieldtype": "Text Editor",
+   "label": "Notes"
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "links": [],
+ "modified": "2024-01-01 00:00:00.000000",
+ "modified_by": "Administrator",
+ "module": "Scheduling",
+ "name": "Gantt Schedule",
+ "naming_rule": "By \"Naming Series\" field",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  },
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "Construction Manager",
+   "share": 1,
+   "write": 1
+  },
+  {
+   "create": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "Project Superintendent",
+   "share": 1,
+   "write": 1
+  },
+  {
+   "read": 1,
+   "role": "Projects User"
+  }
+ ],
+ "search_fields": "schedule_name, job_site",
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": [],
+ "track_changes": 1
+}

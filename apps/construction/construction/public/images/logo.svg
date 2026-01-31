@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" width="100" height="100">
+  <defs>
+    <linearGradient id="constructionGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#1e40af;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#3b82f6;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+  <!-- Building/Construction Icon -->
+  <rect x="10" y="60" width="80" height="30" rx="2" fill="url(#constructionGradient)"/>
+  <rect x="20" y="35" width="25" height="25" rx="2" fill="url(#constructionGradient)"/>
+  <rect x="55" y="25" width="25" height="35" rx="2" fill="url(#constructionGradient)"/>
+  <!-- Windows -->
+  <rect x="25" y="40" width="6" height="8" fill="white" opacity="0.9"/>
+  <rect x="34" y="40" width="6" height="8" fill="white" opacity="0.9"/>
+  <rect x="60" y="30" width="6" height="8" fill="white" opacity="0.9"/>
+  <rect x="69" y="30" width="6" height="8" fill="white" opacity="0.9"/>
+  <rect x="60" y="42" width="6" height="8" fill="white" opacity="0.9"/>
+  <rect x="69" y="42" width="6" height="8" fill="white" opacity="0.9"/>
+  <!-- Crane -->
+  <rect x="85" y="10" width="4" height="50" fill="#1e40af"/>
+  <rect x="50" y="10" width="40" height="4" fill="#1e40af"/>
+  <line x1="55" y1="14" x2="55" y2="30" stroke="#3b82f6" stroke-width="2"/>
+  <rect x="52" y="30" width="6" height="8" fill="#f59e0b"/>
+</svg>

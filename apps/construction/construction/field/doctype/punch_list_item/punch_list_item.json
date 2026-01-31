@@ -1,0 +1,174 @@
+{
+ "actions": [],
+ "creation": "2024-01-01 00:00:00.000000",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "item_number",
+  "description",
+  "trade",
+  "status",
+  "column_break_1",
+  "priority",
+  "responsible_party",
+  "due_date",
+  "location_section",
+  "location",
+  "drawing_reference",
+  "column_break_location",
+  "spec_reference",
+  "photos_section",
+  "photo_before",
+  "photo_after",
+  "completion_section",
+  "completed_by",
+  "completed_date",
+  "column_break_complete",
+  "verified_by",
+  "verified_date",
+  "notes"
+ ],
+ "fields": [
+  {
+   "fieldname": "item_number",
+   "fieldtype": "Int",
+   "in_list_view": 1,
+   "label": "Item #"
+  },
+  {
+   "fieldname": "description",
+   "fieldtype": "Small Text",
+   "in_list_view": 1,
+   "label": "Description",
+   "reqd": 1
+  },
+  {
+   "fieldname": "trade",
+   "fieldtype": "Select",
+   "label": "Trade",
+   "options": "\nGeneral\nCarpentry\nElectrical\nPlumbing\nHVAC\nPainting\nFlooring\nDrywall\nRoofing\nLandscaping\nOther"
+  },
+  {
+   "default": "Open",
+   "fieldname": "status",
+   "fieldtype": "Select",
+   "in_list_view": 1,
+   "label": "Status",
+   "options": "Open\nIn Progress\nCompleted\nRejected\nDeferred"
+  },
+  {
+   "fieldname": "column_break_1",
+   "fieldtype": "Column Break"
+  },
+  {
+   "default": "Medium",
+   "fieldname": "priority",
+   "fieldtype": "Select",
+   "in_list_view": 1,
+   "label": "Priority",
+   "options": "Low\nMedium\nHigh\nUrgent"
+  },
+  {
+   "fieldname": "responsible_party",
+   "fieldtype": "Data",
+   "label": "Responsible Party"
+  },
+  {
+   "fieldname": "due_date",
+   "fieldtype": "Date",
+   "label": "Due Date"
+  },
+  {
+   "collapsible": 1,
+   "fieldname": "location_section",
+   "fieldtype": "Section Break",
+   "label": "References"
+  },
+  {
+   "fieldname": "location",
+   "fieldtype": "Data",
+   "label": "Specific Location"
+  },
+  {
+   "fieldname": "drawing_reference",
+   "fieldtype": "Data",
+   "label": "Drawing Reference"
+  },
+  {
+   "fieldname": "column_break_location",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "spec_reference",
+   "fieldtype": "Data",
+   "label": "Spec Reference"
+  },
+  {
+   "collapsible": 1,
+   "fieldname": "photos_section",
+   "fieldtype": "Section Break",
+   "label": "Photos"
+  },
+  {
+   "fieldname": "photo_before",
+   "fieldtype": "Attach Image",
+   "label": "Photo (Before)"
+  },
+  {
+   "fieldname": "photo_after",
+   "fieldtype": "Attach Image",
+   "label": "Photo (After)"
+  },
+  {
+   "collapsible": 1,
+   "fieldname": "completion_section",
+   "fieldtype": "Section Break",
+   "label": "Completion"
+  },
+  {
+   "fieldname": "completed_by",
+   "fieldtype": "Link",
+   "label": "Completed By",
+   "options": "User",
+   "read_only": 1
+  },
+  {
+   "fieldname": "completed_date",
+   "fieldtype": "Date",
+   "label": "Completed Date",
+   "read_only": 1
+  },
+  {
+   "fieldname": "column_break_complete",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "verified_by",
+   "fieldtype": "Link",
+   "label": "Verified By",
+   "options": "User"
+  },
+  {
+   "fieldname": "verified_date",
+   "fieldtype": "Date",
+   "label": "Verified Date"
+  },
+  {
+   "fieldname": "notes",
+   "fieldtype": "Small Text",
+   "label": "Notes"
+  }
+ ],
+ "istable": 1,
+ "links": [],
+ "modified": "2024-01-01 00:00:00.000000",
+ "modified_by": "Administrator",
+ "module": "Field",
+ "name": "Punch List Item",
+ "owner": "Administrator",
+ "permissions": [],
+ "sort_field": "item_number",
+ "sort_order": "ASC",
+ "states": [],
+ "track_changes": 1
+}

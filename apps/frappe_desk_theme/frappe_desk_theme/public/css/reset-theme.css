@@ -1,0 +1,11 @@
+/* Reset all frappe_desk_theme CSS variables to defaults */
+:root {
+    --navbar-bg: #fff !important;
+    --navbar-color: #555 !important;
+    --login-bg-color: transparent !important;
+    --login-bg-image: none !important;
+    --login-box-bg: #fff !important;
+    --login-btn-bg: #007bff !important;
+    --input-bg: #fff !important;
+    --input-border: #ddd !important;
+}

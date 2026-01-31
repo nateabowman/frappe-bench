@@ -1,0 +1,28 @@
+{
+ "content": null,
+ "creation": "2024-01-01 00:00:00.000000",
+ "doctype": "Page",
+ "icon": "fa fa-building",
+ "modified": "2024-01-01 00:00:00.000000",
+ "modified_by": "Administrator",
+ "module": "Construction",
+ "name": "construction-dashboard",
+ "owner": "Administrator",
+ "page_name": "construction-dashboard",
+ "restrict_to_domain": "",
+ "roles": [
+  {
+   "role": "System Manager"
+  },
+  {
+   "role": "Construction Manager"
+  },
+  {
+   "role": "Project Superintendent"
+  }
+ ],
+ "script": null,
+ "standard": "Yes",
+ "system_page": 0,
+ "title": "Construction Dashboard"
+}

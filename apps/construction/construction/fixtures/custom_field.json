@@ -1,0 +1,167 @@
+[
+  {
+    "doctype": "Custom Field",
+    "dt": "RFI",
+    "fieldname": "ball_in_court",
+    "fieldtype": "Select",
+    "label": "Ball in Court",
+    "options": "\nContractor\nArchitect\nEngineer\nOwner\nSubcontractor",
+    "insert_after": "status"
+  },
+  {
+    "doctype": "Custom Field",
+    "dt": "RFI",
+    "fieldname": "days_open",
+    "fieldtype": "Int",
+    "label": "Days Open",
+    "read_only": 1,
+    "insert_after": "ball_in_court"
+  },
+  {
+    "doctype": "Custom Field",
+    "dt": "RFI",
+    "fieldname": "is_overdue",
+    "fieldtype": "Check",
+    "label": "Is Overdue",
+    "read_only": 1,
+    "insert_after": "days_open"
+  },
+  {
+    "doctype": "Custom Field",
+    "dt": "RFI",
+    "fieldname": "cost_impact",
+    "fieldtype": "Currency",
+    "label": "Cost Impact",
+    "insert_after": "response"
+  },
+  {
+    "doctype": "Custom Field",
+    "dt": "RFI",
+    "fieldname": "schedule_impact_days",
+    "fieldtype": "Int",
+    "label": "Schedule Impact (Days)",
+    "insert_after": "cost_impact"
+  },
+  {
+    "doctype": "Custom Field",
+    "dt": "RFI",
+    "fieldname": "drawing_reference",
+    "fieldtype": "Data",
+    "label": "Drawing Reference",
+    "insert_after": "schedule_impact_days"
+  },
+  {
+    "doctype": "Custom Field",
+    "dt": "RFI",
+    "fieldname": "spec_section",
+    "fieldtype": "Data",
+    "label": "Spec Section",
+    "insert_after": "drawing_reference"
+  },
+  {
+    "doctype": "Custom Field",
+    "dt": "RFI",
+    "fieldname": "distribution_list",
+    "fieldtype": "Table MultiSelect",
+    "label": "Distribution List",
+    "options": "User",
+    "insert_after": "spec_section"
+  },
+  {
+    "doctype": "Custom Field",
+    "dt": "Submittal",
+    "fieldname": "spec_section",
+    "fieldtype": "Data",
+    "label": "Spec Section",
+    "insert_after": "subject"
+  },
+  {
+    "doctype": "Custom Field",
+    "dt": "Submittal",
+    "fieldname": "lead_time_days",
+    "fieldtype": "Int",
+    "label": "Lead Time (Days)",
+    "insert_after": "spec_section"
+  },
+  {
+    "doctype": "Custom Field",
+    "dt": "Submittal",
+    "fieldname": "review_status",
+    "fieldtype": "Select",
+    "label": "Review Status",
+    "options": "\nApproved\nApproved as Noted\nRevise and Resubmit\nRejected\nFor Information Only",
+    "insert_after": "status"
+  },
+  {
+    "doctype": "Custom Field",
+    "dt": "Submittal",
+    "fieldname": "reviewer",
+    "fieldtype": "Link",
+    "label": "Reviewer",
+    "options": "User",
+    "insert_after": "review_status"
+  },
+  {
+    "doctype": "Custom Field",
+    "dt": "Submittal",
+    "fieldname": "review_date",
+    "fieldtype": "Date",
+    "label": "Review Date",
+    "insert_after": "reviewer"
+  },
+  {
+    "doctype": "Custom Field",
+    "dt": "Submittal",
+    "fieldname": "resubmittal_count",
+    "fieldtype": "Int",
+    "label": "Resubmittal Count",
+    "default": "0",
+    "read_only": 1,
+    "insert_after": "review_date"
+  },
+  {
+    "doctype": "Custom Field",
+    "dt": "Project",
+    "fieldname": "job_site",
+    "fieldtype": "Link",
+    "label": "Job Site",
+    "options": "Job Site",
+    "insert_after": "project_name"
+  },
+  {
+    "doctype": "Custom Field",
+    "dt": "Task",
+    "fieldname": "cost_code",
+    "fieldtype": "Link",
+    "label": "Cost Code",
+    "options": "Cost Code",
+    "insert_after": "subject"
+  },
+  {
+    "doctype": "Custom Field",
+    "dt": "Purchase Order",
+    "fieldname": "job_site",
+    "fieldtype": "Link",
+    "label": "Job Site",
+    "options": "Job Site",
+    "insert_after": "project"
+  },
+  {
+    "doctype": "Custom Field",
+    "dt": "Purchase Invoice",
+    "fieldname": "job_site",
+    "fieldtype": "Link",
+    "label": "Job Site",
+    "options": "Job Site",
+    "insert_after": "project"
+  },
+  {
+    "doctype": "Custom Field",
+    "dt": "Activity Type",
+    "fieldname": "cost_code",
+    "fieldtype": "Link",
+    "label": "Cost Code",
+    "options": "Cost Code",
+    "insert_after": "activity_type"
+  }
+]

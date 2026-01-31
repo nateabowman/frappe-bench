@@ -1,0 +1,71 @@
+{
+ "actions": [],
+ "creation": "2024-01-01 00:00:00.000000",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "sheet_number",
+  "sheet_title",
+  "revision",
+  "column_break_1",
+  "file",
+  "thumbnail",
+  "qr_code"
+ ],
+ "fields": [
+  {
+   "fieldname": "sheet_number",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Sheet Number",
+   "reqd": 1
+  },
+  {
+   "fieldname": "sheet_title",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Sheet Title",
+   "reqd": 1
+  },
+  {
+   "default": "0",
+   "fieldname": "revision",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Revision"
+  },
+  {
+   "fieldname": "column_break_1",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "file",
+   "fieldtype": "Attach",
+   "in_list_view": 1,
+   "label": "File"
+  },
+  {
+   "fieldname": "thumbnail",
+   "fieldtype": "Attach Image",
+   "label": "Thumbnail"
+  },
+  {
+   "fieldname": "qr_code",
+   "fieldtype": "Data",
+   "label": "QR Code URL",
+   "read_only": 1
+  }
+ ],
+ "istable": 1,
+ "links": [],
+ "modified": "2024-01-01 00:00:00.000000",
+ "modified_by": "Administrator",
+ "module": "Documents",
+ "name": "Drawing Sheet",
+ "owner": "Administrator",
+ "permissions": [],
+ "sort_field": "sheet_number",
+ "sort_order": "ASC",
+ "states": [],
+ "track_changes": 1
+}

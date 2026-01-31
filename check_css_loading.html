@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>CSS Loading Check</title>
+    <style>
+        body { font-family: monospace; padding: 20px; }
+        .test { color: #FF6B35; font-weight: bold; }
+    </style>
+</head>
+<body>
+    <h1>CSS Loading Diagnostic</h1>
+    <p>Open your browser's Developer Tools (F12) and check:</p>
+    <ol>
+        <li>Go to the <strong>Network</strong> tab</li>
+        <li>Filter by "CSS"</li>
+        <li>Reload the page (Ctrl+Shift+R or Cmd+Shift+R for hard refresh)</li>
+        <li>Look for these files:
+            <ul>
+                <li>design_system.css</li>
+                <li>components.css</li>
+                <li>construction_modules.css</li>
+                <li>mobile_enhancements.css</li>
+                <li>ignitr_brand.css</li>
+            </ul>
+        </li>
+        <li>Check if they return status 200 (loaded successfully)</li>
+    </ol>
+    <p class="test">If you see orange text above, CSS is working!</p>
+    <p>In the browser console, run: <code>document.querySelectorAll('link[href*="ignitr_brand"]').length</code></p>
+    <p>This should return 5 (one for each CSS file).</p>
+</body>
+</html>
+

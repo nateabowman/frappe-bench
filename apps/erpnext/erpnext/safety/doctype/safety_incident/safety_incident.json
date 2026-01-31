@@ -1,0 +1,191 @@
+{
+ "actions": [],
+ "allow_import": 1,
+ "autoname": "SI-.YYYY.-.#####",
+ "creation": "2024-01-01 00:00:00",
+ "doctype": "DocType",
+ "document_type": "Document",
+ "engine": "InnoDB",
+ "field_order": [
+  "incident_details",
+  "incident_number",
+  "project",
+  "incident_date",
+  "incident_type",
+  "column_break_1",
+  "severity",
+  "status",
+  "reported_by",
+  "reported_date",
+  "incident_section",
+  "incident_description",
+  "injured_personnel",
+  "column_break_2",
+  "witnesses",
+  "location",
+  "osha_section",
+  "osha_recordable",
+  "osha_classification",
+  "column_break_3",
+  "days_away_from_work",
+  "restricted_work_days",
+  "corrective_actions"
+ ],
+ "fields": [
+  {
+   "fieldname": "incident_details",
+   "fieldtype": "Section Break",
+   "label": "Incident Details"
+  },
+  {
+   "fieldname": "incident_number",
+   "fieldtype": "Data",
+   "label": "Incident Number",
+   "read_only": 1,
+   "unique": 1
+  },
+  {
+   "fieldname": "project",
+   "fieldtype": "Link",
+   "label": "Job Site",
+   "options": "Project"
+  },
+  {
+   "fieldname": "incident_date",
+   "fieldtype": "Datetime",
+   "label": "Incident Date & Time",
+   "reqd": 1
+  },
+  {
+   "fieldname": "incident_type",
+   "fieldtype": "Select",
+   "label": "Incident Type",
+   "options": "Injury\nNear Miss\nProperty Damage\nEnvironmental\nVehicle Accident\nOther",
+   "reqd": 1
+  },
+  {
+   "fieldname": "column_break_1",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "severity",
+   "fieldtype": "Select",
+   "label": "Severity",
+   "options": "Minor\nModerate\nSerious\nCritical\nFatality",
+   "reqd": 1
+  },
+  {
+   "default": "Open",
+   "fieldname": "status",
+   "fieldtype": "Select",
+   "label": "Status",
+   "options": "Open\nUnder Investigation\nClosed\nResolved"
+  },
+  {
+   "fieldname": "reported_by",
+   "fieldtype": "Link",
+   "label": "Reported By",
+   "options": "User"
+  },
+  {
+   "default": "Now",
+   "fieldname": "reported_date",
+   "fieldtype": "Datetime",
+   "label": "Reported Date"
+  },
+  {
+   "fieldname": "incident_section",
+   "fieldtype": "Section Break",
+   "label": "Incident Information"
+  },
+  {
+   "fieldname": "incident_description",
+   "fieldtype": "Text Editor",
+   "label": "Incident Description",
+   "reqd": 1
+  },
+  {
+   "fieldname": "injured_personnel",
+   "fieldtype": "Table",
+   "label": "Injured Personnel",
+   "options": "Safety Incident Personnel"
+  },
+  {
+   "fieldname": "column_break_2",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "witnesses",
+   "fieldtype": "Table",
+   "label": "Witnesses",
+   "options": "Safety Incident Witness"
+  },
+  {
+   "fieldname": "location",
+   "fieldtype": "Data",
+   "label": "Location"
+  },
+  {
+   "fieldname": "osha_section",
+   "fieldtype": "Section Break",
+   "label": "OSHA Compliance"
+  },
+  {
+   "default": "0",
+   "fieldname": "osha_recordable",
+   "fieldtype": "Check",
+   "label": "OSHA Recordable"
+  },
+  {
+   "fieldname": "osha_classification",
+   "fieldtype": "Select",
+   "label": "OSHA Classification",
+   "options": "First Aid\nMedical Treatment\nRestricted Work\nDays Away from Work\nFatality"
+  },
+  {
+   "fieldname": "column_break_3",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "days_away_from_work",
+   "fieldtype": "Int",
+   "label": "Days Away from Work"
+  },
+  {
+   "fieldname": "restricted_work_days",
+   "fieldtype": "Int",
+   "label": "Restricted Work Days"
+  },
+  {
+   "fieldname": "corrective_actions",
+   "fieldtype": "Text Editor",
+   "label": "Corrective Actions"
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "links": [],
+ "modified": "2024-01-01 00:00:00",
+ "modified_by": "Administrator",
+ "module": "Projects",
+ "name": "Safety Incident",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "sort_field": "incident_date",
+ "sort_order": "DESC",
+ "states": [],
+ "track_changes": 1
+}
+

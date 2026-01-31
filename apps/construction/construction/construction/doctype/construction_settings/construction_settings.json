@@ -1,0 +1,274 @@
+{
+ "actions": [],
+ "creation": "2024-01-01 00:00:00.000000",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "general_section",
+  "default_company",
+  "default_cost_center",
+  "column_break_general",
+  "default_currency",
+  "enable_weather_integration",
+  "job_costing_section",
+  "default_markup_percent",
+  "default_overhead_percent",
+  "column_break_costing",
+  "default_retention_percent",
+  "auto_create_cost_entries",
+  "scheduling_section",
+  "default_working_hours_per_day",
+  "default_holiday_list",
+  "column_break_scheduling",
+  "enable_cpm_scheduling",
+  "auto_recalculate_schedule",
+  "field_operations_section",
+  "require_daily_log_photos",
+  "require_weather_on_daily_log",
+  "column_break_field",
+  "default_punch_list_priority",
+  "auto_notify_punch_list_assignee",
+  "document_control_section",
+  "default_rfi_response_days",
+  "default_submittal_review_days",
+  "column_break_docs",
+  "enable_drawing_versioning",
+  "require_drawing_approval",
+  "notifications_section",
+  "notify_on_budget_variance",
+  "budget_variance_threshold",
+  "column_break_notify",
+  "notify_on_schedule_delay",
+  "schedule_delay_threshold_days"
+ ],
+ "fields": [
+  {
+   "fieldname": "general_section",
+   "fieldtype": "Section Break",
+   "label": "General Settings"
+  },
+  {
+   "fieldname": "default_company",
+   "fieldtype": "Link",
+   "label": "Default Company",
+   "options": "Company"
+  },
+  {
+   "fieldname": "default_cost_center",
+   "fieldtype": "Link",
+   "label": "Default Cost Center",
+   "options": "Cost Center"
+  },
+  {
+   "fieldname": "column_break_general",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "default_currency",
+   "fieldtype": "Link",
+   "label": "Default Currency",
+   "options": "Currency"
+  },
+  {
+   "default": "1",
+   "fieldname": "enable_weather_integration",
+   "fieldtype": "Check",
+   "label": "Enable Weather Integration"
+  },
+  {
+   "fieldname": "job_costing_section",
+   "fieldtype": "Section Break",
+   "label": "Job Costing"
+  },
+  {
+   "default": "10",
+   "fieldname": "default_markup_percent",
+   "fieldtype": "Percent",
+   "label": "Default Markup %"
+  },
+  {
+   "default": "15",
+   "fieldname": "default_overhead_percent",
+   "fieldtype": "Percent",
+   "label": "Default Overhead %"
+  },
+  {
+   "fieldname": "column_break_costing",
+   "fieldtype": "Column Break"
+  },
+  {
+   "default": "10",
+   "fieldname": "default_retention_percent",
+   "fieldtype": "Percent",
+   "label": "Default Retention %"
+  },
+  {
+   "default": "1",
+   "fieldname": "auto_create_cost_entries",
+   "fieldtype": "Check",
+   "label": "Auto-Create Cost Entries from Invoices"
+  },
+  {
+   "fieldname": "scheduling_section",
+   "fieldtype": "Section Break",
+   "label": "Scheduling"
+  },
+  {
+   "default": "8",
+   "fieldname": "default_working_hours_per_day",
+   "fieldtype": "Float",
+   "label": "Default Working Hours per Day"
+  },
+  {
+   "fieldname": "default_holiday_list",
+   "fieldtype": "Link",
+   "label": "Default Holiday List",
+   "options": "Holiday List"
+  },
+  {
+   "fieldname": "column_break_scheduling",
+   "fieldtype": "Column Break"
+  },
+  {
+   "default": "1",
+   "fieldname": "enable_cpm_scheduling",
+   "fieldtype": "Check",
+   "label": "Enable CPM Scheduling"
+  },
+  {
+   "default": "1",
+   "fieldname": "auto_recalculate_schedule",
+   "fieldtype": "Check",
+   "label": "Auto-Recalculate Schedule on Changes"
+  },
+  {
+   "fieldname": "field_operations_section",
+   "fieldtype": "Section Break",
+   "label": "Field Operations"
+  },
+  {
+   "default": "0",
+   "fieldname": "require_daily_log_photos",
+   "fieldtype": "Check",
+   "label": "Require Photos on Daily Logs"
+  },
+  {
+   "default": "1",
+   "fieldname": "require_weather_on_daily_log",
+   "fieldtype": "Check",
+   "label": "Require Weather on Daily Logs"
+  },
+  {
+   "fieldname": "column_break_field",
+   "fieldtype": "Column Break"
+  },
+  {
+   "default": "Medium",
+   "fieldname": "default_punch_list_priority",
+   "fieldtype": "Select",
+   "label": "Default Punch List Priority",
+   "options": "Low\nMedium\nHigh\nUrgent"
+  },
+  {
+   "default": "1",
+   "fieldname": "auto_notify_punch_list_assignee",
+   "fieldtype": "Check",
+   "label": "Auto-Notify Punch List Assignee"
+  },
+  {
+   "fieldname": "document_control_section",
+   "fieldtype": "Section Break",
+   "label": "Document Control"
+  },
+  {
+   "default": "7",
+   "fieldname": "default_rfi_response_days",
+   "fieldtype": "Int",
+   "label": "Default RFI Response Days"
+  },
+  {
+   "default": "14",
+   "fieldname": "default_submittal_review_days",
+   "fieldtype": "Int",
+   "label": "Default Submittal Review Days"
+  },
+  {
+   "fieldname": "column_break_docs",
+   "fieldtype": "Column Break"
+  },
+  {
+   "default": "1",
+   "fieldname": "enable_drawing_versioning",
+   "fieldtype": "Check",
+   "label": "Enable Drawing Versioning"
+  },
+  {
+   "default": "0",
+   "fieldname": "require_drawing_approval",
+   "fieldtype": "Check",
+   "label": "Require Drawing Approval"
+  },
+  {
+   "fieldname": "notifications_section",
+   "fieldtype": "Section Break",
+   "label": "Notifications"
+  },
+  {
+   "default": "1",
+   "fieldname": "notify_on_budget_variance",
+   "fieldtype": "Check",
+   "label": "Notify on Budget Variance"
+  },
+  {
+   "default": "10",
+   "fieldname": "budget_variance_threshold",
+   "fieldtype": "Percent",
+   "label": "Budget Variance Threshold %"
+  },
+  {
+   "fieldname": "column_break_notify",
+   "fieldtype": "Column Break"
+  },
+  {
+   "default": "1",
+   "fieldname": "notify_on_schedule_delay",
+   "fieldtype": "Check",
+   "label": "Notify on Schedule Delay"
+  },
+  {
+   "default": "3",
+   "fieldname": "schedule_delay_threshold_days",
+   "fieldtype": "Int",
+   "label": "Schedule Delay Threshold (Days)"
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "issingle": 1,
+ "links": [],
+ "modified": "2024-01-01 00:00:00.000000",
+ "modified_by": "Administrator",
+ "module": "Construction",
+ "name": "Construction Settings",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "print": 1,
+   "read": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  },
+  {
+   "read": 1,
+   "role": "Construction Manager",
+   "write": 1
+  }
+ ],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": [],
+ "track_changes": 1
+}

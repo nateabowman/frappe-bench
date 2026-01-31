@@ -1,0 +1,95 @@
+{
+ "actions": [],
+ "autoname": "hash",
+ "creation": "2023-01-28 12:29:48.729538",
+ "default_view": "List",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "_table_exists",
+  "num_queries",
+  "table_category",
+  "table_category_meta",
+  "_table_name",
+  "queries"
+ ],
+ "fields": [
+  {
+   "fieldname": "_table_name",
+   "fieldtype": "Data",
+   "hidden": 1,
+   "in_list_view": 1,
+   "label": "Table Name",
+   "read_only": 1,
+   "unique": 1
+  },
+  {
+   "fieldname": "queries",
+   "fieldtype": "Table",
+   "is_virtual": 1,
+   "label": "Queries",
+   "options": "MariaDB Query Candidate"
+  },
+  {
+   "fieldname": "num_queries",
+   "fieldtype": "Int",
+   "is_virtual": 1,
+   "label": "No. of Queries"
+  },
+  {
+   "default": "0",
+   "fieldname": "_table_exists",
+   "fieldtype": "Check",
+   "label": "Table Exists",
+   "read_only": 1
+  },
+  {
+   "fieldname": "table_category",
+   "fieldtype": "Select",
+   "in_list_view": 1,
+   "label": "Table Category",
+   "options": "Read\nWrite"
+  },
+  {
+   "fieldname": "table_category_meta",
+   "fieldtype": "JSON",
+   "label": "Table Category Meta",
+   "read_only": 1
+  }
+ ],
+ "links": [
+  {
+   "link_doctype": "MariaDB Query",
+   "link_fieldname": "table",
+   "table_fieldname": "_table_name"
+  },
+  {
+   "link_doctype": "MariaDB Index",
+   "link_fieldname": "frappe_table_id",
+   "table_fieldname": "_table_name"
+  }
+ ],
+ "modified": "2023-03-13 13:54:19.781278",
+ "modified_by": "Administrator",
+ "module": "Toolbox",
+ "name": "MariaDB Table",
+ "naming_rule": "Random",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1
+  }
+ ],
+ "show_title_field_in_link": 1,
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": [],
+ "title_field": "_table_name"
+}

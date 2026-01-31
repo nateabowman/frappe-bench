@@ -1,0 +1,94 @@
+{
+ "actions": [],
+ "allow_import": 1,
+ "creation": "2025-01-27 12:00:00.000000",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "email_sequence",
+  "recipient_email",
+  "recipient_name",
+  "status",
+  "current_step",
+  "next_send_date",
+  "reference_doctype",
+  "reference_docname"
+ ],
+ "fields": [
+  {
+   "fieldname": "email_sequence",
+   "fieldtype": "Link",
+   "label": "Email Sequence",
+   "options": "CRM Email Sequence",
+   "reqd": 1
+  },
+  {
+   "fieldname": "recipient_email",
+   "fieldtype": "Data",
+   "label": "Recipient Email",
+   "reqd": 1
+  },
+  {
+   "fieldname": "recipient_name",
+   "fieldtype": "Data",
+   "label": "Recipient Name"
+  },
+  {
+   "fieldname": "status",
+   "fieldtype": "Select",
+   "label": "Status",
+   "options": "Active\nCompleted\nUnsubscribed\nPaused",
+   "reqd": 1
+  },
+  {
+   "default": "0",
+   "fieldname": "current_step",
+   "fieldtype": "Int",
+   "label": "Current Step"
+  },
+  {
+   "fieldname": "next_send_date",
+   "fieldtype": "Datetime",
+   "label": "Next Send Date"
+  },
+  {
+   "fieldname": "reference_doctype",
+   "fieldtype": "Link",
+   "label": "Reference Document Type",
+   "options": "DocType"
+  },
+  {
+   "fieldname": "reference_docname",
+   "fieldtype": "Dynamic Link",
+   "label": "Reference Document",
+   "options": "reference_doctype"
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "links": [],
+ "modified": "2025-01-27 12:00:00.000000",
+ "modified_by": "Administrator",
+ "module": "FCRM",
+ "name": "CRM Email Sequence Enrollment",
+ "naming_rule": "Autoincrement",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "Sales Manager",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "sort_field": "creation",
+ "sort_order": "DESC",
+ "states": [],
+ "title_field": "email_sequence"
+}
+

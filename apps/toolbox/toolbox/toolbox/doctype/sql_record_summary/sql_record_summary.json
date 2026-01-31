@@ -1,0 +1,51 @@
+{
+ "actions": [],
+ "autoname": "autoincrement",
+ "creation": "2023-03-14 13:40:03.519103",
+ "default_view": "List",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "unique_sql_count",
+  "total_sql_count"
+ ],
+ "fields": [
+  {
+   "fieldname": "unique_sql_count",
+   "fieldtype": "Int",
+   "in_list_view": 1,
+   "label": "Unique SQL Count",
+   "read_only": 1
+  },
+  {
+   "fieldname": "total_sql_count",
+   "fieldtype": "Int",
+   "in_list_view": 1,
+   "label": "Total SQL Count",
+   "read_only": 1
+  }
+ ],
+ "links": [],
+ "modified": "2023-08-20 12:05:48.971604",
+ "modified_by": "Administrator",
+ "module": "Toolbox",
+ "name": "SQL Record Summary",
+ "naming_rule": "Autoincrement",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1
+  }
+ ],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": []
+}

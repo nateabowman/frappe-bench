@@ -1,0 +1,136 @@
+{
+ "actions": [],
+ "allow_import": 1,
+ "autoname": "CP-.YYYY.-.#####",
+ "creation": "2024-01-01 00:00:00",
+ "doctype": "DocType",
+ "document_type": "Document",
+ "engine": "InnoDB",
+ "field_order": [
+  "payroll_details",
+  "payroll_name",
+  "project",
+  "pay_period_start",
+  "pay_period_end",
+  "column_break_1",
+  "compliance_type",
+  "prevailing_wage_rate",
+  "total_hours",
+  "certification_section",
+  "certified_by",
+  "certification_date",
+  "column_break_2",
+  "submitted_to",
+  "submission_date"
+ ],
+ "fields": [
+  {
+   "fieldname": "payroll_details",
+   "fieldtype": "Section Break",
+   "label": "Payroll Details"
+  },
+  {
+   "fieldname": "payroll_name",
+   "fieldtype": "Data",
+   "label": "Payroll Name",
+   "reqd": 1
+  },
+  {
+   "fieldname": "project",
+   "fieldtype": "Link",
+   "label": "Job Site",
+   "options": "Project",
+   "reqd": 1
+  },
+  {
+   "fieldname": "pay_period_start",
+   "fieldtype": "Date",
+   "label": "Pay Period Start",
+   "reqd": 1
+  },
+  {
+   "fieldname": "pay_period_end",
+   "fieldtype": "Date",
+   "label": "Pay Period End",
+   "reqd": 1
+  },
+  {
+   "fieldname": "column_break_1",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "compliance_type",
+   "fieldtype": "Select",
+   "label": "Compliance Type",
+   "options": "Davis-Bacon\nPrevailing Wage\nState Prevailing Wage\nOther",
+   "reqd": 1
+  },
+  {
+   "fieldname": "prevailing_wage_rate",
+   "fieldtype": "Currency",
+   "label": "Prevailing Wage Rate"
+  },
+  {
+   "fieldname": "total_hours",
+   "fieldtype": "Float",
+   "label": "Total Hours",
+   "read_only": 1
+  },
+  {
+   "fieldname": "certification_section",
+   "fieldtype": "Section Break",
+   "label": "Certification"
+  },
+  {
+   "fieldname": "certified_by",
+   "fieldtype": "Link",
+   "label": "Certified By",
+   "options": "User"
+  },
+  {
+   "fieldname": "certification_date",
+   "fieldtype": "Date",
+   "label": "Certification Date"
+  },
+  {
+   "fieldname": "column_break_2",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "submitted_to",
+   "fieldtype": "Data",
+   "label": "Submitted To"
+  },
+  {
+   "fieldname": "submission_date",
+   "fieldtype": "Date",
+   "label": "Submission Date"
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "links": [],
+ "modified": "2024-01-01 00:00:00",
+ "modified_by": "Administrator",
+ "module": "Projects",
+ "name": "Certified Payroll",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": [],
+ "track_changes": 1
+}
+

@@ -1,0 +1,354 @@
+#!/bin/bash
+set -euo pipefail
+trap 'echo -e "❌ Error on line $LINENO. Check $LOGFILE" | tee -a "$LOGFILE"; exit 1' ERR
+
+# -----------------------------
+# Frappe Cleanup & Maintenance
+# -----------------------------
+
+BENCH_PATH="/home/ubuntu/frappe-bench"
+BENCH_BIN="$BENCH_PATH/env/bin/bench"
+SITES_DIR="$BENCH_PATH/sites"
+DATE=$(date +"%Y-%m-%d_%H-%M-%S")
+LOGFILE="$BENCH_PATH/maintenance_logs/maintain_$DATE.log"
+ARCHIVE_DIR="$BENCH_PATH/backup_archives"
+
+# Colors
+NC='\033[0m'
+RED='\033[0;31m'
+GREEN='\033[0;32m'
+YELLOW='\033[0;33m'
+BLUE='\033[0;34m'
+MAGENTA='\033[0;35m'
+CYAN='\033[0;36m'
+
+# Determine mode
+if [[ $# -eq 0 ]]; then
+  MODE="all"
+elif [[ $# -eq 2 && "$1" == "--site" ]]; then
+  MODE="single"
+  SITE="$2"
+  if [[ ! -d "$SITES_DIR/$SITE" ]]; then
+    echo -e "${RED}❌ Site '$SITE' not found in $SITES_DIR${NC}"
+    echo -e "${YELLOW}Available sites:${NC}"
+    for path in "$SITES_DIR"/*; do
+      [[ -d "$path" ]] || continue
+      name=$(basename "$path")
+      [[ "$name" =~ ^(assets|common_site_config\.json)$ ]] && continue
+      echo "  - $name"
+    done
+    exit 1
+  fi
+elif [[ $# -eq 1 && ("$1" == "--help" || "$1" == "-h") ]]; then
+  echo "Usage: $0 [--site SITENAME]"
+  echo ""
+  echo "Options:"
+  echo "  --site SITENAME    Refresh only the specified site"
+  echo "  (no arguments)     Refresh all sites (default)"
+  echo ""
+  echo "Examples:"
+  echo "  $0                 # Refresh all sites"
+  echo "  $0 --site prod.nexelya.com  # Refresh only prod.nexelya.com"
+  exit 0
+else
+  echo -e "${RED}❌ Invalid arguments${NC}"
+  echo "Usage: $0 [--site SITENAME]"
+  echo "Run '$0 --help' for more information"
+  exit 1
+fi
+
+mkdir -p "$BENCH_PATH/maintenance_logs" "$ARCHIVE_DIR"
+cd "$BENCH_PATH"
+
+if [[ "$MODE" == "single" ]]; then
+  echo -e "${MAGENTA}🔧 Starting maintenance for site: ${CYAN}$SITE${MAGENTA} at $DATE${NC}" | tee -a "$LOGFILE"
+else
+  echo -e "${MAGENTA}🔧 Starting maintenance for ${CYAN}all sites${MAGENTA} at $DATE${NC}" | tee -a "$LOGFILE"
+fi
+
+timestamp_section() {
+  echo -e "\n${BLUE}⏱️ [$1] $(date +"%T")${NC}" | tee -a "$LOGFILE"
+}
+
+# 1. Clean Python cache globally
+timestamp_section "Cleaning Python artifacts"
+# Let find be noisy in the log, quiet on the console
+find . -name '__pycache__' -exec rm -rf {} + \
+     -o -name '*.pyc' -exec rm -f {} + >>"$LOGFILE" 2>&1
+echo -e "${GREEN}✓ Python cache cleaned${NC}" | tee -a "$LOGFILE"
+
+# 1b. Clean Node.js cache and build artifacts
+timestamp_section "Cleaning Node.js artifacts"
+# Clean node_modules/.cache if it exists
+for app_dir in "$BENCH_PATH/apps"/*; do
+  if [[ -d "$app_dir/node_modules/.cache" ]]; then
+    app_name=$(basename "$app_dir")
+    rm -rf "$app_dir/node_modules/.cache" >>"$LOGFILE" 2>&1
+    echo -e "${CYAN} • Cleaned node cache for ${app_name}${NC}" | tee -a "$LOGFILE"
+  fi
+done
+
+# Clean build directories in apps
+for app_dir in "$BENCH_PATH/apps"/*; do
+  if [[ -d "$app_dir" ]]; then
+    app_name=$(basename "$app_dir")
+    # Clean common build artifact directories
+    for build_dir in "dist" "build" ".next" ".nuxt"; do
+      if [[ -d "$app_dir/$build_dir" ]]; then
+        rm -rf "$app_dir/$build_dir" >>"$LOGFILE" 2>&1
+        echo -e "${CYAN} • Cleaned ${build_dir} for ${app_name}${NC}" | tee -a "$LOGFILE"
+      fi
+    done
+  fi
+done
+echo -e "${GREEN}✓ Node.js artifacts cleaned${NC}" | tee -a "$LOGFILE"
+
+# 1c. Clean old maintenance logs (keep last 30 days)
+timestamp_section "Cleaning old maintenance logs"
+if [[ -d "$BENCH_PATH/maintenance_logs" ]]; then
+  find "$BENCH_PATH/maintenance_logs" -name "maintain_*.log" -type f -mtime +30 -delete >>"$LOGFILE" 2>&1
+  LOG_COUNT=$(find "$BENCH_PATH/maintenance_logs" -name "maintain_*.log" -type f | wc -l)
+  echo -e "${GREEN}✓ Old logs cleaned (keeping ${LOG_COUNT} recent logs)${NC}" | tee -a "$LOGFILE"
+fi
+
+# 1d. Clean old backup archives (keep last 30 days)
+timestamp_section "Cleaning old backup archives"
+if [[ -d "$ARCHIVE_DIR" ]]; then
+  find "$ARCHIVE_DIR" -name "*_backups_*.tar.gz" -type f -mtime +30 -delete >>"$LOGFILE" 2>&1
+  ARCHIVE_COUNT=$(find "$ARCHIVE_DIR" -name "*_backups_*.tar.gz" -type f | wc -l)
+  echo -e "${GREEN}✓ Old archives cleaned (keeping ${ARCHIVE_COUNT} recent archives)${NC}" | tee -a "$LOGFILE"
+fi
+
+# 1e. Check disk space
+timestamp_section "Checking disk space"
+DISK_USAGE=$(df -h "$BENCH_PATH" | awk 'NR==2 {print $5}' | sed 's/%//')
+if [[ $DISK_USAGE -gt 90 ]]; then
+  echo -e "${RED}⚠️  WARNING: Disk usage is ${DISK_USAGE}% - consider cleaning up${NC}" | tee -a "$LOGFILE"
+elif [[ $DISK_USAGE -gt 80 ]]; then
+  echo -e "${YELLOW}⚠️  Disk usage is ${DISK_USAGE}% - monitor closely${NC}" | tee -a "$LOGFILE"
+else
+  echo -e "${GREEN}✓ Disk usage: ${DISK_USAGE}%${NC}" | tee -a "$LOGFILE"
+fi
+
+# Determine which sites to process
+declare -a SITES
+if [[ "$MODE" == "single" ]]; then
+  SITES=("$SITE")
+else
+  for path in "$SITES_DIR"/*; do
+    [[ -d "$path" ]] || continue
+    name=$(basename "$path")
+    [[ "$name" =~ ^(assets|common_site_config\.json)$ ]] && continue
+    SITES+=("$name")
+  done
+fi
+
+# 2. Backup each site (IN PARALLEL)
+timestamp_section "Creating backups (parallel)"
+pids=()
+
+for S in "${SITES[@]}"; do
+  {
+    echo -e "${CYAN} • Backing up ${S}${NC}" | tee -a "$LOGFILE"
+    if ! "$BENCH_BIN" --site "$S" backup --with-files >>"$LOGFILE" 2>&1; then
+      echo -e "${RED}   ↳ Backup FAILED for ${S}${NC}" | tee -a "$LOGFILE"
+      exit 1
+    else
+      echo -e "${GREEN}   ↳ Backup OK for ${S}${NC}" | tee -a "$LOGFILE"
+    fi
+  } &
+  pids+=($!)
+done
+
+# Wait for all backups
+for pid in "${pids[@]}"; do
+  if ! wait "$pid"; then
+    # Any failure here will trigger ERR trap
+    exit 1
+  fi
+done
+
+# 2b. Compress backup dirs for each site (IN PARALLEL)
+timestamp_section "Compressing site backup directories (parallel)"
+pids=()
+
+for S in "${SITES[@]}"; do
+  {
+    BACKUP_DIR="$SITES_DIR/$S/private/backups"
+    if [[ -d "$BACKUP_DIR" ]]; then
+      ARCHIVE_NAME="${S}_backups_${DATE}.tar.gz"
+      echo -e "${CYAN} • Compressing backups for ${S} → ${ARCHIVE_NAME}${NC}" | tee -a "$LOGFILE"
+      # Tar up the backup dir contents
+      tar -czf "$ARCHIVE_DIR/$ARCHIVE_NAME" -C "$BACKUP_DIR" . >>"$LOGFILE" 2>&1
+      echo -e "${GREEN}   ↳ Compression OK for ${S}${NC}" | tee -a "$LOGFILE"
+    else
+      echo -e "${YELLOW} • No backup directory for ${S}, skipping compression${NC}" | tee -a "$LOGFILE"
+    fi
+  } &
+  pids+=($!)
+done
+
+for pid in "${pids[@]}"; do
+  if ! wait "$pid"; then
+    exit 1
+  fi
+done
+
+# 3. Patch-only update (GLOBAL, only if apps are git repos)
+timestamp_section "bench update --patch"
+# Check if any app is a git repo before attempting update
+HAS_GIT_REPO=false
+for app_dir in "$BENCH_PATH/apps"/*; do
+  if [[ -d "$app_dir" ]] && git -C "$app_dir" rev-parse --git-dir >/dev/null 2>&1; then
+    HAS_GIT_REPO=true
+    break
+  fi
+done
+
+if [[ "$HAS_GIT_REPO" == "true" ]]; then
+  if "$BENCH_BIN" update --patch >>"$LOGFILE" 2>&1; then
+    echo -e "${GREEN}✓ bench update --patch completed${NC}" | tee -a "$LOGFILE"
+  else
+    echo -e "${YELLOW}⚠️  bench update --patch failed (non-fatal, continuing...)${NC}" | tee -a "$LOGFILE"
+  fi
+else
+  echo -e "${YELLOW}⚠️  Skipping bench update --patch (no git repositories found)${NC}" | tee -a "$LOGFILE"
+fi
+
+# 4. Rebuild & setup (GLOBAL, not parallel)
+timestamp_section "Rebuild & setup"
+
+# Install Python requirements directly (bypasses git requirement)
+echo -e "${CYAN} • Installing Python requirements${NC}" | tee -a "$LOGFILE"
+if [[ -f "$BENCH_PATH/requirements.txt" ]]; then
+  if "$BENCH_PATH/env/bin/pip" install --quiet --upgrade -r "$BENCH_PATH/requirements.txt" >>"$LOGFILE" 2>&1; then
+    echo -e "${GREEN}   ↳ Python requirements installed${NC}" | tee -a "$LOGFILE"
+  else
+    echo -e "${YELLOW}   ↳ Python requirements installation had issues (non-fatal, continuing...)${NC}" | tee -a "$LOGFILE"
+  fi
+fi
+
+# Install requirements for each app directly
+for app_dir in "$BENCH_PATH/apps"/*; do
+  if [[ -d "$app_dir" ]] && [[ -f "$app_dir/requirements.txt" ]]; then
+    app_name=$(basename "$app_dir")
+    echo -e "${CYAN} • Installing requirements for ${app_name}${NC}" | tee -a "$LOGFILE"
+    if "$BENCH_PATH/env/bin/pip" install --quiet --upgrade -r "$app_dir/requirements.txt" >>"$LOGFILE" 2>&1; then
+      echo -e "${GREEN}   ↳ ${app_name} requirements installed${NC}" | tee -a "$LOGFILE"
+    else
+      echo -e "${YELLOW}   ↳ ${app_name} requirements had issues (non-fatal, continuing...)${NC}" | tee -a "$LOGFILE"
+    fi
+  fi
+done
+
+# Setup redis and socketio
+"$BENCH_BIN" setup redis       >>"$LOGFILE" 2>&1 || echo -e "${YELLOW}⚠️  setup redis failed (non-fatal, continuing...)${NC}" | tee -a "$LOGFILE"
+"$BENCH_BIN" setup socketio    >>"$LOGFILE" 2>&1 || echo -e "${YELLOW}⚠️  setup socketio failed (non-fatal, continuing...)${NC}" | tee -a "$LOGFILE"
+
+# Build assets - FORCE rebuild all apps (no downloading pre-built assets)
+echo -e "${CYAN} • Building assets for ALL apps (forced rebuild)${NC}" | tee -a "$LOGFILE"
+if "$BENCH_BIN" build --force >>"$LOGFILE" 2>&1; then
+  echo -e "${GREEN}✓ Build completed for all apps${NC}" | tee -a "$LOGFILE"
+else
+  echo -e "${YELLOW}⚠️  build failed (non-fatal, continuing...)${NC}" | tee -a "$LOGFILE"
+fi
+
+# Rebuild translations for all apps
+echo -e "${CYAN} • Rebuilding translations${NC}" | tee -a "$LOGFILE"
+for app_dir in "$BENCH_PATH/apps"/*; do
+  if [[ -d "$app_dir" ]]; then
+    app_name=$(basename "$app_dir")
+    if [[ -d "$app_dir/$app_name" ]] || [[ -f "$app_dir/setup.py" ]]; then
+      if "$BENCH_BIN" build --app "$app_name" >>"$LOGFILE" 2>&1; then
+        echo -e "${GREEN}   ↳ Translations rebuilt for ${app_name}${NC}" | tee -a "$LOGFILE"
+      fi
+    fi
+  fi
+done
+
+# 5. Clear cache (parallel) & migrate (sequential for safety)
+timestamp_section "Cache clear (parallel) & migrate (sequential)"
+
+# 5a. Clear cache for all sites in parallel
+pids=()
+for S in "${SITES[@]}"; do
+  {
+    echo -e "${CYAN} • Clearing cache for ${S}${NC}" | tee -a "$LOGFILE"
+    if ! "$BENCH_BIN" --site "$S" clear-cache >>"$LOGFILE" 2>&1; then
+      echo -e "${RED}   ↳ Cache clear FAILED for ${S}${NC}" | tee -a "$LOGFILE"
+      exit 1
+    else
+      echo -e "${GREEN}   ↳ Cache clear OK for ${S}${NC}" | tee -a "$LOGFILE"
+    fi
+  } &
+  pids+=($!)
+done
+
+for pid in "${pids[@]}"; do
+  if ! wait "$pid"; then
+    exit 1
+  fi
+done
+
+# 5b. Migrate each site SEQUENTIALLY (schema changes are global-ish)
+for S in "${SITES[@]}"; do
+  echo -e "${CYAN} • Migrating ${S}${NC}" | tee -a "$LOGFILE"
+  "$BENCH_BIN" --site "$S" migrate >>"$LOGFILE" 2>&1
+  echo -e "${GREEN}   ↳ Migration OK for ${S}${NC}" | tee -a "$LOGFILE"
+done
+
+# 5c. Database optimization (PostgreSQL only)
+timestamp_section "Database optimization"
+for S in "${SITES[@]}"; do
+  echo -e "${CYAN} • Optimizing database for ${S}${NC}" | tee -a "$LOGFILE"
+  # Check if PostgreSQL is being used
+  DB_TYPE=$("$BENCH_BIN" --site "$S" get-config db_type 2>/dev/null || echo "")
+  if [[ "$DB_TYPE" == "postgres" ]]; then
+    # Run VACUUM ANALYZE for PostgreSQL
+    if "$BENCH_BIN" --site "$S" console --execute "frappe.db.sql('VACUUM ANALYZE;')" >>"$LOGFILE" 2>&1; then
+      echo -e "${GREEN}   ↳ Database optimized for ${S}${NC}" | tee -a "$LOGFILE"
+    else
+      echo -e "${YELLOW}   ↳ Database optimization skipped for ${S} (non-fatal)${NC}" | tee -a "$LOGFILE"
+    fi
+  else
+    echo -e "${YELLOW}   ↳ Database optimization skipped for ${S} (not PostgreSQL)${NC}" | tee -a "$LOGFILE"
+  fi
+done
+
+# 6. Restart Supervisor
+timestamp_section "Restart services"
+if command -v supervisorctl &> /dev/null; then
+  if sudo supervisorctl restart all >>"$LOGFILE" 2>&1; then
+    echo -e "${GREEN}✓ Services restarted${NC}" | tee -a "$LOGFILE"
+  else
+    echo -e "${YELLOW}⚠️  supervisor restart failed (non-fatal, continuing...)${NC}" | tee -a "$LOGFILE"
+  fi
+else
+  echo -e "${YELLOW}⚠️  supervisorctl not found, skipping service restart${NC}" | tee -a "$LOGFILE"
+fi
+
+# 7. Final cache clear (after all migrations and optimizations)
+timestamp_section "Final cache clear"
+pids=()
+for S in "${SITES[@]}"; do
+  {
+    echo -e "${CYAN} • Final cache clear for ${S}${NC}" | tee -a "$LOGFILE"
+    if ! "$BENCH_BIN" --site "$S" clear-cache >>"$LOGFILE" 2>&1; then
+      echo -e "${YELLOW}   ↳ Final cache clear had issues for ${S} (non-fatal)${NC}" | tee -a "$LOGFILE"
+    else
+      echo -e "${GREEN}   ↳ Final cache clear OK for ${S}${NC}" | tee -a "$LOGFILE"
+    fi
+  } &
+  pids+=($!)
+done
+
+for pid in "${pids[@]}"; do
+  wait "$pid" || true
+done
+
+timestamp_section "Done"
+if [[ "$MODE" == "single" ]]; then
+  echo -e "${GREEN}✅ Maintenance complete for site: ${CYAN}$SITE${GREEN} at $(date +"%T")${NC}" | tee -a "$LOGFILE"
+else
+  echo -e "${GREEN}✅ Maintenance complete for all sites at $(date +"%T")${NC}" | tee -a "$LOGFILE"
+fi

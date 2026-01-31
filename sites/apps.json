@@ -1,0 +1,211 @@
+{
+    "frappe": {
+        "resolution": {
+            "commit_hash": null,
+            "branch": null
+        },
+        "required": [],
+        "idx": 1,
+        "version": "15.72.4"
+    },
+    "erpnext": {
+        "is_repo": true,
+        "resolution": {
+            "commit_hash": "f087da927aba08542e319ea9a76797cf5bd25b7b",
+            "branch": "version-15"
+        },
+        "required": [],
+        "idx": 2,
+        "version": "15.67.0"
+    },
+    "crm": {
+        "is_repo": true,
+        "resolution": {
+            "commit_hash": "d53b50380593d53b26b6f71fa4b9b5284f23322d",
+            "branch": "develop"
+        },
+        "required": [],
+        "idx": 3,
+        "version": "2.0.0-dev"
+    },
+    "hrms": {
+        "is_repo": true,
+        "resolution": {
+            "commit_hash": "998515b5fe8997928deb2ecd6f64e7abb0fefcf8",
+            "branch": "develop"
+        },
+        "required": [],
+        "idx": 4,
+        "version": "16.0.0-dev"
+    },
+    "drive": {
+        "is_repo": true,
+        "resolution": {
+            "commit_hash": "6591a12d2e5da35270620c57ea5c056b20b89551",
+            "branch": "main"
+        },
+        "required": [],
+        "idx": 5,
+        "version": "0.2.0"
+    },
+    "twilio_integration": {
+        "is_repo": true,
+        "resolution": {
+            "commit_hash": "cb474c54d794c3a58a8c5287d387cf3d41e5ed0a",
+            "branch": "master"
+        },
+        "required": [],
+        "idx": 6,
+        "version": "0.0.1"
+    },
+    "frappe_openai_integration": {
+        "is_repo": true,
+        "resolution": {
+            "commit_hash": "dfe25781e127ef5c8e1c951b092fbc8c7b721a19",
+            "branch": "master"
+        },
+        "required": [],
+        "idx": 7,
+        "version": "0.0.1"
+    },
+    "whitelabel": {
+        "is_repo": true,
+        "resolution": {
+            "commit_hash": "fa9a3825dfd4b78fab2c515d85357e372b51e510",
+            "branch": "version-15"
+        },
+        "required": [],
+        "idx": 8,
+        "version": "0.0.1"
+    },
+    "ignitr_brand": {
+        "is_repo": true,
+        "resolution": {
+            "commit_hash": "91ed35ad00f61a5e7ee76439a319787b98cf07eb",
+            "branch": "develop"
+        },
+        "required": [],
+        "idx": 9,
+        "version": "0.0.1"
+    },
+    "payments_processor": {
+        "is_repo": true,
+        "resolution": {
+            "commit_hash": "680301568cc76953841cff7d5f8b6545aefc68f2",
+            "branch": "version-15"
+        },
+        "required": [],
+        "idx": 10,
+        "version": "15.0.1"
+    },
+    "desk_navbar_extended": {
+        "is_repo": true,
+        "resolution": {
+            "commit_hash": "aca1f630066eff355b45f0ad6c861e76a3545eb2",
+            "branch": "main"
+        },
+        "required": [],
+        "idx": 11,
+        "version": "0.0.1"
+    },
+    "toolbox": {
+        "is_repo": true,
+        "resolution": {
+            "commit_hash": "3c1821a5bcc44ad7de2554fadd2dddd303255962",
+            "branch": "main"
+        },
+        "required": [],
+        "idx": 12,
+        "version": "0.0.2-beta.0"
+    },
+    "sheets": {
+        "is_repo": true,
+        "resolution": {
+            "commit_hash": "58ff2e5f7d00ce93dc09aae736457d97c2b032c3",
+            "branch": "main"
+        },
+        "required": [],
+        "idx": 13,
+        "version": "0.0.1"
+    },
+    "gameplan": {
+        "is_repo": true,
+        "resolution": {
+            "commit_hash": "10da62ad18cbfd2dd694dac1213a0c2d34420a89",
+            "branch": "main"
+        },
+        "required": [],
+        "idx": 14,
+        "version": "0.0.1"
+    },
+    "insights": {
+        "is_repo": true,
+        "resolution": {
+            "commit_hash": "5b949ae3fe8db6884d1bd842f1faa0a41d134c0d",
+            "branch": "develop"
+        },
+        "required": [],
+        "idx": 15,
+        "version": "3.0.26"
+    },
+    "next_ai": {
+        "is_repo": true,
+        "resolution": {
+            "commit_hash": "2d4a30db22d27fb4320eccb1409c0d183327211b",
+            "branch": "main"
+        },
+        "required": [],
+        "idx": 16,
+        "version": "0.0.1"
+    },
+    "frappe_desk_theme": {
+        "is_repo": true,
+        "resolution": {
+            "commit_hash": "60b653462a85470356f1c83548c540ef2ba99bcf",
+            "branch": "development"
+        },
+        "required": [],
+        "idx": 17,
+        "version": "1.0.0"
+    },
+    "frappe_tinymce": {
+        "is_repo": true,
+        "resolution": {
+            "commit_hash": "86349381f36da9ecb52301b599914658add43c76",
+            "branch": "master"
+        },
+        "required": [],
+        "idx": 18,
+        "version": "0.0.2"
+    },
+    "ignitr_security": {
+        "is_repo": true,
+        "resolution": {
+            "commit_hash": "0311676b4667fc68fb4f87e179592ce26da5a3df",
+            "branch": "develop"
+        },
+        "required": [],
+        "idx": 19,
+        "version": "0.0.1"
+    },
+    "payments": {
+        "is_repo": true,
+        "resolution": {
+            "commit_hash": "08da2b2fc390e235949c1c2ee70af7962c5420b6",
+            "branch": "develop"
+        },
+        "required": [],
+        "idx": 20,
+        "version": "0.0.1"
+    },
+    "agriculture": {
+        "is_repo": true,
+        "resolution": {
+            "commit_hash": "534c830bf1ff4fdd9ab34118e12e679808b07923",
+            "branch": "develop"
+        },
+        "required": [],
+        "idx": 21,
+        "version": "0.0.1"
+    }
+}

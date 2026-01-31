@@ -1,0 +1,493 @@
+/* Nexelya Component Library - Construction/Industrial Theme */
+
+/* ============================================
+   Buttons
+   ============================================ */
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--spacing-sm) var(--spacing-lg);
+  font-size: var(--font-size-base);
+  font-weight: var(--font-weight-semibold);
+  line-height: 1.5;
+  text-align: center;
+  text-decoration: none;
+  white-space: nowrap;
+  vertical-align: middle;
+  cursor: pointer;
+  user-select: none;
+  border: 1px solid transparent;
+  border-radius: var(--radius-md);
+  transition: all var(--transition-base);
+  min-height: var(--touch-target-comfortable);
+  min-width: var(--touch-target-comfortable);
+}
+
+.btn:focus {
+  outline: 2px solid var(--nexelya-primary);
+  outline-offset: 2px;
+}
+
+.btn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+/* Primary Button - Higher specificity to override Frappe defaults */
+.btn.btn-primary,
+button.btn-primary,
+a.btn-primary,
+.btn-primary {
+  background-color: var(--nexelya-primary) !important;
+  border-color: var(--nexelya-primary) !important;
+  color: var(--nexelya-white) !important;
+}
+
+.btn.btn-primary:hover:not(:disabled),
+button.btn-primary:hover:not(:disabled),
+a.btn-primary:hover:not(:disabled),
+.btn-primary:hover:not(:disabled) {
+  background-color: var(--nexelya-primary-hover) !important;
+  border-color: var(--nexelya-primary-hover) !important;
+  transform: translateY(-1px);
+  box-shadow: var(--shadow-md);
+}
+
+.btn-primary:active:not(:disabled) {
+  transform: translateY(0);
+  box-shadow: var(--shadow-sm);
+}
+
+/* Secondary Button */
+.btn-secondary {
+  background-color: var(--nexelya-secondary);
+  border-color: var(--nexelya-secondary);
+  color: var(--nexelya-white);
+}
+
+.btn-secondary:hover:not(:disabled) {
+  background-color: var(--nexelya-secondary-hover);
+  border-color: var(--nexelya-secondary-hover);
+  transform: translateY(-1px);
+  box-shadow: var(--shadow-md);
+}
+
+/* Success Button */
+.btn-success {
+  background-color: var(--nexelya-success);
+  border-color: var(--nexelya-success);
+  color: var(--nexelya-white);
+}
+
+.btn-success:hover:not(:disabled) {
+  background-color: var(--nexelya-success-dark);
+  border-color: var(--nexelya-success-dark);
+}
+
+/* Danger Button */
+.btn-danger {
+  background-color: var(--nexelya-danger);
+  border-color: var(--nexelya-danger);
+  color: var(--nexelya-white);
+}
+
+.btn-danger:hover:not(:disabled) {
+  background-color: var(--nexelya-danger-dark);
+  border-color: var(--nexelya-danger-dark);
+}
+
+/* Outline Buttons */
+.btn-outline-primary {
+  background-color: transparent;
+  border-color: var(--nexelya-primary);
+  color: var(--nexelya-primary);
+}
+
+.btn-outline-primary:hover:not(:disabled) {
+  background-color: var(--nexelya-primary);
+  color: var(--nexelya-white);
+}
+
+/* Button Sizes */
+.btn-sm {
+  padding: var(--spacing-xs) var(--spacing-md);
+  font-size: var(--font-size-sm);
+  min-height: 36px;
+}
+
+.btn-lg {
+  padding: var(--spacing-md) var(--spacing-xl);
+  font-size: var(--font-size-lg);
+  min-height: 52px;
+}
+
+/* ============================================
+   Cards
+   ============================================ */
+
+.card {
+  background-color: var(--bg-primary);
+  border: 1px solid var(--border-primary);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-sm);
+  padding: var(--spacing-lg);
+  transition: all var(--transition-base);
+}
+
+.card:hover {
+  box-shadow: var(--shadow-md);
+  transform: translateY(-2px);
+}
+
+.card-header {
+  padding-bottom: var(--spacing-md);
+  margin-bottom: var(--spacing-md);
+  border-bottom: 1px solid var(--border-primary);
+}
+
+.card-title {
+  font-size: var(--font-size-lg);
+  font-weight: var(--font-weight-semibold);
+  margin: 0;
+  color: var(--text-primary);
+}
+
+.card-body {
+  padding: 0;
+}
+
+.card-footer {
+  padding-top: var(--spacing-md);
+  margin-top: var(--spacing-md);
+  border-top: 1px solid var(--border-primary);
+}
+
+/* Card Variants */
+.card-info {
+  border-left: 4px solid var(--nexelya-info);
+  background-color: var(--nexelya-info-bg);
+}
+
+.card-warning {
+  border-left: 4px solid var(--nexelya-warning);
+  background-color: var(--nexelya-warning-bg);
+}
+
+.card-success {
+  border-left: 4px solid var(--nexelya-success);
+  background-color: var(--nexelya-success-bg);
+}
+
+.card-danger {
+  border-left: 4px solid var(--nexelya-danger);
+  background-color: var(--nexelya-danger-bg);
+}
+
+/* ============================================
+   Badges
+   ============================================ */
+
+.badge {
+  display: inline-flex;
+  align-items: center;
+  padding: var(--spacing-xs) var(--spacing-sm);
+  font-size: var(--font-size-xs);
+  font-weight: var(--font-weight-semibold);
+  line-height: 1;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  border-radius: var(--radius-full);
+  white-space: nowrap;
+}
+
+.badge-primary {
+  background-color: var(--nexelya-primary);
+  color: var(--nexelya-white);
+}
+
+.badge-secondary {
+  background-color: var(--nexelya-secondary);
+  color: var(--nexelya-white);
+}
+
+.badge-success {
+  background-color: var(--nexelya-success);
+  color: var(--nexelya-white);
+}
+
+.badge-warning {
+  background-color: var(--nexelya-warning);
+  color: var(--nexelya-white);
+}
+
+.badge-danger {
+  background-color: var(--nexelya-danger);
+  color: var(--nexelya-white);
+}
+
+.badge-gray {
+  background-color: var(--nexelya-gray);
+  color: var(--nexelya-white);
+}
+
+/* Status Badges */
+.badge-status-on-schedule {
+  background-color: var(--status-on-schedule);
+  color: var(--nexelya-white);
+}
+
+.badge-status-at-risk {
+  background-color: var(--status-at-risk);
+  color: var(--nexelya-white);
+}
+
+.badge-status-delayed {
+  background-color: var(--status-delayed);
+  color: var(--nexelya-white);
+}
+
+.badge-status-not-started {
+  background-color: var(--status-not-started);
+  color: var(--nexelya-white);
+}
+
+.badge-status-completed {
+  background-color: var(--status-completed);
+  color: var(--nexelya-white);
+}
+
+/* ============================================
+   Alerts
+   ============================================ */
+
+.alert {
+  padding: var(--spacing-md);
+  margin-bottom: var(--spacing-md);
+  border: 1px solid transparent;
+  border-radius: var(--radius-md);
+  border-left-width: 4px;
+}
+
+.alert-success {
+  background-color: var(--nexelya-success-bg);
+  border-left-color: var(--nexelya-success);
+  color: var(--nexelya-success-dark);
+}
+
+.alert-warning {
+  background-color: var(--nexelya-warning-bg);
+  border-left-color: var(--nexelya-warning);
+  color: var(--nexelya-warning-dark);
+}
+
+.alert-danger {
+  background-color: var(--nexelya-danger-bg);
+  border-left-color: var(--nexelya-danger);
+  color: var(--nexelya-danger-dark);
+}
+
+.alert-info {
+  background-color: var(--nexelya-info-bg);
+  border-left-color: var(--nexelya-info);
+  color: var(--nexelya-info-dark);
+}
+
+.alert-title {
+  font-weight: var(--font-weight-semibold);
+  margin-bottom: var(--spacing-xs);
+}
+
+.alert-message {
+  margin: 0;
+}
+
+/* ============================================
+   Progress Bars
+   ============================================ */
+
+.progress {
+  display: flex;
+  height: 8px;
+  overflow: hidden;
+  background-color: var(--bg-tertiary);
+  border-radius: var(--radius-full);
+}
+
+.progress-bar {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  color: var(--nexelya-white);
+  text-align: center;
+  white-space: nowrap;
+  background-color: var(--nexelya-primary);
+  transition: width var(--transition-base);
+}
+
+.progress-bar-success {
+  background-color: var(--nexelya-success);
+}
+
+.progress-bar-warning {
+  background-color: var(--nexelya-warning);
+}
+
+.progress-bar-danger {
+  background-color: var(--nexelya-danger);
+}
+
+.progress-lg {
+  height: 16px;
+}
+
+.progress-sm {
+  height: 4px;
+}
+
+/* ============================================
+   Status Indicators
+   ============================================ */
+
+.status-indicator {
+  display: inline-block;
+  width: 12px;
+  height: 12px;
+  border-radius: var(--radius-full);
+  margin-right: var(--spacing-xs);
+}
+
+.status-indicator-lg {
+  width: 16px;
+  height: 16px;
+}
+
+.status-indicator-sm {
+  width: 8px;
+  height: 8px;
+}
+
+.status-indicator-on-schedule {
+  background-color: var(--status-on-schedule);
+}
+
+.status-indicator-at-risk {
+  background-color: var(--status-at-risk);
+}
+
+.status-indicator-delayed {
+  background-color: var(--status-delayed);
+}
+
+.status-indicator-not-started {
+  background-color: var(--status-not-started);
+}
+
+.status-indicator-completed {
+  background-color: var(--status-completed);
+}
+
+/* ============================================
+   Form Controls - Higher specificity
+   ============================================ */
+
+input.form-control,
+textarea.form-control,
+select.form-control,
+.form-control,
+input[type="text"],
+input[type="email"],
+input[type="number"],
+input[type="date"],
+textarea,
+select {
+  display: block;
+  width: 100%;
+  padding: var(--spacing-sm) var(--spacing-md) !important;
+  font-size: var(--font-size-base) !important;
+  font-weight: var(--font-weight-normal) !important;
+  line-height: var(--line-height-normal) !important;
+  color: var(--text-primary) !important;
+  background-color: var(--bg-primary) !important;
+  border: 1px solid var(--border-primary) !important;
+  border-radius: var(--radius-md) !important;
+  transition: border-color var(--transition-base), box-shadow var(--transition-base) !important;
+  min-height: var(--touch-target-comfortable) !important;
+}
+
+input.form-control:focus,
+textarea.form-control:focus,
+select.form-control:focus,
+.form-control:focus,
+input[type="text"]:focus,
+input[type="email"]:focus,
+input[type="number"]:focus,
+input[type="date"]:focus,
+textarea:focus,
+select:focus {
+  border-color: var(--border-focus) !important;
+  outline: 0 !important;
+  box-shadow: 0 0 0 3px rgba(255, 107, 53, 0.1) !important;
+}
+
+.form-control:disabled {
+  background-color: var(--bg-tertiary);
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.form-control::placeholder {
+  color: var(--text-tertiary);
+  opacity: 1;
+}
+
+/* ============================================
+   KPI Cards (Dashboard)
+   ============================================ */
+
+.kpi-card {
+  background: var(--bg-primary);
+  border: 1px solid var(--border-primary);
+  border-radius: var(--radius-lg);
+  padding: var(--spacing-lg);
+  box-shadow: var(--shadow-sm);
+  transition: all var(--transition-base);
+}
+
+.kpi-card:hover {
+  box-shadow: var(--shadow-md);
+  transform: translateY(-2px);
+}
+
+.kpi-value {
+  font-size: var(--font-size-3xl);
+  font-weight: var(--font-weight-bold);
+  line-height: var(--line-height-tight);
+  color: var(--text-primary);
+  margin: var(--spacing-sm) 0;
+}
+
+.kpi-label {
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-medium);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  color: var(--text-tertiary);
+  margin: 0;
+}
+
+.kpi-change {
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-semibold);
+  margin-top: var(--spacing-xs);
+}
+
+.kpi-change-positive {
+  color: var(--nexelya-success);
+}
+
+.kpi-change-negative {
+  color: var(--nexelya-danger);
+}
+

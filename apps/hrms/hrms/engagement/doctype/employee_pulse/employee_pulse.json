@@ -1,0 +1,170 @@
+{
+	"actions": [],
+	"allow_rename": 0,
+	"autoname": "naming_series:",
+	"creation": "2024-01-01 00:00:00.000000",
+	"doctype": "DocType",
+	"editable_grid": 1,
+	"engine": "InnoDB",
+	"field_order": [
+		"naming_series",
+		"employee",
+		"employee_name",
+		"department",
+		"survey_date",
+		"section_break_1",
+		"overall_satisfaction",
+		"work_life_balance",
+		"career_growth",
+		"team_collaboration",
+		"management_support",
+		"column_break_1",
+		"workload",
+		"compensation",
+		"work_environment",
+		"feedback",
+		"engagement_score",
+		"amended_from"
+	],
+	"fields": [
+		{
+			"fieldname": "naming_series",
+			"fieldtype": "Select",
+			"label": "Series",
+			"options": "EP-.YYYY.-"
+		},
+		{
+			"fieldname": "employee",
+			"fieldtype": "Link",
+			"label": "Employee",
+			"options": "Employee",
+			"reqd": 1
+		},
+		{
+			"fetch_from": "employee.employee_name",
+			"fieldname": "employee_name",
+			"fieldtype": "Data",
+			"label": "Employee Name",
+			"read_only": 1
+		},
+		{
+			"fetch_from": "employee.department",
+			"fieldname": "department",
+			"fieldtype": "Link",
+			"label": "Department",
+			"options": "Department",
+			"read_only": 1
+		},
+		{
+			"fieldname": "survey_date",
+			"fieldtype": "Date",
+			"label": "Survey Date",
+			"reqd": 1
+		},
+		{
+			"fieldname": "section_break_1",
+			"fieldtype": "Section Break",
+			"label": "Survey Responses"
+		},
+		{
+			"fieldname": "overall_satisfaction",
+			"fieldtype": "Rating",
+			"label": "Overall Satisfaction"
+		},
+		{
+			"fieldname": "work_life_balance",
+			"fieldtype": "Rating",
+			"label": "Work-Life Balance"
+		},
+		{
+			"fieldname": "career_growth",
+			"fieldtype": "Rating",
+			"label": "Career Growth Opportunities"
+		},
+		{
+			"fieldname": "team_collaboration",
+			"fieldtype": "Rating",
+			"label": "Team Collaboration"
+		},
+		{
+			"fieldname": "management_support",
+			"fieldtype": "Rating",
+			"label": "Management Support"
+		},
+		{
+			"fieldname": "column_break_1",
+			"fieldtype": "Column Break"
+		},
+		{
+			"fieldname": "workload",
+			"fieldtype": "Rating",
+			"label": "Workload"
+		},
+		{
+			"fieldname": "compensation",
+			"fieldtype": "Rating",
+			"label": "Compensation"
+		},
+		{
+			"fieldname": "work_environment",
+			"fieldtype": "Rating",
+			"label": "Work Environment"
+		},
+		{
+			"fieldname": "feedback",
+			"fieldtype": "Small Text",
+			"label": "Additional Feedback"
+		},
+		{
+			"fieldname": "engagement_score",
+			"fieldtype": "Percent",
+			"label": "Engagement Score",
+			"read_only": 1
+		},
+		{
+			"fieldname": "amended_from",
+			"fieldtype": "Link",
+			"label": "Amended From",
+			"options": "Employee Pulse",
+			"read_only": 1
+		}
+	],
+	"index_web_pages_for_search": 1,
+	"links": [],
+	"modified": "2024-01-01 00:00:00.000000",
+	"modified_by": "Administrator",
+	"module": "HR",
+	"name": "Employee Pulse",
+	"naming_rule": "By \"Naming Series\" field",
+	"owner": "Administrator",
+	"permissions": [
+		{
+			"create": 1,
+			"delete": 1,
+			"email": 1,
+			"export": 1,
+			"print": 1,
+			"read": 1,
+			"report": 1,
+			"role": "Employee",
+			"share": 1,
+			"write": 1
+		},
+		{
+			"create": 1,
+			"delete": 1,
+			"email": 1,
+			"export": 1,
+			"print": 1,
+			"read": 1,
+			"report": 1,
+			"role": "HR Manager",
+			"share": 1,
+			"write": 1
+		}
+	],
+	"sort_field": "modified",
+	"sort_order": "DESC",
+	"states": [],
+	"track_changes": 1
+}

@@ -1,0 +1,9 @@
+black
+Pillow
+opencv-python
+mimemapper
+unoconv
+thumbnail
+boto3
+PyJWT
+pycrdt

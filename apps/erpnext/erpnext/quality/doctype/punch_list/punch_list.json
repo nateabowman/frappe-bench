@@ -1,0 +1,104 @@
+{
+ "actions": [],
+ "allow_import": 1,
+ "autoname": "PL-.YYYY.-.#####",
+ "creation": "2024-01-01 00:00:00",
+ "doctype": "DocType",
+ "document_type": "Document",
+ "engine": "InnoDB",
+ "field_order": [
+  "punch_list_details",
+  "punch_list_name",
+  "project",
+  "area",
+  "column_break_1",
+  "created_date",
+  "due_date",
+  "status",
+  "items_section",
+  "punch_list_items"
+ ],
+ "fields": [
+  {
+   "fieldname": "punch_list_details",
+   "fieldtype": "Section Break",
+   "label": "Punch List Details"
+  },
+  {
+   "fieldname": "punch_list_name",
+   "fieldtype": "Data",
+   "label": "Punch List Name",
+   "reqd": 1
+  },
+  {
+   "fieldname": "project",
+   "fieldtype": "Link",
+   "label": "Job Site",
+   "options": "Project",
+   "reqd": 1
+  },
+  {
+   "fieldname": "area",
+   "fieldtype": "Data",
+   "label": "Area/Location"
+  },
+  {
+   "fieldname": "column_break_1",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "created_date",
+   "fieldtype": "Date",
+   "label": "Created Date",
+   "reqd": 1
+  },
+  {
+   "fieldname": "due_date",
+   "fieldtype": "Date",
+   "label": "Due Date"
+  },
+  {
+   "fieldname": "status",
+   "fieldtype": "Select",
+   "label": "Status",
+   "options": "Open\nIn Progress\nCompleted\nClosed"
+  },
+  {
+   "fieldname": "items_section",
+   "fieldtype": "Section Break",
+   "label": "Punch List Items"
+  },
+  {
+   "fieldname": "punch_list_items",
+   "fieldtype": "Table",
+   "label": "Punch List Items",
+   "options": "Punch List Item"
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "links": [],
+ "modified": "2024-01-01 00:00:00",
+ "modified_by": "Administrator",
+ "module": "Projects",
+ "name": "Punch List",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": [],
+ "track_changes": 1
+}
+

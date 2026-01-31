@@ -1,0 +1,91 @@
+{
+ "actions": [],
+ "autoname": "autoincrement",
+ "creation": "2023-01-28 12:25:24.807743",
+ "default_view": "List",
+ "doctype": "DocType",
+ "documentation": "https://mariadb.com/kb/en/explain/",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "query",
+  "parameterized_query",
+  "improved",
+  "occurence",
+  "tables",
+  "query_explain",
+  "call_stack"
+ ],
+ "fields": [
+  {
+   "fieldname": "query",
+   "fieldtype": "Long Text",
+   "in_list_view": 1,
+   "label": "Query",
+   "options": "SQL",
+   "read_only": 1,
+   "reqd": 1
+  },
+  {
+   "fieldname": "improved",
+   "fieldtype": "Long Text",
+   "label": "Improved"
+  },
+  {
+   "fieldname": "occurence",
+   "fieldtype": "Int",
+   "in_list_view": 1,
+   "label": "Occurence",
+   "read_only": 1
+  },
+  {
+   "fieldname": "tables",
+   "fieldtype": "Data",
+   "label": "Tables",
+   "read_only": 1
+  },
+  {
+   "fieldname": "query_explain",
+   "fieldtype": "Table",
+   "label": "Query Explain",
+   "options": "MariaDB Query Explain",
+   "read_only": 1
+  },
+  {
+   "fieldname": "parameterized_query",
+   "fieldtype": "Long Text",
+   "label": "Parameterized Query",
+   "read_only": 1
+  },
+  {
+   "fieldname": "call_stack",
+   "fieldtype": "Long Text",
+   "label": "Call Stack",
+   "read_only": 1
+  }
+ ],
+ "links": [],
+ "modified": "2023-08-13 18:05:36.963098",
+ "modified_by": "Administrator",
+ "module": "Toolbox",
+ "name": "MariaDB Query",
+ "naming_rule": "Autoincrement",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "show_title_field_in_link": 1,
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": [],
+ "title_field": "query"
+}

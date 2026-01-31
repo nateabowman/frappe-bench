@@ -1,0 +1,345 @@
+/* Mobile & Responsive Design Enhancements */
+
+/* ============================================
+   Mobile Breakpoints
+   ============================================ */
+
+@media (max-width: 768px) {
+  /* Mobile-specific adjustments */
+  
+  /* Sidebar becomes bottom navigation */
+  .sidebar {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 60px;
+    background: var(--bg-primary);
+    border-top: 1px solid var(--border-primary);
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    z-index: var(--z-fixed);
+    box-shadow: 0 -2px 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  .sidebar-item {
+    flex-direction: column;
+    padding: var(--spacing-xs);
+    min-width: 60px;
+    text-align: center;
+  }
+  
+  .sidebar-item .label {
+    font-size: var(--font-size-xs);
+    margin-top: var(--spacing-xs);
+  }
+  
+  /* Touch-optimized buttons */
+  .btn {
+    min-height: var(--touch-target-min);
+    min-width: var(--touch-target-min);
+    padding: var(--spacing-md) var(--spacing-lg);
+  }
+  
+  /* Larger form inputs */
+  .form-control {
+    min-height: var(--touch-target-comfortable);
+    font-size: var(--font-size-md);
+    padding: var(--spacing-md);
+  }
+  
+  /* Card view for tables on mobile */
+  .table-responsive {
+    display: block;
+  }
+  
+  .table thead {
+    display: none;
+  }
+  
+  .table tbody,
+  .table tr,
+  .table td {
+    display: block;
+    width: 100%;
+  }
+  
+  .table tr {
+    margin-bottom: var(--spacing-md);
+    border: 1px solid var(--border-primary);
+    border-radius: var(--radius-md);
+    padding: var(--spacing-md);
+    background: var(--bg-primary);
+    box-shadow: var(--shadow-sm);
+  }
+  
+  .table td {
+    border: none;
+    padding: var(--spacing-xs) 0;
+    text-align: left;
+  }
+  
+  .table td::before {
+    content: attr(data-label) ": ";
+    font-weight: var(--font-weight-semibold);
+    text-transform: uppercase;
+    font-size: var(--font-size-xs);
+    color: var(--text-tertiary);
+    display: block;
+    margin-bottom: var(--spacing-xs);
+  }
+  
+  /* Module cards stack on mobile */
+  .module-card {
+    width: 100%;
+    margin-bottom: var(--spacing-md);
+  }
+  
+  /* KPI cards stack */
+  .kpi-card {
+    margin-bottom: var(--spacing-md);
+  }
+  
+  .job-site-metrics {
+    grid-template-columns: 1fr;
+  }
+  
+  /* Navigation adjustments */
+  .navbar {
+    padding: 0 var(--spacing-sm);
+  }
+  
+  .navbar-brand .app-logo {
+    max-height: 32px;
+  }
+  
+  /* Content padding for bottom nav */
+  .main-content {
+    padding-bottom: 80px;
+  }
+  
+  /* Swipe actions */
+  .swipeable-item {
+    position: relative;
+    overflow: hidden;
+  }
+  
+  .swipe-actions {
+    position: absolute;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    display: flex;
+    align-items: center;
+    background: var(--nexelya-danger);
+    padding: 0 var(--spacing-lg);
+    transform: translateX(100%);
+    transition: transform var(--transition-base);
+  }
+  
+  .swipeable-item.swiped .swipe-actions {
+    transform: translateX(0);
+  }
+}
+
+/* ============================================
+   Tablet Breakpoints
+   ============================================ */
+
+@media (min-width: 769px) and (max-width: 1024px) {
+  .sidebar {
+    width: 240px;
+  }
+  
+  .module-card {
+    width: calc(50% - var(--spacing-md));
+  }
+  
+  .job-site-metrics {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* ============================================
+   Touch Device Optimizations
+   ============================================ */
+
+@media (hover: none) and (pointer: coarse) {
+  /* Larger touch targets */
+  a, button, input, select, textarea {
+    min-height: var(--touch-target-min);
+    min-width: var(--touch-target-min);
+  }
+  
+  /* Remove hover effects on touch devices */
+  .btn:hover {
+    transform: none;
+  }
+  
+  .card:hover {
+    transform: none;
+  }
+  
+  /* Active states instead of hover */
+  .btn:active {
+    transform: scale(0.98);
+    opacity: 0.9;
+  }
+}
+
+
+/* ============================================
+   Camera Integration Styles
+   ============================================ */
+
+.camera-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: var(--touch-target-comfortable);
+  height: var(--touch-target-comfortable);
+  border-radius: var(--radius-full);
+  background: var(--nexelya-primary);
+  color: var(--nexelya-white);
+  border: none;
+  cursor: pointer;
+  box-shadow: var(--shadow-md);
+  transition: all var(--transition-base);
+}
+
+.camera-button:active {
+  transform: scale(0.95);
+}
+
+.camera-preview {
+  width: 100%;
+  max-width: 100%;
+  border-radius: var(--radius-md);
+  margin-top: var(--spacing-md);
+}
+
+/* ============================================
+   GPS Location Styles
+   ============================================ */
+
+.location-button {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--spacing-xs);
+  padding: var(--spacing-sm) var(--spacing-md);
+  background: var(--bg-secondary);
+  border: 1px solid var(--border-primary);
+  border-radius: var(--radius-md);
+  cursor: pointer;
+  transition: all var(--transition-base);
+}
+
+.location-button:active {
+  background: var(--bg-hover);
+  border-color: var(--nexelya-primary);
+}
+
+.location-display {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-xs);
+  padding: var(--spacing-sm);
+  background: var(--bg-secondary);
+  border-radius: var(--radius-md);
+  font-size: var(--font-size-sm);
+  color: var(--text-secondary);
+}
+
+/* ============================================
+   Simplified Mobile Forms
+   ============================================ */
+
+@media (max-width: 768px) {
+  .form-section {
+    margin-bottom: var(--spacing-lg);
+  }
+  
+  .form-group {
+    margin-bottom: var(--spacing-md);
+  }
+  
+  .form-label {
+    display: block;
+    margin-bottom: var(--spacing-xs);
+    font-weight: var(--font-weight-semibold);
+  }
+  
+  /* Full-width inputs on mobile */
+  .form-control,
+  .form-select {
+    width: 100%;
+  }
+  
+  /* Larger checkboxes and radios */
+  input[type="checkbox"],
+  input[type="radio"] {
+    width: 24px;
+    height: 24px;
+    margin-right: var(--spacing-sm);
+  }
+  
+  /* Photo upload area */
+  .photo-upload-area {
+    min-height: 200px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: var(--spacing-md);
+  }
+}
+
+/* ============================================
+   Progressive Web App (PWA) Styles
+   ============================================ */
+
+.pwa-install-prompt {
+  position: fixed;
+  bottom: 80px;
+  left: var(--spacing-md);
+  right: var(--spacing-md);
+  background: var(--bg-primary);
+  border: 1px solid var(--border-primary);
+  border-radius: var(--radius-lg);
+  padding: var(--spacing-md);
+  box-shadow: var(--shadow-xl);
+  z-index: var(--z-modal);
+  display: none;
+}
+
+.pwa-install-prompt.show {
+  display: block;
+}
+
+.pwa-install-prompt-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: var(--spacing-sm);
+}
+
+.pwa-install-prompt-title {
+  font-weight: var(--font-weight-semibold);
+  font-size: var(--font-size-lg);
+}
+
+.pwa-install-prompt-close {
+  background: none;
+  border: none;
+  font-size: var(--font-size-xl);
+  cursor: pointer;
+  color: var(--text-tertiary);
+}
+
+.pwa-install-prompt-actions {
+  display: flex;
+  gap: var(--spacing-sm);
+  margin-top: var(--spacing-md);
+}
+

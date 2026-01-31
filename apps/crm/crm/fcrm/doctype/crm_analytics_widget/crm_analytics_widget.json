@@ -1,0 +1,176 @@
+{
+ "actions": [],
+ "allow_import": 1,
+ "allow_rename": 1,
+ "autoname": "field:widget_name",
+ "creation": "2024-01-01 00:00:00.000000",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "widget_name",
+  "widget_type",
+  "widget_title",
+  "description",
+  "chart_type",
+  "data_source",
+  "query",
+  "filters",
+  "section_break_1",
+  "position_x",
+  "position_y",
+  "width",
+  "height",
+  "is_public",
+  "created_by",
+  "section_break_2",
+  "refresh_interval",
+  "last_refreshed"
+ ],
+ "fields": [
+  {
+   "fieldname": "widget_name",
+   "fieldtype": "Data",
+   "label": "Widget Name",
+   "reqd": 1,
+   "unique": 1
+  },
+  {
+   "fieldname": "widget_type",
+   "fieldtype": "Select",
+   "label": "Widget Type",
+   "options": "Chart\nMetric\nTable\nKPI\nFunnel\nTimeline",
+   "reqd": 1
+  },
+  {
+   "fieldname": "widget_title",
+   "fieldtype": "Data",
+   "label": "Widget Title",
+   "reqd": 1
+  },
+  {
+   "fieldname": "description",
+   "fieldtype": "Small Text",
+   "label": "Description"
+  },
+  {
+   "fieldname": "chart_type",
+   "fieldtype": "Select",
+   "label": "Chart Type",
+   "options": "Line\nBar\nPie\nArea\nScatter\nDonut\nFunnel"
+  },
+  {
+   "fieldname": "data_source",
+   "fieldtype": "Select",
+   "label": "Data Source",
+   "options": "CRM Lead\nCRM Deal\nCRM Contact\nCRM Organization\nCustom Query"
+  },
+  {
+   "fieldname": "query",
+   "fieldtype": "Code",
+   "label": "Query",
+   "options": "SQL"
+  },
+  {
+   "fieldname": "filters",
+   "fieldtype": "JSON",
+   "label": "Filters"
+  },
+  {
+   "fieldname": "section_break_1",
+   "fieldtype": "Section Break",
+   "label": "Layout"
+  },
+  {
+   "fieldname": "position_x",
+   "fieldtype": "Int",
+   "label": "Position X",
+   "default": 0
+  },
+  {
+   "fieldname": "position_y",
+   "fieldtype": "Int",
+   "label": "Position Y",
+   "default": 0
+  },
+  {
+   "fieldname": "width",
+   "fieldtype": "Int",
+   "label": "Width",
+   "default": 4
+  },
+  {
+   "fieldname": "height",
+   "fieldtype": "Int",
+   "label": "Height",
+   "default": 3
+  },
+  {
+   "fieldname": "is_public",
+   "fieldtype": "Check",
+   "label": "Is Public",
+   "default": 0
+  },
+  {
+   "fieldname": "created_by",
+   "fieldtype": "Link",
+   "label": "Created By",
+   "options": "User",
+   "read_only": 1
+  },
+  {
+   "fieldname": "section_break_2",
+   "fieldtype": "Section Break",
+   "label": "Settings"
+  },
+  {
+   "fieldname": "refresh_interval",
+   "fieldtype": "Int",
+   "label": "Refresh Interval (seconds)",
+   "default": 300
+  },
+  {
+   "fieldname": "last_refreshed",
+   "fieldtype": "Datetime",
+   "label": "Last Refreshed",
+   "read_only": 1
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "links": [],
+ "modified": "2024-01-01 00:00:00.000000",
+ "modified_by": "Administrator",
+ "module": "CRM",
+ "name": "CRM Analytics Widget",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  },
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "CRM User",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": [],
+ "track_changes": 1
+}

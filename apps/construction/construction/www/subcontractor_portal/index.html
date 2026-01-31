@@ -1,0 +1,121 @@
+{% extends "templates/web.html" %}
+
+{% block title %}Subcontractor Portal{% endblock %}
+
+{% block page_content %}
+<div class="container py-5">
+	<div class="row">
+		<div class="col-12">
+			<h1 class="mb-4">Subcontractor Portal</h1>
+			
+			{% if frappe.session.user == "Guest" %}
+			<div class="alert alert-warning">
+				<p>Please <a href="/login">login</a> to access the subcontractor portal.</p>
+			</div>
+			{% else %}
+			<div class="row">
+				<!-- Quick Links -->
+				<div class="col-md-4 mb-4">
+					<div class="card h-100">
+						<div class="card-body">
+							<h5 class="card-title">📋 My Assignments</h5>
+							<p class="card-text">View punch lists and tasks assigned to you.</p>
+							<a href="/subcontractor-portal/assignments" class="btn btn-primary">View Assignments</a>
+						</div>
+					</div>
+				</div>
+				
+				<div class="col-md-4 mb-4">
+					<div class="card h-100">
+						<div class="card-body">
+							<h5 class="card-title">📄 Documents</h5>
+							<p class="card-text">Access drawings, specs, and project documents.</p>
+							<a href="/subcontractor-portal/documents" class="btn btn-primary">View Documents</a>
+						</div>
+					</div>
+				</div>
+				
+				<div class="col-md-4 mb-4">
+					<div class="card h-100">
+						<div class="card-body">
+							<h5 class="card-title">📝 Submittals</h5>
+							<p class="card-text">Upload submittals and track approvals.</p>
+							<a href="/subcontractor-portal/submittals" class="btn btn-primary">Manage Submittals</a>
+						</div>
+					</div>
+				</div>
+				
+				<div class="col-md-4 mb-4">
+					<div class="card h-100">
+						<div class="card-body">
+							<h5 class="card-title">❓ RFIs</h5>
+							<p class="card-text">Submit and respond to RFIs.</p>
+							<a href="/subcontractor-portal/rfis" class="btn btn-primary">View RFIs</a>
+						</div>
+					</div>
+				</div>
+				
+				<div class="col-md-4 mb-4">
+					<div class="card h-100">
+						<div class="card-body">
+							<h5 class="card-title">💰 Invoices</h5>
+							<p class="card-text">Submit pay applications and view payment status.</p>
+							<a href="/subcontractor-portal/invoices" class="btn btn-primary">Manage Invoices</a>
+						</div>
+					</div>
+				</div>
+				
+				<div class="col-md-4 mb-4">
+					<div class="card h-100">
+						<div class="card-body">
+							<h5 class="card-title">📅 Daily Reports</h5>
+							<p class="card-text">Submit daily work reports.</p>
+							<a href="/subcontractor-portal/daily-reports" class="btn btn-primary">Submit Report</a>
+						</div>
+					</div>
+				</div>
+			</div>
+			
+			<!-- Open Items Summary -->
+			<div class="card mt-4">
+				<div class="card-header">
+					<h5 class="mb-0">Your Open Items</h5>
+				</div>
+				<div class="card-body">
+					<div class="row text-center">
+						<div class="col">
+							<h3 class="text-warning" id="open-punch-count">-</h3>
+							<p class="text-muted">Open Punch Items</p>
+						</div>
+						<div class="col">
+							<h3 class="text-info" id="pending-submittal-count">-</h3>
+							<p class="text-muted">Pending Submittals</p>
+						</div>
+						<div class="col">
+							<h3 class="text-primary" id="open-rfi-count">-</h3>
+							<p class="text-muted">Open RFIs</p>
+						</div>
+					</div>
+				</div>
+			</div>
+			{% endif %}
+		</div>
+	</div>
+</div>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+	// Fetch subcontractor stats
+	frappe.call({
+		method: 'construction.api.subcontractor.get_subcontractor_stats',
+		callback: function(r) {
+			if (r.message) {
+				document.getElementById('open-punch-count').textContent = r.message.open_punch_items || 0;
+				document.getElementById('pending-submittal-count').textContent = r.message.pending_submittals || 0;
+				document.getElementById('open-rfi-count').textContent = r.message.open_rfis || 0;
+			}
+		}
+	});
+});
+</script>
+{% endblock %}
