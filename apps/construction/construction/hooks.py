@@ -19,6 +19,8 @@ add_to_apps_screen = [
 		"logo": "/assets/construction/images/logo.svg",
 		"title": "Construction",
 		"route": "/app/construction",
+		"description": "Project management, job costing, and field operations",
+		"help_url": "/kb",
 	}
 ]
 

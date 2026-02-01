@@ -18,6 +18,8 @@ add_to_apps_screen = [
 		"logo": "/assets/crm/images/logo.svg",
 		"title": "CRM",
 		"route": "/crm",
+		"description": "Manage leads, deals, and customer relationships",
+		"help_url": "/kb",
 		"has_permission": "crm.api.check_app_permission",
 	}
 ]

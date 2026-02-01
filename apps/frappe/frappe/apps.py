@@ -46,6 +46,8 @@ def get_apps():
 						"logo": app_detail.get("logo"),
 						"title": _(app_detail.get("title")),
 						"route": get_route(app_detail, allowed_workspaces),
+						"description": _(app_detail.get("description")) if app_detail.get("description") else None,
+						"help_url": app_detail.get("help_url"),
 					}
 				)
 			except Exception:

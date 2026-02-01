@@ -16,6 +16,8 @@ add_to_apps_screen = [
 		"logo": "/assets/erpnext/images/erpnext-logo-blue.png",
 		"title": "Nexelya ERP",
 		"route": "/app/home",
+		"description": "Manage accounting, inventory, sales, and operations",
+		"help_url": "/kb",
 		"has_permission": "erpnext.check_app_permission",
 	}
 ]

@@ -1,0 +1,22 @@
+# Logrotate config for Frappe bench logs
+# Install: sudo cp /home/ubuntu/frappe-bench/config/frappe-bench.logrotate /etc/logrotate.d/frappe-bench
+
+/home/ubuntu/frappe-bench/logs/*.log {
+    daily
+    missingok
+    rotate 7
+    compress
+    delaycompress
+    notifempty
+    copytruncate
+}
+
+/home/ubuntu/frappe-bench/sites/*/logs/*.log {
+    daily
+    missingok
+    rotate 7
+    compress
+    delaycompress
+    notifempty
+    copytruncate
+}

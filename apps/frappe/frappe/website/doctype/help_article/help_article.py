@@ -74,7 +74,8 @@ def get_list_context(context=None):
 
 	category = frappe.db.get_value("Help Category", {"route": frappe.local.path})
 
-	if category:
+	# "All" category means search across all categories (no category filter)
+	if category and category != "All":
 		filters["category"] = category
 
 	list_context = frappe._dict(
@@ -84,15 +85,50 @@ def get_list_context(context=None):
 		sidebar_items=get_sidebar_items(),
 		hide_filters=True,
 		filters=filters,
+		get_list=get_help_article_list,
 		category=frappe.local.form_dict.category,
 		no_breadcrumbs=True,
 	)
 
 	if frappe.local.form_dict.txt:
 		list_context.blog_subtitle = _('Filtered by "{0}"').format(frappe.local.form_dict.txt)
-	#
-	# list_context.update(frappe.get_doc("Blog Settings", "Blog Settings").as_dict())
 	return list_context
+
+
+def get_help_article_list(
+	doctype,
+	txt,
+	filters,
+	limit_start,
+	limit_page_length=20,
+	ignore_permissions=False,
+	fields=None,
+	order_by=None,
+):
+	"""List Help Articles with search over title, content, and name (not just name)."""
+	# Allow guest read for published KB (same as default list behavior for allow_guest_to_view)
+	if frappe.get_meta(doctype).allow_guest_to_view:
+		ignore_permissions = True
+	or_filters = []
+	if txt and txt.strip():
+		# Escape LIKE wildcards so user input is treated literally
+		term = "%" + frappe.db.escape(txt.strip(), percent=True) + "%"
+		or_filters = [
+			["Help Article", "title", "like", term],
+			["Help Article", "content", "like", term],
+			["Help Article", "name", "like", term],
+			["Help Article", "route", "like", term],
+		]
+	return frappe.get_list(
+		doctype,
+		fields=fields or "distinct *",
+		filters=filters,
+		or_filters=or_filters,
+		limit_start=limit_start,
+		limit_page_length=limit_page_length,
+		ignore_permissions=ignore_permissions,
+		order_by=order_by or "modified desc",
+	)
 
 
 def get_level_class(level):
@@ -101,18 +137,26 @@ def get_level_class(level):
 
 def get_sidebar_items():
 	def _get():
-		return frappe.db.sql(
+		total = frappe.db.sql(
+			"""select count(*) from `tabHelp Article` where ifnull(published,0)=1""",
+		)[0][0]
+		rows = frappe.db.sql(
 			"""select
 				concat(category_name, " (", help_articles, ")") as title,
 				concat('/', route) as route
 			from
 				`tabHelp Category`
 			where
-				ifnull(published,0)=1 and help_articles > 0
+				ifnull(published,0)=1 and help_articles > 0 and name != 'All'
 			order by
 				help_articles desc""",
 			as_dict=True,
 		)
+		# Prepend "All" so users can search across all categories
+		if frappe.db.exists("Help Category", "All"):
+			all_route = frappe.db.get_value("Help Category", "All", "route") or "kb/all"
+			rows = [{"title": f"All ({total})", "route": "/" + all_route}] + rows
+		return rows
 
 	return frappe.cache.get_value("knowledge_base:category_sidebar", _get)
 

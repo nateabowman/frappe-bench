@@ -3,16 +3,39 @@ base_template: "templates/base.html"
 no_cache: 1
 ---
 
-{%- block navbar -%} {% from "frappe/templates/includes/avatar_macro.html" import avatar %} {%-
-endblock -%} {%- block footer -%} {%- endblock -%} {% block content %}
+{%- block navbar -%}
+{% from "frappe/templates/includes/avatar_macro.html" import avatar %}
+<header class="apps-header">
+	<a class="apps-brand" href="/apps">{{ _('Apps') }}</a>
+	<div class="apps-header-right">
+		<a class="apps-help-link" href="{{ help_center_url or '/kb' }}">{{ _('Help & Guides') }}</a>
+		<div class="dropdown">
+			<button class="btn-reset dropdown-toggle apps-profile-toggle" data-toggle="dropdown" aria-label="{{ _('User Menu') }}">
+				{{ avatar() }}
+			</button>
+			<ul class="dropdown-menu dropdown-menu-right">
+				<li><a class="dropdown-item" href="{{ help_center_url or '/kb' }}">{{ _('Help') }}</a></li>
+				<li><a class="dropdown-item" href="/app/user-profile">{{ _('My Profile') }}</a></li>
+				<li><hr class="dropdown-divider"></li>
+				<li><a class="dropdown-item apps-logout-link" href="#">{{ _('Logout') }}</a></li>
+			</ul>
+		</div>
+	</div>
+</header>
+{%- endblock -%}
+{%- block footer -%} {%- endblock -%}
+{% block content %}
 <div class="container">
 	<div class="apps-container">
 		<div class="title">{{ _('Select an app to continue') }}</div>
+		<p class="apps-subtitle">
+			<a href="{{ help_center_url or '/kb' }}">{{ _('New here? Visit Help & Guides to get started.') }}</a>
+		</p>
 		{% set appsCount = apps|length if apps|length <= 6 else 6 %}
 		<div class="apps" style="grid-template-columns: repeat({{ appsCount }}, 1fr);">
 			{% for app in apps %}
-			<a class="app-icon" style="cursor: pointer;">
-				<div class="app-logo app-name-cls" app-name="{{ app.name }}" app-route="{{ app.route }}">
+			<div class="app-icon">
+				<div class="app-logo app-name-cls" app-name="{{ app.name }}" app-route="{{ app.route }}" style="cursor: pointer;">
 					<img src="{{ app.logo }}" />
 					<div
 						app-name="{{ app.name }}"
@@ -36,7 +59,11 @@ endblock -%} {%- block footer -%} {%- endblock -%} {% block content %}
 					</div>
 				</div>
 				<div class="app-title">{{ app.title }}</div>
-			</a>
+				{% if app.description %}
+				<div class="app-description">{{ app.description }}</div>
+				{% endif %}
+				<a class="app-help-link" href="{{ app.help_url or help_center_url or '/kb' }}" target="_blank" rel="noopener">{{ _('Help') }}</a>
+			</div>
 			{% endfor %}
 		</div>
 		<button class="logout-btn btn btn-default">
@@ -60,10 +87,12 @@ endblock -%} {%- block footer -%} {%- endblock -%} {% block content %}
 		</button>
 	</div>
 </div>
-{% endblock %} {% block script %}
+{% endblock %}
+{% block script %}
 <script>
 	$(".set-default").on("click", function (e) {
 		e.preventDefault();
+		e.stopPropagation();
 		var appName = $(this).attr("app-name");
 		frappe.call({
 			method: "frappe.apps.set_app_as_default",
@@ -84,11 +113,15 @@ endblock -%} {%- block footer -%} {%- endblock -%} {% block content %}
 			callback: function (r) {
 				window.location.href = r.message;
 			},
-		})
-
+		});
 	});
 
-	$(".logout-btn").on("click", function () {
+	$(".app-help-link").on("click", function (e) {
+		e.stopPropagation();
+	});
+
+	$(".logout-btn, .apps-logout-link").on("click", function (e) {
+		e.preventDefault();
 		localStorage.current_app = "";
 		localStorage.current_route = "";
 

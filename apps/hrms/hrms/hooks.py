@@ -13,6 +13,8 @@ add_to_apps_screen = [
 		"logo": "/assets/hrms/images/frappe-hr-logo.svg",
 		"title": "Frappe HR",
 		"route": "/app/hr",
+		"description": "HR, payroll, attendance, and leave management",
+		"help_url": "/kb",
 		"has_permission": "hrms.hr.utils.check_app_permission",
 	}
 ]

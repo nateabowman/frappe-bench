@@ -16,6 +16,8 @@ add_to_apps_screen = [
         "logo": "/assets/insights/frontend/insights-logo.png",
         "title": "Insights",
         "route": "/insights",
+        "description": "Build reports and dashboards with queries and visualizations",
+        "help_url": "/kb",
         "has_permission": "insights.permissions.check_app_permission",
     }
 ]

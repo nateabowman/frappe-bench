@@ -21,7 +21,11 @@
 <div class="webpage-content">
 	{% include "templates/includes/slideshow.html" %}
 	<article class="web-page-content" id="{{ name }}" {% if text_align -%}style="text-align: {{ text_align }}"{%- endif %}>
+	{%- if source_content_type == 'HTML' -%}
+	{{ (main_section or "") | safe }}
+	{%- else -%}
 	{{ main_section or "" }}
+	{%- endif -%}
 	</article>
 	{% if enable_comments -%}
 	<hr class="my-5">

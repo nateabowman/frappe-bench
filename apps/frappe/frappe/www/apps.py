@@ -20,4 +20,8 @@ def get_context():
 	for app in all_apps:
 		app["is_default"] = True if app.get("name") == default_app else False
 
-	return {"apps": all_apps}
+	return {
+		"apps": all_apps,
+		"help_center_url": "/kb",
+		"body_class": "apps-page apps-page--dark",
+	}
