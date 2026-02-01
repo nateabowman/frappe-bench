@@ -1,6 +1,6 @@
 import frappe
 from frappe import _
-from frappe.utils import getdate, flt, today, add_days, date_diff
+from frappe.utils import getdate, flt, today, add_days, date_diff, now
 from datetime import datetime, timedelta
 import json
 
@@ -413,7 +413,13 @@ def get_widget_data(widget_name):
 	data = {}
 	
 	if widget.query:
-		# Execute SQL query
+		# Execute SQL query only for users with System Manager role to prevent SQL injection.
+		# Custom SQL in widgets is stored in the DB and could be malicious if created by a compromised account.
+		if "System Manager" not in frappe.get_roles():
+			frappe.throw(
+				_("Only users with System Manager role can run custom SQL widgets. Use a predefined data source instead."),
+				frappe.PermissionError,
+			)
 		try:
 			data = frappe.db.sql(widget.query, as_dict=True)
 		except Exception as e:

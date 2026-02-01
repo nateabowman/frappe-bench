@@ -207,5 +207,15 @@
         "required": [],
         "idx": 21,
         "version": "0.0.1"
+    },
+    "construction": {
+        "is_repo": true,
+        "resolution": {
+            "commit_hash": null,
+            "branch": "main"
+        },
+        "required": [],
+        "idx": 22,
+        "version": "1.0.0"
     }
 }
