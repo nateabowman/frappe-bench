@@ -86,6 +86,9 @@ htmlcov/
 .pydevproject
 .settings/
 
+# Large test files (GitHub limit 100MB)
+testfile
+
 # Optional: uncomment to exclude nginx/supervisor if they are machine-specific
 # config/nginx.conf
 # config/supervisor.conf
