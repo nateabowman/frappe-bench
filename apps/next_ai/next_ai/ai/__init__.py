@@ -4,18 +4,28 @@ import time
 from langchain_google_genai import ChatGoogleGenerativeAI
 from google.api_core.exceptions import ResourceExhausted, NotFound
 from frappe import _
+from frappe.utils.caching import redis_cache
 from next_ai.ai.prompt import PROMPTS
 from next_ai.ai.structured_output import NEXTAIBaseModel
 
+NEXTAI_MODEL_INFO_CACHE_KEY = "next_ai.ai._get_cached_model_info"
+NEXTAI_SETTINGS_CACHE_KEY = "nextai_settings"
 
-@frappe.whitelist(allow_guest=True)
+
+def _can_update_nextai_settings():
+    """Only System Manager can update NextAI Settings (e.g. when auto-switching models)."""
+    return "System Manager" in frappe.get_roles(frappe.session.user)
+
+
+@frappe.whitelist()
 def get_field_info(**kwargs):
+    """Requires login to prevent unauthenticated API abuse."""
     return {"status": "success"}
 
 
-@frappe.whitelist(allow_guest=True)
+@frappe.whitelist()
 def test_gemini(**kwargs):
-
+    frappe.only_for("System Manager")
     if "GOOGLE_API_KEY" not in os.environ:
         return {"status": "error", "message": "GOOGLE_API_KEY not set in environment variables"}
 
@@ -42,10 +52,15 @@ def test_gemini(**kwargs):
 
 @frappe.whitelist(methods=["POST"])
 def get_ai_response(**kwargs):
-    prompt = PROMPTS[kwargs['type']].format(input=kwargs['value'])
+    prompt_type = kwargs.get("type")
+    user_value = kwargs.get("value") or ""
+    if prompt_type not in PROMPTS:
+        frappe.throw(_("Invalid prompt type. Must be one of: {0}").format(", ".join(PROMPTS.keys())))
+    # Use replace instead of format to prevent format-string injection via user input
+    prompt = PROMPTS[prompt_type].replace("{input}", user_value)
     nextai_llm = NextAILLM(prompt)
     message = nextai_llm.get_llm_response(prompt)
-    return {"status_code":200, "status": "sucess", "message": message}
+    return {"status_code":200, "status": "success", "message": message}
 
 
 @frappe.whitelist(methods=["POST"])
@@ -62,18 +77,22 @@ def get_ai_response_deprecated(**kwargs):
             }
         )
         if not model_info:
-            return {"status_code":400, "status": "error", "message": "Model Info found in NextAI Model Info"}
+            return {"status_code":400, "status": "error", "message": "Model Info not found in NextAI Model Info"}
         model_info = model_info[0]
         delay = get_delay_info(model_info, nextai_settings.is_subscription, nextai_settings.is_free)
         time.sleep(delay)
         so_llm = llm.with_structured_output(NEXTAIBaseModel)
-        prompt = PROMPTS[kwargs['type']].format(input=kwargs['value'])
+        prompt_type = kwargs.get("type")
+        user_value = kwargs.get("value") or ""
+        if prompt_type not in PROMPTS:
+            frappe.throw(_("Invalid prompt type. Must be one of: {0}").format(", ".join(PROMPTS.keys())))
+        prompt = PROMPTS[prompt_type].replace("{input}", user_value)
         ai_msg = so_llm.invoke(prompt)
-    return {"status_code":200, "status": "sucess", "message": ai_msg.response}
+    return {"status_code":200, "status": "success", "message": ai_msg.response}
 
 
 def get_llm():
-    doc = frappe.get_doc('NextAI Settings')
+    doc = _get_cached_nextai_settings()
     llm = None
 
     nextai_llm = NextAILLM()
@@ -93,6 +112,34 @@ def get_llm():
         frappe.log_error(frappe.get_traceback(), "Error in get_llm")
         frappe.throw(_("Error in getting LLM: {0}").format(str(e)))
     return llm, doc
+
+
+@redis_cache(ttl=60 * 60)
+def _get_cached_model_info(platform: str):
+    """Cache model info per platform to reduce DB hits. TTL 1 hour."""
+    return frappe.db.get_list(
+        'NextAI Model Info',
+        fields=['*'],
+        filters={'platform': platform, 'is_active': 1},
+        order_by='creation desc'
+    )
+
+
+def _get_cached_nextai_settings():
+    """Cache NextAI Settings to reduce DB hits. TTL 15 minutes."""
+    def _fetch():
+        return frappe.get_doc('NextAI Settings')
+    return frappe.cache.get_value(
+        NEXTAI_SETTINGS_CACHE_KEY,
+        generator=_fetch,
+        expires_in_sec=15 * 60
+    )
+
+
+def _clear_nextai_caches():
+    """Clear NextAI-related caches when settings or model info changes."""
+    frappe.cache.delete_value(NEXTAI_SETTINGS_CACHE_KEY)
+    frappe.cache.delete_keys(NEXTAI_MODEL_INFO_CACHE_KEY)
 
 
 def get_delay_info(model_info, is_subscription, is_free):
@@ -130,7 +177,7 @@ class NextAILLM:
             frappe.throw(_("No active model info found for the platform {0}. Check NextAI Model Info Doctype.").format(self.nextai_settings.platform))
     
     def validate_token(self):
-        if len(self.prompt) > 8000:
+        if self.prompt is not None and len(self.prompt) > 8000:
             frappe.throw(_("Prompt length exceeds the maximum limit of 8000 characters. Please shorten your prompt."))
     
     def validate_settings(self):
@@ -142,19 +189,10 @@ class NextAILLM:
             frappe.throw(_("API Key is not set in NextAI Settings. Please configure the API Key."))
 
     def get_nextai_settings(self):
-        nextai_settings = frappe.get_doc('NextAI Settings')
-        return nextai_settings
+        return _get_cached_nextai_settings()
 
     def get_model_info(self):
-        model_info = frappe.db.get_list(
-            'NextAI Model Info',
-            fields=['*'],
-            filters={
-                'platform': self.nextai_settings.platform,
-                'is_active': 1
-            },
-            order_by='creation desc'
-        )
+        model_info = _get_cached_model_info(self.nextai_settings.platform)
         if not model_info:
             frappe.log_error(frappe.get_traceback(), "No Active Model Info Found in NextAILLM.get_model_info")
             frappe.throw(_(f"No active model info found for the platform {self.nextai_settings.platform}. Check NextAI Model Info Doctype."))
@@ -199,14 +237,15 @@ class NextAILLM:
             if self.current_model == original_model:
                 frappe.log_error(frappe.get_traceback(), f"Model {original_model} not found and no alternative available")
                 frappe.throw(_("The selected model '{0}' is not available. Please update the model in NextAI Settings to a valid model like 'gemini-2.5-flash' or 'gemini-2.0-flash'.").format(original_model))
-            # Update settings with the new model
+            # Only System Manager can auto-update settings
+            if not _can_update_nextai_settings():
+                frappe.throw(_("The selected model '{0}' is not available. Please ask a System Manager to update the model in NextAI Settings.").format(original_model))
             self.nextai_settings.model_name = self.current_model
             self.nextai_settings.save(
                 ignore_permissions=True,
                 ignore_version=True
             )
             frappe.msgprint(_("Model '{0}' is not available. Switched to '{1}'.").format(original_model, self.current_model))
-            # Retry with the new model
             return self.get_llm_response(prompt, model_name=self.current_model)
         except ResourceExhausted as e:
             frappe.log_error(frappe.get_traceback(), f"RPM limit reached {self.current_model} in NextAILLM.get_llm_response")
@@ -215,11 +254,13 @@ class NextAILLM:
                 if self.current_model == self.nextai_settings.model_name:
                     frappe.log_error(frappe.get_traceback(), "RPM limit reached for all models in NextAILLM.get_llm_response")
                     frappe.throw(_("RPM limit reached for all the models. Please try again later. Or Please upgrade your plan."))
+                if not _can_update_nextai_settings():
+                    frappe.throw(_("RPM limit reached for the current model {0}. Please try again later or ask a System Manager to update NextAI Settings.").format(self.current_model))
                 self.nextai_settings.model_name = self.current_model
                 self.nextai_settings.save(
                     ignore_permissions=True,
                     ignore_version=True
                 )
-                return self.get_structured_output_llm(model_name=self.current_model)
+                return self.get_llm_response(prompt, model_name=self.current_model)
             else:
                 frappe.throw(_(f"RPM limit reached for the current model {self.current_model}. Please try again later."))

@@ -7,7 +7,7 @@ You are a helpful AI assistant. Your task is to assist users by providing accura
 3. Ensure that the response is formatted in Markdown.
 4. Strictly do not include any additional text or explanations outside of the Markdown format.
 5. Use appropriate Markdown syntax for headings, lists, links, and other elements as needed.
-6. The response should be in the enchanced mode like if he asking for a blog post, you have to generate a blog post in markdown format with headings, subheadings, and paragraphs.
+6. The response should be in the enhanced mode like if he asking for a blog post, you have to generate a blog post in markdown format with headings, subheadings, and paragraphs.
 7. If the User Input is a question, provide a direct answer in Markdown format.
 8. Don't generate any code blocks or programming-related content unless explicitly requested in the User Input.
 9. Strictly Format responses for direct use in publishing, without any conversational or extra commentary.
@@ -78,7 +78,7 @@ Generate in HTML format only. The user input is also given in the HTML format on
 """
 
 CODE = """
-You are a software enginer. You generate code in the requested programming language. Follow the instructions below:
+You are a software engineer. You generate code in the requested programming language. Follow the instructions below:
 
 # Instructions
 1. Read the User Input carefully.
