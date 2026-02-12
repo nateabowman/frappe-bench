@@ -22,6 +22,9 @@ yarn-error.log*
 sites/common_site_config.json
 sites/*/site_config.json
 
+# Archived sites (may contain customer data and secrets)
+archived/
+
 # Per-site runtime and user data
 sites/*/private/
 sites/*/public/files/
@@ -89,6 +92,7 @@ htmlcov/
 # Large test files (GitHub limit 100MB)
 testfile
 
-# Optional: uncomment to exclude nginx/supervisor if they are machine-specific
-# config/nginx.conf
-# config/supervisor.conf
+# Deployment-specific config (domains, paths, credentials)
+# Use config/nginx.example.conf and config/supervisor.example.conf as templates
+config/nginx.conf
+config/supervisor.conf
